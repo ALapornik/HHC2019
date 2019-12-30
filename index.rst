@@ -10,6 +10,8 @@ Holiday Hack Challenge 2019 Report
 .. toctree::
    :maxdepth: 2
    :caption: Objectives:
+
+   objectives/summary
    
 
 .. toctree::
