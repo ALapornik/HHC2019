@@ -12,6 +12,19 @@ Holiday Hack Challenge 2019 Report
    :caption: Objectives:
 
    objectives/summary
+   objectives/question0
+   objectives/question1
+   objectives/question2
+   objectives/question3
+   objectives/question4
+   objectives/question5
+   objectives/question6
+   objectives/question7
+   objectives/question8
+   objectives/question9
+   objectives/question10
+   objectives/question11
+   objectives/question12
    
 
 .. toctree::
