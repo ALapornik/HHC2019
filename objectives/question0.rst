@@ -1,5 +1,5 @@
 0) Talk to Santa in the Quad
-############################
+============================
 
 To achieve this objective, use the UP,DOWN,LEFT,RIGHT keys or click to move.
 Find the quad(outside the station), and click on Santa.
