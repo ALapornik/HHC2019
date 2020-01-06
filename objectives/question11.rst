@@ -177,30 +177,43 @@ Lock 10
 
 .. image:: /images/objective11/lock10/locked.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/cover_found.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/cover_off.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/1macaroni/macaronierror.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/1macaroni/componentfound.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/1macaroni/result.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/2swab/swaberror.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/2swab/componentfound.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/2swab/result.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/3gnome/gnomeerror.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/3gnome/componentfound.PNG
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/3gnome/result.PNG
+
+Result
+^^^^^^
+
+
+.. image:: /images/objective11/result.PNG
+
+.. image:: /images/objective11/result_console.PNG
+
+.. image:: /images/objective11/The_Quickness.PNG
+
+.. image:: /images/objective11/CHALLENGE2.PNG
 
 Hint
 ----
+
 **Kent Tinseltooth**
 
     Oh thank you! It's so nice to be back in my own head again. Er, alone.
