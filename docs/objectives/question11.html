@@ -97,11 +97,27 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">11) Open the Sleigh Shop Door</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#question">Question</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#answer">Answer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lock-1">Lock 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-2">Lock 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-3">Lock 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-4">Lock 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-5">Lock 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-6">Lock 6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-7">Lock 7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-8">Lock 8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-9">Lock 9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lock-10">Lock 10</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#hint">Hint</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="question12.html">12) Filter Out Poisoned Sources of Weather Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/narrative.html">Narrative</a></li>
 </ul>
 
             
@@ -178,6 +194,118 @@
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
 <p>We used Google Chrome to solve this</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To open the Dev tools in Chrome either: Right click and choose <code class="docutils literal notranslate"><span class="pre">inspect</span> <span class="pre">element</span></code>, click on <code class="docutils literal notranslate"><span class="pre">options</span> <span class="pre">&gt;</span> <span class="pre">More</span> <span class="pre">Tools</span> <span class="pre">&gt;</span> <span class="pre">Developer</span> <span class="pre">Tools</span></code> or press <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+I</span></code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The codes change everytime. DO NOT RELOAD while completing this challenge</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To submit the codes, click on the lock display, write them and click on unlock.</p>
+</div>
+<div class="section" id="lock-1">
+<h3>Lock 1<a class="headerlink" href="#lock-1" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked.PNG" src="../_images/locked.PNG" />
+<p>The clue refers to the console in the dev tools. Hence, open Dev tools and select the console tab.</p>
+<img alt="../_images/inspect.PNG" src="../_images/inspect.PNG" />
+<img alt="../_images/Console.PNG" src="../_images/Console.PNG" />
+<p>When you scroll up (using the scroll wheel, for example) you see a code in the following form:</p>
+<img alt="../_images/code.PNG" src="../_images/code.PNG" />
+</div>
+<div class="section" id="lock-2">
+<h3>Lock 2<a class="headerlink" href="#lock-2" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked1.PNG" src="../_images/locked1.PNG" />
+<p>As suggested by the hints, when you click on print, you get a print preview which displays the code.</p>
+<img alt="../_images/printpreview.PNG" src="../_images/printpreview.PNG" />
+<p>Another way to get this is to look at the DOM tree (Inspect element)</p>
+<img alt="../_images/alternative1.PNG" src="../_images/alternative1.PNG" />
+<p>A nicer way to view this is to click on the display property (set to none). Removing the tick makes the code appear.</p>
+<img alt="../_images/Alternative_nice_1.PNG" src="../_images/Alternative_nice_1.PNG" />
+</div>
+<div class="section" id="lock-3">
+<h3>Lock 3<a class="headerlink" href="#lock-3" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked2.PNG" src="../_images/locked2.PNG" />
+<p>Open the Dev tools.</p>
+<img alt="../_images/inspect1.PNG" src="../_images/inspect1.PNG" />
+<p>Click on Network</p>
+<img alt="../_images/fetched.PNG" src="../_images/fetched.PNG" />
+<p>Look for the PNG file containing the code.</p>
+<img alt="../_images/code1.PNG" src="../_images/code1.PNG" />
+</div>
+<div class="section" id="lock-4">
+<h3>Lock 4<a class="headerlink" href="#lock-4" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked3.PNG" src="../_images/locked3.PNG" />
+<p>Open Dev Tools.</p>
+<img alt="../_images/inspect2.PNG" src="../_images/inspect2.PNG" />
+<p>Click on Application</p>
+<img alt="../_images/Application.PNG" src="../_images/Application.PNG" />
+<p>Click on Local Storage. The code is found in the value field of the element found there.</p>
+<img alt="../_images/code2.PNG" src="../_images/code2.PNG" />
+</div>
+<div class="section" id="lock-5">
+<h3>Lock 5<a class="headerlink" href="#lock-5" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked4.PNG" src="../_images/locked4.PNG" />
+<p>We first tried the easiest suggested solution, hovering over the tab. This works for Edge but not for</p>
+<img alt="../_images/hover_nw.PNG" src="../_images/hover_nw.PNG" />
+<p>We then looked for the title element in the DOM tree</p>
+<p>To do this, open Dev Tools</p>
+<img alt="../_images/inspect3.PNG" src="../_images/inspect3.PNG" />
+<p>and scroll up to the title</p>
+<img alt="../_images/domtitle.PNG" src="../_images/domtitle.PNG" />
+<p>Although this method works, we also tried the Console method which appeared to be a bit cleaner</p>
+<img alt="../_images/Console1.PNG" src="../_images/Console1.PNG" />
+</div>
+<div class="section" id="lock-6">
+<h3>Lock 6<a class="headerlink" href="#lock-6" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked5.PNG" src="../_images/locked5.PNG" />
+<p>Right click on the hologram and then click on inspect element. Change the perspective field to a (really) large value</p>
+<img alt="../_images/perspective.PNG" src="../_images/perspective.PNG" />
+<p>The code is revealed on the hologram.</p>
+<img alt="../_images/code3.PNG" src="../_images/code3.PNG" />
+</div>
+<div class="section" id="lock-7">
+<h3>Lock 7<a class="headerlink" href="#lock-7" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked6.PNG" src="../_images/locked6.PNG" />
+<p>Right click on the text and click on inspect element. The code is found in the font property</p>
+<img alt="../_images/code4.PNG" src="../_images/code4.PNG" />
+</div>
+<div class="section" id="lock-8">
+<h3>Lock 8<a class="headerlink" href="#lock-8" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked7.PNG" src="../_images/locked7.PNG" />
+<p>Right click .eggs and inpect element</p>
+<img alt="../_images/inspect4.PNG" src="../_images/inspect4.PNG" />
+<p>click on Event listeners. There is an event called spoil</p>
+<img alt="../_images/spoil.PNG" src="../_images/spoil.PNG" />
+<p>start expanding this event, until you see <code class="docutils literal notranslate"><span class="pre">='sad'</span></code></p>
+<img alt="../_images/code5.PNG" src="../_images/code5.PNG" />
+<p><code class="docutils literal notranslate"><span class="pre">VERONICA</span></code> is the code and doesn’t change if you refresh.</p>
+</div>
+<div class="section" id="lock-9">
+<h3>Lock 9<a class="headerlink" href="#lock-9" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked8.PNG" src="../_images/locked8.PNG" />
+<img alt="../_images/inactive_chakras.PNG" src="../_images/inactive_chakras.PNG" />
+<img alt="../_images/active.PNG" src="../_images/active.PNG" />
+<img alt="../_images/all_active.PNG" src="../_images/all_active.PNG" />
+<img alt="../_images/code6.PNG" src="../_images/code6.PNG" />
+</div>
+<div class="section" id="lock-10">
+<h3>Lock 10<a class="headerlink" href="#lock-10" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/locked9.PNG" src="../_images/locked9.PNG" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+<img alt="images/objective11/lock" src="images/objective11/lock" />
+</div>
 </div>
 <div class="section" id="hint">
 <h2>Hint<a class="headerlink" href="#hint" title="Permalink to this headline">¶</a></h2>
