@@ -1,8 +1,17 @@
 0) Talk to Santa in the Quad
 ============================
 
+Question:
+---------
+Enter the campus quad and talk to Santa.
+
+Solution:
+---------
 To achieve this objective, use the UP,DOWN,LEFT,RIGHT keys or click to move.
 Find the quad(outside the station), and click on Santa.
+
+.. note:: No Hints were given for this, and it was completed when we clicked on Santa. There was no answer to submit.
+
 
 **Santa:**
 

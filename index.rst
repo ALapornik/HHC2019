@@ -36,4 +36,6 @@ Holiday Hack Challenge 2019 Report
   :maxdepth: 2
   :caption: Appendices:
 
+  appendices/narrative
+
 
