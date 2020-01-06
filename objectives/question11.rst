@@ -250,6 +250,9 @@ This time the challenge was much harder
 Hint
 ----
 
+.. note:: Solve the `Smart Braces </terminals/SmartBraces>`_ terminal to get this hint
+
+
 **Kent Tinseltooth**
 
     Oh thank you! It's so nice to be back in my own head again. Er, alone.
