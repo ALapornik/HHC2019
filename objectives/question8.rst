@@ -1,14 +1,18 @@
 8) Bypassing the Frido Sleigh CAPTEHA
 =====================================
+Challenge
+---------
 Difficulty: 4/5 
 
 Help Krampus beat the Frido Sleigh contest. For hints on achieving this objective, please talk with Alabaster Snowball in the Speaker Unpreparedness Room.
 
-Answer: **8Ia8LiZEwvyZr2WO**
+Answer
+------
+**8Ia8LiZEwvyZr2WO**
 
 
-Detailed Answer
----------------
+Solution
+--------
 1. Discovery
 ^^^^^^^^^^^^
 To solve this challenge we had to utilise **Machine Learning** to solve a CAPTEHA security challenge and then submit as many entries as possible in the `Frido Sleigh contest <https://fridosleigh.com/>`_. 
@@ -19,7 +23,7 @@ The first image was obtained by clicking on the privacy terms of the CAPTEHA con
 
 .. image:: /images/o8-capteha.png
 
-The second image provides an example of the control in action. We had approx 5 seconds to identify all the correct images (from a set of 100 images). The control consists of 6 categories of images, namely candy canes, christmas trees, ornaments, presents, santa hats and stockings.
+The second image provides an example of the control in action. We had approx 5 seconds to identify all the correct images (from a set of 100 images). The control consists of 6 categories of images (candy canes, christmas trees, ornaments, presents, santa hats and stockings).
 
 .. image:: /images/o8-capteha-example.png
 
@@ -80,6 +84,9 @@ We took advantage of the `training images <https://downloads.elfu.org/capteha_im
 
 Our first efforts utilised the default Inception v3 model. We found this model to be accurate but far to slow with the limited computing resources we had available. Predicting the images in the CAPTEHA challenge with this model took almost 40 seconds which was well beyond the 5 second deadline.
 
+.. note::
+    Testing indicated that the actual deadline to submit an answer via the API was actually 10 seconds. 
+
 We tried upgrading our display drivers and even installed the Nvidia CUDA package on our computer in an effort to make TensorFlow utilise GPU resources. This was complicated because the TensorFlow v1.15 framework needed specific drivers that weren't part of current CUDA packages. We finally succeeded locating and installing all the needed drivers. Unfortunately, this effort was not successful with the CAPTEHA prediction still taking approximately 40 seconds. For some reason TensorFlow was not taking advantage of our GPU. This could have been either a software or hardware issue and decided to look for a different method of reducing the prediction time.
 
 We then did some more research and discovered the possibility of utilising alternative models that were designed for resource restricted environments. These models would be faster with a tradeoff in accuracy. We tried using a MobileNet floating model as documented in the **retrain.py** code. Having this documentation was ideal for us because we were sensitive to possible compatibility issues with the older TensorFlow v1.15 framework. The following image shows the specific documentation referring to this in the **retrain.py** script.
@@ -106,11 +113,11 @@ We used the following command to train our model:
 
     ``python .\retrain.py --image_dir .\training_images\ --tfhub_module https://tfhub.dev/google/imagenet/mobilenet_v1_100_224/feature_vector/3``
 
-This process can take several minutes to complete and can spit out a lot of error message which can probably be ignored. Most of the errors we encountered were warnings about using deprecated features and issues related to the GPU.
+This process can take several minutes to complete and can spit out a lot of error message which can be ignored. Most of the errors we encountered were warnings about using deprecated features and issues related to the GPU.
 
 Using the model to solve the challenge
 """"""""""""""""""""""""""""""""""""""
-We ran the model and entered the Frido Sleigh contest using the following command:
+We ran the model against the CAPTEHA challenge and entered the Frido Sleigh contest using the following command:
 
     ``python .\o8-capteha.py``
 

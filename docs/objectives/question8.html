@@ -92,7 +92,9 @@
 <li class="toctree-l1"><a class="reference internal" href="question6.html">6) Splunk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question7.html">7) Get Access To The Steam Tunnels</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8) Bypassing the Frido Sleigh CAPTEHA</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#detailed-answer">Detailed Answer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#answer">Answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#discovery">1. Discovery</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#starting-artefacts">Starting artefacts</a></li>
 </ul>
@@ -183,18 +185,24 @@
             
   <div class="section" id="bypassing-the-frido-sleigh-capteha">
 <h1>8) Bypassing the Frido Sleigh CAPTEHA<a class="headerlink" href="#bypassing-the-frido-sleigh-capteha" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
 <p>Difficulty: 4/5</p>
 <p>Help Krampus beat the Frido Sleigh contest. For hints on achieving this objective, please talk with Alabaster Snowball in the Speaker Unpreparedness Room.</p>
-<p>Answer: <strong>8Ia8LiZEwvyZr2WO</strong></p>
-<div class="section" id="detailed-answer">
-<h2>Detailed Answer<a class="headerlink" href="#detailed-answer" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="answer">
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
+<p><strong>8Ia8LiZEwvyZr2WO</strong></p>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="discovery">
 <h3>1. Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h3>
 <p>To solve this challenge we had to utilise <strong>Machine Learning</strong> to solve a CAPTEHA security challenge and then submit as many entries as possible in the <a class="reference external" href="https://fridosleigh.com/">Frido Sleigh contest</a>.</p>
 <p>You may be asking what is a CAPTEHA security challenge. The best way to answer this is with a couple of images taken from the Frido Sleigh website.</p>
 <p>The first image was obtained by clicking on the privacy terms of the CAPTEHA control and provides a desription about what it is.</p>
 <img alt="../_images/o8-capteha.png" src="../_images/o8-capteha.png" />
-<p>The second image provides an example of the control in action. We had approx 5 seconds to identify all the correct images (from a set of 100 images). The control consists of 6 categories of images, namely candy canes, christmas trees, ornaments, presents, santa hats and stockings.</p>
+<p>The second image provides an example of the control in action. We had approx 5 seconds to identify all the correct images (from a set of 100 images). The control consists of 6 categories of images (candy canes, christmas trees, ornaments, presents, santa hats and stockings).</p>
 <img alt="../_images/o8-capteha-example.png" src="../_images/o8-capteha-example.png" />
 <div class="section" id="starting-artefacts">
 <h4>Starting artefacts<a class="headerlink" href="#starting-artefacts" title="Permalink to this headline">¶</a></h4>
@@ -260,6 +268,10 @@
 <p>We also wrote a script (sorry, we didn’t have time to tidy up this script and include it in our repository) that saved all the images to disk with names that reflected the image category and a unique ID. If needed we could have used multiple runs of this solution to build a training set of images.</p>
 </div>
 <p>Our first efforts utilised the default Inception v3 model. We found this model to be accurate but far to slow with the limited computing resources we had available. Predicting the images in the CAPTEHA challenge with this model took almost 40 seconds which was well beyond the 5 second deadline.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Testing indicated that the actual deadline to submit an answer via the API was actually 10 seconds.</p>
+</div>
 <p>We tried upgrading our display drivers and even installed the Nvidia CUDA package on our computer in an effort to make TensorFlow utilise GPU resources. This was complicated because the TensorFlow v1.15 framework needed specific drivers that weren’t part of current CUDA packages. We finally succeeded locating and installing all the needed drivers. Unfortunately, this effort was not successful with the CAPTEHA prediction still taking approximately 40 seconds. For some reason TensorFlow was not taking advantage of our GPU. This could have been either a software or hardware issue and decided to look for a different method of reducing the prediction time.</p>
 <p>We then did some more research and discovered the possibility of utilising alternative models that were designed for resource restricted environments. These models would be faster with a tradeoff in accuracy. We tried using a MobileNet floating model as documented in the <strong>retrain.py</strong> code. Having this documentation was ideal for us because we were sensitive to possible compatibility issues with the older TensorFlow v1.15 framework. The following image shows the specific documentation referring to this in the <strong>retrain.py</strong> script.</p>
 <img alt="../_images/o8-alternative-model.png" src="../_images/o8-alternative-model.png" />
@@ -282,11 +294,11 @@
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">.\retrain.py</span> <span class="pre">--image_dir</span> <span class="pre">.\training_images\</span> <span class="pre">--tfhub_module</span> <span class="pre">https://tfhub.dev/google/imagenet/mobilenet_v1_100_224/feature_vector/3</span></code></p>
 </div></blockquote>
-<p>This process can take several minutes to complete and can spit out a lot of error message which can probably be ignored. Most of the errors we encountered were warnings about using deprecated features and issues related to the GPU.</p>
+<p>This process can take several minutes to complete and can spit out a lot of error message which can be ignored. Most of the errors we encountered were warnings about using deprecated features and issues related to the GPU.</p>
 </div>
 <div class="section" id="using-the-model-to-solve-the-challenge">
 <h4>Using the model to solve the challenge<a class="headerlink" href="#using-the-model-to-solve-the-challenge" title="Permalink to this headline">¶</a></h4>
-<p>We ran the model and entered the Frido Sleigh contest using the following command:</p>
+<p>We ran the model against the CAPTEHA challenge and entered the Frido Sleigh contest using the following command:</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">.\o8-capteha.py</span></code></p>
 </div></blockquote>
