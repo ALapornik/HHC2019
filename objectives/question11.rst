@@ -1,5 +1,5 @@
-11) Open the Sleigh Shop Door
-=============================
+`11) Open the Sleigh Shop Door <https://sleighworkshopdoor.elfu.org/>`_
+=======================================================================
 
 Question
 --------
@@ -164,43 +164,95 @@ Lock 9
 
 .. image:: /images/objective11/lock9/locked.PNG
 
+Right click on the text, inspect element. We can see 5 chakra classes.
+
 .. image:: /images/objective11/lock9/inactive_chakras.PNG
+
+find the active attribute (click on ``:hov``)
 
 .. image:: /images/objective11/lock9/active.PNG
 
+click on the tick box next to ``:active``, repeat for all chackras
+
 .. image:: /images/objective11/lock9/all_active.PNG
 
+The code appears around the text with red letters
+
 .. image:: /images/objective11/lock9/code.PNG
+
+.. tip:: You can see the hidden text instantaneously by clicking on it.
+
 
 Lock 10
 ^^^^^^^
 
 .. image:: /images/objective11/lock10/locked.PNG
 
-.. image:: /images/objective11/lock
+Right click on the cover, Inspect element
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/cover_found.PNG
 
-.. image:: /images/objective11/lock
+select the cover element, right click and delete/hide it
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/cover_off.PNG
 
-.. image:: /images/objective11/lock
+You can see the code ``KD29XJ37`` on the edge of the circuit board.
 
-.. image:: /images/objective11/lock
+However, when you try to input the code, the button doesn't work.
+Instead, an error (``missing macaroni``) is shown in the console
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/1macaroni/macaronierror.PNG
 
-.. image:: /images/objective11/lock
+Searching in the DOM tree reveals an element called ``component macaroni``
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/1macaroni/componentfound.PNG
 
-.. image:: /images/objective11/lock
+When you drag it down to lock 10, a macaroni appears.
 
-.. image:: /images/objective11/lock
+.. image:: /images/objective11/lock10/1macaroni/result.PNG
+
+Repeat the process until you have all components (you'll get a ``missing cotton swab`` error followed by a ``missing gnome`` error)
+
+.. image:: /images/objective11/lock10/2swab/swaberror.PNG
+
+.. image:: /images/objective11/lock10/2swab/componentfound.PNG
+
+.. image:: /images/objective11/lock10/2swab/result.PNG
+
+.. tip:: You can find the images in the sources tab. Curiously, the cotton swab is named qtip
+
+
+.. image:: /images/objective11/lock10/3gnome/gnomeerror.PNG
+
+.. image:: /images/objective11/lock10/3gnome/componentfound.PNG
+
+.. image:: /images/objective11/lock10/3gnome/result.PNG
+
+Result
+^^^^^^
+
+Once all codes are found and all locks are unlocked, you are redirected to the following result page:
+
+.. image:: /images/objective11/result.PNG
+
+In the console, the page challenges you to solve it faster
+
+.. image:: /images/objective11/result_console.PNG
+
+We couldn't resist a nice chalenge and eventually got a time of 172.35s
+
+.. image:: /images/objective11/The_Quickness.PNG
+
+This time the challenge was much harder
+
+.. image:: /images/objective11/CHALLENGE2.PNG
 
 Hint
 ----
+
+.. note:: Solve the `Smart Braces </terminals/SmartBraces>`_ terminal to get this hint
+
+
 **Kent Tinseltooth**
 
     Oh thank you! It's so nice to be back in my own head again. Er, alone.

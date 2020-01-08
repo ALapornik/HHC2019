@@ -31,6 +31,8 @@ Holiday Hack Challenge 2019 Report
   :maxdepth: 2
   :caption: Terminals:
 
+  terminals/SmartBraces
+
 
 .. toctree::
   :maxdepth: 2
