@@ -31,7 +31,16 @@ Holiday Hack Challenge 2019 Report
   :maxdepth: 2
   :caption: Terminals:
 
+  terminals/EscapeEd
+  terminals/LinuxPath
+  terminals/XmasCheerLaser
+  terminals/FrostyKeypad
+  terminals/HolidayHackTrail
+  terminals/Nyanshell
+  terminals/Graylog
+  terminals/MongoPilfer
   terminals/SmartBraces
+  terminals/ZeekJSONAnalysis
 
 
 .. toctree::
