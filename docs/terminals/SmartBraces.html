@@ -34,7 +34,9 @@
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Narrative" href="../appendices/narrative.html" />
+    <link rel="prev" title="12) Filter Out Poisoned Sources of Weather Data" href="../objectives/question12.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,6 +96,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../objectives/question10.html">10) Recover Cleartext Document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../objectives/question11.html">11) Open the Sleigh Shop Door</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../objectives/question12.html">12) Filter Out Poisoned Sources of Weather Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Terminals:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Smart Braces</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
@@ -160,8 +166,94 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="smart-braces">
-<h1>Smart Braces<a class="headerlink" href="#smart-braces" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=iptables">Smart Braces</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Inner Voice: Kent. Kent. Wake up, Kent.
+Inner Voice: I&#39;m talking to you, Kent.
+Kent TinselTooth: Who said that? I must be going insane.
+Kent TinselTooth: Am I?
+Inner Voice: That remains to be seen, Kent. But we are having a conversation.
+Inner Voice: This is Santa, Kent, and you&#39;ve been a very naughty boy.
+Kent TinselTooth: Alright! Who is this?! Holly? Minty? Alabaster?
+Inner Voice: I am known by many names. I am the boss of the North Pole. Turn to me and be hired after graduation.
+Kent TinselTooth: Oh, sure.
+Inner Voice: Cut the candy, Kent, you&#39;ve built an automated, machine-learning, sleigh device.
+Kent TinselTooth: How did you know that?
+Inner Voice: I&#39;m Santa - I know everything.
+Kent TinselTooth: Oh. Kringle. *sigh*
+Inner Voice: That&#39;s right, Kent. Where is the sleigh device now?
+Kent TinselTooth: I can&#39;t tell you.
+Inner Voice: How would you like to intern for the rest of time?
+Kent TinselTooth: Please no, they&#39;re testing it at srf.elfu.org using default creds, but I don&#39;t know more. It&#39;s classified.
+Inner Voice: Very good Kent, that&#39;s all I needed to know.
+Kent TinselTooth: I thought you knew everything?
+Inner Voice: Nevermind that. I want you to think about what you&#39;ve researched and studied. From now on, stop playing with your teeth, and floss more.
+*Inner Voice Goes Silent*
+
+Kent TinselTooth: Oh no, I sure hope that voice was Santa&#39;s.
+Kent TinselTooth: I suspect someone may have hacked into my IOT teeth braces.
+Kent TinselTooth: I must have forgotten to configure the firewall...
+Kent TinselTooth: Please review /home/elfuuser/IOTteethBraces.md and help me configure the firewall.
+Kent TinselTooth: Please hurry; having this ribbon cable on my teeth is uncomfortable.
+elfuuser@4a5f0c68d90a:~$
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">/home/elfuuser/IOTteethBraces.md</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># ElfU Research Labs - Smart Braces
+### A Lightweight Linux Device for Teeth Braces
+### Imagined and Created by ElfU Student Kent TinselTooth
+This device is embedded into one&#39;s teeth braces for easy management and monitoring of dental status. It uses FTP and HTTP for management and monitoring purposes but also has SSH for remote access. Please $
+## Proper Firewall configuration:
+The firewall used for this system is `iptables`. The following is an example of how to set a default policy with using `iptables`:
+```
+sudo iptables -P FORWARD DROP
+```
+The following is an example of allowing traffic from a specific IP and to a specific port:
+```
+sudo iptables -A INPUT -p tcp --dport 25 -s 172.18.5.4 -j ACCEPT
+```
+A proper configuration for the Smart Braces should be exactly:
+1. Set the default policies to DROP for the INPUT, FORWARD, and OUTPUT chains.
+2. Create a rule to ACCEPT all connections that are ESTABLISHED,RELATED on the INPUT and the OUTPUT chains.
+3. Create a rule to ACCEPT only remote source IP address 172.19.0.225 to access the local SSH server (on port 22).
+4. Create a rule to ACCEPT any source IP to the local TCP services on ports 21 and 80.
+5. Create a rule to ACCEPT all OUTPUT traffic with a destination TCP port of 80.
+6. Create a rule applied to the INPUT chain to ACCEPT all traffic from the lo interface.
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 96%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">iptables</span> <span class="pre">-P</span> <span class="pre">INPUT</span> <span class="pre">DROP</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">iptables</span> <span class="pre">-P</span> <span class="pre">FORWARD</span> <span class="pre">DROP</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">iptables</span> <span class="pre">-P</span> <span class="pre">OUTPUT</span> <span class="pre">DROP</span></code></p>
+</td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>sudo iptables -A INPUT -m conntrack –ctstate ESTABLISHED,RELATED -j ACCEPT</p>
+<p>sudo iptables -A OUTPUT -m conntrack –ctstate ESTABLISHED,RELATED -j ACCEPT</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>sudo iptables -A INPUT -p tcp –dport 22 -s 172.19.0.225 -j ACCEPT</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>sudo iptables -A INPUT -p tcp –dport 21  -j ACCEPT</p>
+<p>sudo iptables -A INPUT -p tcp –dport 80 -j ACCEPT</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>sudo iptables -A OUTPUT -p tcp –dport 80 -j ACCEPT</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>sudo iptables -A INPUT -i lo -j ACCEPT</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -169,6 +261,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../appendices/narrative.html" class="btn btn-neutral float-right" title="Narrative" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../objectives/question12.html" class="btn btn-neutral float-left" title="12) Filter Out Poisoned Sources of Weather Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
