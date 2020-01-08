@@ -93,8 +93,16 @@
 <li class="toctree-l1"><a class="reference internal" href="question7.html">7) Get Access To The Steam Tunnels</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">8) Bypassing the Frido Sleigh CAPTEHA</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#detailed-answer">Detailed Answer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#discovery">1. Discovery</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#starting-artefacts">Starting artefacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discovery">1. Discovery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#starting-artefacts">Starting artefacts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#solving-the-challenge">2. Solving the challenge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constructing-the-python-environment">Constructing the Python environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#training-the-model">Training the model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-model-to-solve-the-challenge">Using the model to solve the challenge</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -103,6 +111,10 @@
 <li class="toctree-l1"><a class="reference internal" href="question10.html">10) Recover Cleartext Document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question11.html">11) Open the Sleigh Shop Door</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question12.html">12) Filter Out Poisoned Sources of Weather Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Terminals:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/SmartBraces.html">Smart Braces</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
@@ -173,8 +185,7 @@
 <h1>8) Bypassing the Frido Sleigh CAPTEHA<a class="headerlink" href="#bypassing-the-frido-sleigh-capteha" title="Permalink to this headline">¶</a></h1>
 <p>Difficulty: 4/5</p>
 <p>Help Krampus beat the Frido Sleigh contest. For hints on achieving this objective, please talk with Alabaster Snowball in the Speaker Unpreparedness Room.</p>
-<p>Answer:</p>
-<<<<<<< HEAD
+<p>Answer: <strong>8Ia8LiZEwvyZr2WO</strong></p>
 <div class="section" id="detailed-answer">
 <h2>Detailed Answer<a class="headerlink" href="#detailed-answer" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="discovery">
@@ -183,12 +194,10 @@
 <p>You may be asking what is a CAPTEHA security challenge. The best way to answer this is with a couple of images taken from the Frido Sleigh website.</p>
 <p>The first image was obtained by clicking on the privacy terms of the CAPTEHA control and provides a desription about what it is.</p>
 <img alt="../_images/o8-capteha.png" src="../_images/o8-capteha.png" />
-<p>The second image provides an example of the control in action. We had approx 5 seconds to identify all the correct images (from a set of 100 images).</p>
+<p>The second image provides an example of the control in action. We had approx 5 seconds to identify all the correct images (from a set of 100 images). The control consists of 6 categories of images, namely candy canes, christmas trees, ornaments, presents, santa hats and stockings.</p>
 <img alt="../_images/o8-capteha-example.png" src="../_images/o8-capteha-example.png" />
-</div>
 <div class="section" id="starting-artefacts">
-<h3>Starting artefacts<a class="headerlink" href="#starting-artefacts" title="Permalink to this headline">¶</a></h3>
-<p>The heading for the challenge, saying we had to bypass the CAPTEHA security control, gave us a starting point from which to solve this challenge.</p>
+<h4>Starting artefacts<a class="headerlink" href="#starting-artefacts" title="Permalink to this headline">¶</a></h4>
 <p>The hint titled <strong>Machine Learning</strong> provided by Alabaster Snowball formed an essential part of <strong>how</strong> to solve the challenge. The hint points to a YouTube presentation by Chris Davis titled <a class="reference external" href="https://youtu.be/jmVPLwjm_zs">Machine Learning Use Cases for Cyber Security</a>. Chris provided some very useful Python code in the following <a class="reference external" href="https://github.com/chrisjd20/img_rec_tf_ml_demo">repository</a> that we later adapted to solve the CAPTEHA control. This code provided an example of using machine learning with image recognition to distinguish apples from bananas based on Python and the TensorFlow (v1.15) library.</p>
 <p>In addition, we had the following resources which were provided by Krampus when he spoke about the challenge:</p>
 <blockquote>
@@ -201,17 +210,91 @@
 <p class="admonition-title">Note</p>
 <p>We have included the original <a class="reference external" href="/source/o8-capteha/capteha_api.py">Fridosleigh CAPETHA API</a> file in our source repository.</p>
 </div>
-<p>The challenge consisted of solving a CAPTEHA security control.</p>
-<img alt="../_images/o8-capteha.png" src="../_images/o8-capteha.png" />
-<p>We had approx 10 seconds to identify all the correct images (from a set of 100 images).</p>
 </div>
 </div>
-=======
-<p>For us, the hint (<a class="reference external" href="https://youtu.be/jmVPLwjm_zs">Machine Learning Use Cases for Cyber Security</a>) provided by Alabaster Snowball formed an essential part of our answer.</p>
-<p>The challenge consisted of solving a CAPTEHA security control.</p>
-<p>Note: CAPETHA was an interesting play on a CAPTCHA system. CAPTCHA is an acronym for “Completely Automated Public Turing test to tell Computers and Humans Apart”. We believe that CAPETHA was an acronym for “Completely Automated Public turing test to tell Elves and Humans Apart”.
-.. image:: /images/o8-capteha.png</p>
->>>>>>> b97ebeec403fb8fc130b87442f664173ed4e2844
+<div class="section" id="solving-the-challenge">
+<h3>2. Solving the challenge<a class="headerlink" href="#solving-the-challenge" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="constructing-the-python-environment">
+<h4>Constructing the Python environment<a class="headerlink" href="#constructing-the-python-environment" title="Permalink to this headline">¶</a></h4>
+<p>We created a Python virtual environment in our project directory with all the libraries that were needed by the Machine Learning example. To recreate Python virtual environment please follow the following steps from a Windows 10 computer with <strong>Python 3.7.5</strong>:</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The code in the <a class="reference external" href="https://github.com/chrisjd20/img_rec_tf_ml_demo">repository from Chris Davis</a>, which we used as the basis of our solution, has a dependency on TensorFlow 1.1.5. We found that this didn’t work with Python 3.8.x and had to revert back to a Python 3.7.5 environment.</p>
+</div>
+<ol class="arabic">
+<li><p>Download the documentation repository from the following link: ` &lt;<a class="reference external" href="https://github.com/alapornik/HHC2019">https://github.com/alapornik/HHC2019</a>&gt;`_.</p></li>
+<li><p>Open a PowerShell prompt and navigate to the <strong>/source/o8-capteha/</strong> folder</p></li>
+<li><p>Enter the following command to create a virtual environment:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">.\.venv</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Activate the virtual environment by entering the following command:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">.\.venv\Scripts\Activate.ps1</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> command to deactivate the virtual environment.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Install the needed modules using the following command:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">.\requirements.txt</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Download and extract the <a class="reference external" href="https://downloads.elfu.org/capteha_images.tar.gz">training images archive</a> into the <strong>/source/o8-capteha/training_images/</strong> folder. The folder structure of <strong>training_images</strong> should resemble the following:</p>
+<blockquote>
+<div><img alt="../_images/o8-training_images.png" src="../_images/o8-training_images.png" />
+</div></blockquote>
+</li>
+<li><p>Edit the <strong>o8-capteha.py</strong> script in a text editor and modify the <strong>yourREALemailAddress</strong> variable with your email address.</p></li>
+</ol>
+</div>
+<div class="section" id="training-the-model">
+<h4>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this headline">¶</a></h4>
+<p>The first step is to undertake what’s called <strong>supervised learning</strong> where the goal is to learn the relationship between training inputs and training targets. For the challenge this means running the <strong>retrain.py</strong> script so the model can distinguish between the 6 categories of images (candy canes, christmas trees, ornaments, presents, santa hats and stockings).</p>
+<p>We took advantage of the <a class="reference external" href="https://downloads.elfu.org/capteha_images.tar.gz">training images</a> supplied by Krampus.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We also wrote a script (sorry, we didn’t have time to tidy up this script and include it in our repository) that saved all the images to disk with names that reflected the image category and a unique ID. If needed we could have used multiple runs of this solution to build a training set of images.</p>
+</div>
+<p>Our first efforts utilised the default Inception v3 model. We found this model to be accurate but far to slow with the limited computing resources we had available. Predicting the images in the CAPTEHA challenge with this model took almost 40 seconds which was well beyond the 5 second deadline.</p>
+<p>We tried upgrading our display drivers and even installed the Nvidia CUDA package on our computer in an effort to make TensorFlow utilise GPU resources. This was complicated because the TensorFlow v1.15 framework needed specific drivers that weren’t part of current CUDA packages. We finally succeeded locating and installing all the needed drivers. Unfortunately, this effort was not successful with the CAPTEHA prediction still taking approximately 40 seconds. For some reason TensorFlow was not taking advantage of our GPU. This could have been either a software or hardware issue and decided to look for a different method of reducing the prediction time.</p>
+<p>We then did some more research and discovered the possibility of utilising alternative models that were designed for resource restricted environments. These models would be faster with a tradeoff in accuracy. We tried using a MobileNet floating model as documented in the <strong>retrain.py</strong> code. Having this documentation was ideal for us because we were sensitive to possible compatibility issues with the older TensorFlow v1.15 framework. The following image shows the specific documentation referring to this in the <strong>retrain.py</strong> script.</p>
+<img alt="../_images/o8-alternative-model.png" src="../_images/o8-alternative-model.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A side effect of changing the model was that we had to change the code in our solution (<strong>o8-capteha.py</strong>) to utilise the new model. The change involved modifying the <strong>input_height</strong> and <strong>input_width</strong> parameter defaults from 132 to 224.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="nf">read_tensor_from_image_bytes</span><span class="p">(</span><span class="n">imagebytes</span><span class="p">,</span> <span class="n">input_height</span><span class="o">=</span><span class="mi">224</span><span class="p">,</span> <span class="n">input_width</span><span class="o">=</span><span class="mi">224</span><span class="p">,</span> <span class="n">input_mean</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">input_std</span><span class="o">=</span><span class="mi">255</span><span class="p">):</span>
+</span>    <span class="n">image_reader</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">decode_png</span><span class="p">(</span> <span class="n">imagebytes</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;png_reader&quot;</span><span class="p">)</span>
+    <span class="n">float_caster</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">image_reader</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">dims_expander</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">float_caster</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">resized</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resize_bilinear</span><span class="p">(</span><span class="n">dims_expander</span><span class="p">,</span> <span class="p">[</span><span class="n">input_height</span><span class="p">,</span> <span class="n">input_width</span><span class="p">])</span>
+    <span class="n">normalized</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">resized</span><span class="p">,</span> <span class="p">[</span><span class="n">input_mean</span><span class="p">]),</span> <span class="p">[</span><span class="n">input_std</span><span class="p">])</span>
+    <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">normalized</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<p>We used the following command to train our model:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">.\retrain.py</span> <span class="pre">--image_dir</span> <span class="pre">.\training_images\</span> <span class="pre">--tfhub_module</span> <span class="pre">https://tfhub.dev/google/imagenet/mobilenet_v1_100_224/feature_vector/3</span></code></p>
+</div></blockquote>
+<p>This process can take several minutes to complete and can spit out a lot of error message which can probably be ignored. Most of the errors we encountered were warnings about using deprecated features and issues related to the GPU.</p>
+</div>
+<div class="section" id="using-the-model-to-solve-the-challenge">
+<h4>Using the model to solve the challenge<a class="headerlink" href="#using-the-model-to-solve-the-challenge" title="Permalink to this headline">¶</a></h4>
+<p>We ran the model and entered the Frido Sleigh contest using the following command:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">.\o8-capteha.py</span></code></p>
+</div></blockquote>
+<p>It took a few attempts before the script was successful. We eventually received the following email message from the Frido Sleigh server:</p>
+<img alt="../_images/o8-winning-entry.png" src="../_images/o8-winning-entry.png" />
+</div>
+</div>
+</div>
 </div>
 
 
