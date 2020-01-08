@@ -91,11 +91,22 @@
 <li class="toctree-l1"><a class="reference internal" href="question5.html">5) Network Log Analysis: Determine Compromised System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question6.html">6) Splunk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question7.html">7) Get Access To The Steam Tunnels</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8) Bypassing the Frido Sleigh CAPTEHA</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8) Bypassing the Frido Sleigh CAPTEHA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-answer">Detailed Answer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#discovery">1. Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#starting-artefacts">Starting artefacts</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="question9.html">9) Retrieve Scraps of Paper from Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question10.html">10) Recover Cleartext Document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question11.html">11) Open the Sleigh Shop Door</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question12.html">12) Filter Out Poisoned Sources of Weather Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/narrative.html">Narrative</a></li>
 </ul>
 
             
@@ -160,6 +171,40 @@
             
   <div class="section" id="bypassing-the-frido-sleigh-capteha">
 <h1>8) Bypassing the Frido Sleigh CAPTEHA<a class="headerlink" href="#bypassing-the-frido-sleigh-capteha" title="Permalink to this headline">¶</a></h1>
+<p>Difficulty: 4/5</p>
+<p>Help Krampus beat the Frido Sleigh contest. For hints on achieving this objective, please talk with Alabaster Snowball in the Speaker Unpreparedness Room.</p>
+<p>Answer:</p>
+<div class="section" id="detailed-answer">
+<h2>Detailed Answer<a class="headerlink" href="#detailed-answer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discovery">
+<h3>1. Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h3>
+<p>To solve this challenge we had to utilise <strong>Machine Learning</strong> to solve a CAPTEHA security challenge and then submit as many entries as possible in the <a class="reference external" href="https://fridosleigh.com/">Frido Sleigh contest</a>.</p>
+<p>You may be asking what is a CAPTEHA security challenge. The best way to answer this is with a couple of images taken from the Frido Sleigh website.</p>
+<p>The first image was obtained by clicking on the privacy terms of the CAPTEHA control and provides a desription about what it is.</p>
+<img alt="../_images/o8-capteha.png" src="../_images/o8-capteha.png" />
+<p>The second image provides an example of the control in action. We had approx 5 seconds to identify all the correct images (from a set of 100 images).</p>
+<img alt="../_images/o8-capteha-example.png" src="../_images/o8-capteha-example.png" />
+</div>
+<div class="section" id="starting-artefacts">
+<h3>Starting artefacts<a class="headerlink" href="#starting-artefacts" title="Permalink to this headline">¶</a></h3>
+<p>The heading for the challenge, saying we had to bypass the CAPTEHA security control, gave us a starting point from which to solve this challenge.</p>
+<p>The hint titled <strong>Machine Learning</strong> provided by Alabaster Snowball formed an essential part of <strong>how</strong> to solve the challenge. The hint points to a YouTube presentation by Chris Davis titled <a class="reference external" href="https://youtu.be/jmVPLwjm_zs">Machine Learning Use Cases for Cyber Security</a>. Chris provided some very useful Python code in the following <a class="reference external" href="https://github.com/chrisjd20/img_rec_tf_ml_demo">repository</a> that we later adapted to solve the CAPTEHA control. This code provided an example of using machine learning with image recognition to distinguish apples from bananas based on Python and the TensorFlow (v1.15) library.</p>
+<p>In addition, we had the following resources which were provided by Krampus when he spoke about the challenge:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://downloads.elfu.org/capteha_images.tar.gz">Training images</a></p></li>
+<li><p><a class="reference external" href="https://downloads.elfu.org/capteha_api.py">Fridosleigh.com CAPTEHA API</a></p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have included the original <a class="reference external" href="/source/o8-capteha/capteha_api.py">Fridosleigh CAPETHA API</a> file in our source repository.</p>
+</div>
+<p>The challenge consisted of solving a CAPTEHA security control.</p>
+<img alt="../_images/o8-capteha.png" src="../_images/o8-capteha.png" />
+<p>We had approx 10 seconds to identify all the correct images (from a set of 100 images).</p>
+</div>
+</div>
 </div>
 
 
