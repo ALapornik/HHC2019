@@ -35,6 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Escape Ed &lt;&gt;" href="../terminals/EscapeEd.html" />
     <link rel="prev" title="11) Open the Sleigh Shop Door" href="question11.html" /> 
 </head>
 
@@ -94,7 +95,35 @@
 <li class="toctree-l1"><a class="reference internal" href="question9.html">9) Retrieve Scraps of Paper from Server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question10.html">10) Recover Cleartext Document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question11.html">11) Open the Sleigh Shop Door</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">12) Filter Out Poisoned Sources of Weather Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">12) Filter Out Poisoned Sources of Weather Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#answer">Answer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#discovery">1. Discovery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#starting-artefacts">Starting artefacts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#solving-the-challenge">2. Solving the challenge</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Terminals:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/EscapeEd.html">Escape Ed &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/LinuxPath.html">Linux Path &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/Nyanshell.html">Nyanshell &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/Graylog.html">Graylog &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/SmartBraces.html">Smart Braces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/narrative.html">Narrative</a></li>
 </ul>
 
             
@@ -159,6 +188,42 @@
             
   <div class="section" id="filter-out-poisoned-sources-of-weather-data">
 <h1>12) Filter Out Poisoned Sources of Weather Data<a class="headerlink" href="#filter-out-poisoned-sources-of-weather-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>Difficulty: 4/5</p>
+<p>Use the data supplied in the Zeek JSON logs to identify the IP addresses of attackers poisoning Santa’s flight mapping software. Block the 100 offending sources of information to guide Santa’s sleigh through the attack. Submit the Route ID (“RID”) success value that you’re given. For hints on achieving this objective, please visit the Sleigh Shop and talk with Wunorse Openslae.</p>
+</div>
+<div class="section" id="answer">
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discovery">
+<h3>1. Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h3>
+<p>To solve this challenge we had to analyse the supplied Zeek JSON logs and determine the IP addresses of approximately 100 sources performing the following classes of attacks:</p>
+<ul class="simple">
+<li><p><strong>SQLi</strong> - the insertion of a SQL query via the input stream from the client to the application</p></li>
+<li><p><strong>XSS</strong> - attacks where a malicious script is inserted into otherwise benign and trusted websites</p></li>
+<li><p><strong>LFI</strong> - attacks that include files on the local server that is being attacked</p></li>
+<li><p><strong>Shell Shock</strong> - attacks that exploit vulberabilities in the Bash shell</p></li>
+</ul>
+<p>In addition we had to pivot on some of these sources to find additional sources.</p>
+<p>The hints mention the use of the JQ tool to analyse the logs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>JQ is a lightweight and flexible command-line JSON processor that can be downloaded from the <a class="reference external" href="https://github.com/stedolan/jq">https://github.com/stedolan/jq</a> repository.</p>
+</div>
+<p>We had to enter all of these sources (approximately 100), as a string of comma separated IP addresses, into the firewall section of the supplied <a class="reference external" href="https://srf.elfu.org">Sleigh Route Finder API</a>.</p>
+<p>A secondary challenge was to find the username/password for the API.</p>
+<p>The main difficulties with this challenge included the uncertainty behind exactly what to match in our queries, the various querks with the JQ tool, and the uncertainty about where to find the username/password.</p>
+<div class="section" id="starting-artefacts">
+<h4>Starting artefacts<a class="headerlink" href="#starting-artefacts" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://downloads.elfu.org/http.log.gz">Zeek JSON logs</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="solving-the-challenge">
+<h3>2. Solving the challenge<a class="headerlink" href="#solving-the-challenge" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
 
@@ -168,6 +233,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../terminals/EscapeEd.html" class="btn btn-neutral float-right" title="Escape Ed &lt;&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="question11.html" class="btn btn-neutral float-left" title="11) Open the Sleigh Shop Door" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -65,7 +65,7 @@ Difficulty: 4/5
 
 Help Krampus beat the Frido Sleigh contest. For hints on achieving this objective, please talk with Alabaster Snowball in the Speaker Unpreparedness Room.
 
-Answer:
+Answer: 8Ia8LiZEwvyZr2WO
 
 9) Retrieve Scraps of Paper from Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
