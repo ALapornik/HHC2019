@@ -1,8 +1,8 @@
 `11) Open the Sleigh Shop Door <https://sleighworkshopdoor.elfu.org/>`_
 =======================================================================
 
-Question
---------
+Challenge
+---------
 
 Visit **Shinny Upatree** in the **Student Union** and help solve their problem. What is written on the paper you retrieve for Shinny?
 
