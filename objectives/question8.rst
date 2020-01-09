@@ -36,9 +36,6 @@ In addition, we had the following resources which were provided by Krampus when 
     * `Training images <https://downloads.elfu.org/capteha_images.tar.gz>`_
     * `Fridosleigh.com CAPTEHA API <https://downloads.elfu.org/capteha_api.py>`_
 
-.. note::
-    We have included the original `Fridosleigh CAPETHA API </source/o8-capteha/capteha_api.py>`_ file in our source repository.
-
 2. Solving the challenge
 ^^^^^^^^^^^^^^^^^^^^^^^^
 Constructing the Python environment
