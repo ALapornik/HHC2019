@@ -97,12 +97,24 @@
 <li class="toctree-l1"><a class="reference internal" href="question11.html">11) Open the Sleigh Shop Door</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">12) Filter Out Poisoned Sources of Weather Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#answer">Answer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#answer">Answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#discovery">1. Discovery</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#starting-artefacts">Starting artefacts</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#solving-the-challenge">2. Solving the challenge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solving-the-challenge">2. Solving the challenge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preprocessing-the-zeek-logs">Preprocessing the zeek logs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sqli-query">SQLi query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xss-query">XSS query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lfi-query">LFI query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shell-shock-query">Shell Shock query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pivoting">Pivoting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatting-the-data">Formatting the data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-the-sleigh-route-finder-api">Accessing the Sleigh Route Finder API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submitting-the-data">Submitting the data</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -195,6 +207,10 @@
 </div>
 <div class="section" id="answer">
 <h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
+<p><strong>0807198508261964</strong></p>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="discovery">
 <h3>1. Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h3>
 <p>To solve this challenge we had to analyse the supplied Zeek JSON logs and determine the IP addresses of approximately 100 sources performing the following classes of attacks:</p>
@@ -222,6 +238,77 @@
 </div>
 <div class="section" id="solving-the-challenge">
 <h3>2. Solving the challenge<a class="headerlink" href="#solving-the-challenge" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="preprocessing-the-zeek-logs">
+<h4>Preprocessing the zeek logs<a class="headerlink" href="#preprocessing-the-zeek-logs" title="Permalink to this headline">¶</a></h4>
+<p>After an initial look at the data scan we noticed that a few of the keys included special characters that were either not consistently handled by JQ or required extra attention. Instead of continuously have to work around these issues we modified the log file with the following command which removes the <strong>id.</strong> prefix from the JSON keys:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.log</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'.[]</span> <span class="pre">|</span> <span class="pre">with_entries(</span> <span class="pre">if</span> <span class="pre">.key</span> <span class="pre">|</span> <span class="pre">contains(&quot;id.&quot;)</span> <span class="pre">then</span> <span class="pre">.key</span> <span class="pre">|=</span> <span class="pre">sub(&quot;id.&quot;;&quot;&quot;)</span> <span class="pre">else</span> <span class="pre">.</span> <span class="pre">end)'</span> <span class="pre">&gt;</span> <span class="pre">./http.txt</span></code></p>
+</div>
+<div class="section" id="sqli-query">
+<h4>SQLi query<a class="headerlink" href="#sqli-query" title="Permalink to this headline">¶</a></h4>
+<p>We used the following commands to identify the source of SQLi attacks:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;UNION&quot;))</span> <span class="pre">|</span> <span class="pre">.orig_h'</span></code> <em>==&gt; returned 16 IP addresses</em>
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.user_agent|test(&quot;UNION&quot;))</span> <span class="pre">|</span> <span class="pre">.orig_h'</span></code> <em>==&gt; returned 9 IP addresses</em>
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.username|test(&quot;</span> <span class="pre">or</span> <span class="pre">&quot;))</span> <span class="pre">|</span> <span class="pre">.orig_h'</span></code> <em>==&gt; returned 4 IP addresses</em></p>
+</div>
+<div class="section" id="xss-query">
+<h4>XSS query<a class="headerlink" href="#xss-query" title="Permalink to this headline">¶</a></h4>
+<p>We used the following commands to identify the source of XSS attacks:
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;&lt;&quot;))</span> <span class="pre">|</span> <span class="pre">.orig_h'</span></code> <em>==&gt; returned 9 IP addresses</em>
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.host|test(&quot;&lt;&quot;))</span> <span class="pre">|</span> <span class="pre">.orig_h'</span></code> <em>==&gt; returned 7 IP addresses</em></p>
+</div>
+<div class="section" id="lfi-query">
+<h4>LFI query<a class="headerlink" href="#lfi-query" title="Permalink to this headline">¶</a></h4>
+<p>We used the following command to identify the source of LFI attacks:
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;/etc/passwd&quot;))</span> <span class="pre">|</span> <span class="pre">.orig_h,</span> <span class="pre">.uri'</span></code> <em>==&gt; returned 11 IP addresses</em></p>
+</div>
+<div class="section" id="shell-shock-query">
+<h4>Shell Shock query<a class="headerlink" href="#shell-shock-query" title="Permalink to this headline">¶</a></h4>
+<p>We used the following command to identify the source of Shell Shock attacks:
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.user_agent|test(&quot;:;&quot;))</span> <span class="pre">|</span> <span class="pre">.orig_h,</span> <span class="pre">.user_agent'</span></code> <em>==&gt; returned 6 IP addresses</em></p>
+</div>
+<div class="section" id="pivoting">
+<h4>Pivoting<a class="headerlink" href="#pivoting" title="Permalink to this headline">¶</a></h4>
+<p>Finding out how to pivot on the returned entries was tricky and we went down several deadends. We finally noticed that the challenge was designed to be pivoted on the <strong>user_agent</strong> keys. In each case, the <strong>user_agent</strong> value contained either a misspelling or some unique text that corresponded to exactly 2 IP addresses (the original attack and the pivoted attack).</p>
+<p>The list of <strong>user_agent</strong> values was obtained using the following commands:
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;UNION&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 16 unique IP addresses</em>
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;&lt;&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 9 unique IP addresses</em>
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;/etc/passwd&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 11 unique IP addresses</em></p>
+<p>An example of the <strong>user_agent</strong> values is shown in the following figure:</p>
+<img alt="../_images/o12-pivot.png" src="../_images/o12-pivot.png" />
+<p>The final step is to perform a search for additional IP addresses based on the <strong>user_agent</strong> value. An example of such a search could be something like the following. In this challenge, each successful query returns exactly 2 IP addresses (the original attack and the pivoted attack).</p>
+<img alt="../_images/o12-pivot-example-result.png" src="../_images/o12-pivot-example-result.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To find the IP addresses based on the <strong>user_agent</strong> values, we found it easier to use a text editor and avoid the issues associated with special characters that were inherent with the ZQ tool.</p>
+</div>
+</div>
+<div class="section" id="formatting-the-data">
+<h4>Formatting the data<a class="headerlink" href="#formatting-the-data" title="Permalink to this headline">¶</a></h4>
+<p>The firewall UI needed a set of comma separated IP addresses. The following image shows what our list of IP addresses looked like:
+.. image:: /images/o12-submitted-ip-addresses.png</p>
+</div>
+<div class="section" id="accessing-the-sleigh-route-finder-api">
+<h4>Accessing the Sleigh Route Finder API<a class="headerlink" href="#accessing-the-sleigh-route-finder-api" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://srf.elfu.org">Sleigh Route Finder API</a> required a username/password that were not supplied when the objective was provided to us.</p>
+<p>After a lot of frustration we discovered a hint in the document that we had recovered as part of <strong>Objective 10</strong>. The hint was as follows:</p>
+<img alt="../_images/o12-credentials-clue.png" src="../_images/o12-credentials-clue.png" />
+<p>We finally worked out that the readme document could be retrieved from the following URL:
+<a class="reference external" href="https://srf.elfu.org/README.md">README.md</a></p>
+<p>The <strong>README.md</strong> document gave the following information:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>#### Logging in:
+
+You can login using the default admin pass:
+
+<span class="hll">`admin 924158F9522B3744F5FCD4D10FAC4356`
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="submitting-the-data">
+<h4>Submitting the data<a class="headerlink" href="#submitting-the-data" title="Permalink to this headline">¶</a></h4>
+<p>We copied/pasted the set of IP addresses into the firewall UI and pressed the <kbd class="kbd docutils literal notranslate">DENY</kbd> button.</p>
+<p>The firewall page gave us the following feedback:</p>
+<img alt="../_images/o12-success.png" src="../_images/o12-success.png" />
+</div>
 </div>
 </div>
 </div>
