@@ -93,7 +93,7 @@ Difficulty: 5/5
 Visit Shinny Upatree in the Student Union and help solve their problem. What is written on the paper you retrieve for Shinny?
 For hints on achieving this objective, please visit the Student Union and talk with Kent Tinseltooth.
 
-Answer:The Footh Fairy
+Answer: The Footh Fairy
 
 12) Filter Out Poisoned Sources of Weather Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,4 +101,4 @@ Difficulty: 4/5
 
 Use the data supplied in the Zeek JSON logs to identify the IP addresses of attackers poisoning Santa's flight mapping software. Block the 100 offending sources of information to guide Santa's sleigh through the attack. Submit the Route ID ("RID") success value that you're given. For hints on achieving this objective, please visit the Sleigh Shop and talk with Wunorse Openslae.
 
-Answer:
+Answer: 0807198508261964

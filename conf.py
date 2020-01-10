@@ -21,7 +21,6 @@ project = 'HHC2019'
 copyright = '2019, Peter and Antonios Lapornik'
 author = 'Peter and Antonios Lapornik'
 
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
