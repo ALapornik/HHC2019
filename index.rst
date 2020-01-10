@@ -7,6 +7,55 @@
 Holiday Hack Challenge 2019 Report
 ==================================
 
+.. code-block:: none
+
+          +---------+-+                               +-------+
+          | Track 7   |                               | Bell  |
+          +---------+ |                               | Tower |
+          | Track 6   |                               +-+ +---+
+          +---------+ |                                 | |
+          | Track 5   |                        +--------+ +
+          +---------+ |                        |  Sleigh  |
+          | Track 4   |                        | Workshop |
+          +---------+ |                        | +--------+
+          | Track 3   |      +-----------------+ +
+          +---------+ |      |   V               |
+          | Track 2   |      |   Student Union   |   
+          +---------+ |      |                   |   +-+
+          | Track 1   |      +---+   +---+   +---+   | |
+  +-------+---------+ +------+ +--------+--------+   | |
+  |    Speaker      |        | |    V   |        |   | +------+
+  | UNpreparedness  +        | |   The  |        |   | V      |
+  |     Room          Hermey + |        |        | +-+        |
+  +-----------------+          +------- O -------+      Dorm  |
+  |                    Hall  + |        |        | +-+        |
+  |    Net Wars     +V       | |        |  Quad  |   |        |
+  |                 |        | |        |        |   | +------+
+  +-----------------++ ++----+ +--------+--------+   | |
+  |                     |  +-+--------+   +---------+| |
+  |      Laboratory     |  | V                      || |
+  |                     |  |      Train Station     || +---------+  
+  +---------------------+  |                        ||   Minty's |
+                           IIIIIIIIIIIIIIIIIIIIIIIIII+-+  Dorm   |        +---+
+                           +------------------------+  |         +--------+   |
+                                                       |           Closet     |
+                                                       +------+--+--------+   |
+                                                              | Steam Tunnels |
+                                                              |  +------------+
+                                                              |  |
+                                                              |  +--+
+                                                              |    V|
+                                                              |     |
+                                                              +-----+ 
+
+  Train Station - Santa, Bushy Evergreen[Escape Ed]
+  The Quad - Santa, Threatening Document <Redacted>, Tangle Coalbox[Frosty Keypad]
+  
+
+
+  Animations - Gift <Quad>, Laser <Laboratory>, Bell <Bell Tower>, NetWars Screens
+               
+
 .. toctree::
    :maxdepth: 2
    :caption: Objectives:
