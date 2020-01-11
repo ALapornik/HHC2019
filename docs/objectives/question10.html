@@ -123,7 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../terminals/FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/Nyanshell.html">Nyanshell &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../terminals/Graylog.html">Graylog &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/Graylog.html">Graylog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/SmartBraces.html">Smart Braces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
@@ -352,7 +352,7 @@ For hints on achieving this objective, please visit the NetWars room and talk wi
   <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">keyLength</span><span class="p">):</span>
     <span class="n">seed</span> <span class="o">*=</span> <span class="mh">0x343FD</span>
     <span class="n">seed</span> <span class="o">+=</span> <span class="mh">0x269EC3</span>
-    <span class="n">key</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{:02x}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">seed</span> <span class="o">&gt;&gt;</span> <span class="mh">0x10</span> <span class="o">&amp;</span> <span class="mh">0x7fff</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">)</span>
+    <span class="n">key</span> <span class="o">+=</span> <span class="s1">&#39;{:02x}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">seed</span> <span class="o">&gt;&gt;</span> <span class="mh">0x10</span> <span class="o">&amp;</span> <span class="mh">0x7fff</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span><span class="p">)</span>
   <span class="k">return</span> <span class="n">key</span>
 </pre></div>
 </div>
