@@ -84,7 +84,7 @@ Recover the plaintext content for this encrypted document. We know that it was e
 What is the middle line on the cover page? (Hint: it's five words)
 For hints on achieving this objective, please visit the NetWars room and talk with Holly Evergreen.
 
-Answer:
+Answer: Machine Learning Sleigh Route Finder
 
 11) Open the Sleigh Shop Door
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

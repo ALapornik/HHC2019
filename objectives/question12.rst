@@ -37,6 +37,7 @@ The main difficulties with this challenge included the uncertainty behind exactl
 Starting artefacts
 """"""""""""""""""
 * `Zeek JSON logs <https://downloads.elfu.org/http.log.gz>`_ 
+* `Sleigh Route Finder API <https://srf.elfu.org>`_
 
 2. Solving the challenge
 ^^^^^^^^^^^^^^^^^^^^^^^^
