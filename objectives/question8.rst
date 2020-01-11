@@ -10,7 +10,6 @@ Answer
 ------
 **8Ia8LiZEwvyZr2WO**
 
-
 Solution
 --------
 1. Discovery
@@ -45,7 +44,7 @@ We created a Python virtual environment in our project directory with all the li
 .. caution::
     The code in the `repository from Chris Davis <https://github.com/chrisjd20/img_rec_tf_ml_demo>`_, which we used as the basis of our solution, has a dependency on TensorFlow 1.1.5. We found that this didn't work with Python 3.8.x and had to revert back to a Python 3.7.5 environment.
 
-#. Download the documentation repository from the following link: ` <https://github.com/alapornik/HHC2019>`_. 
+#. Download the documentation repository from the following link: `https://github.com/alapornik/HHC2019 <https://github.com/alapornik/HHC2019>`_. 
 
 #. Open a PowerShell prompt and navigate to the **/source/o8-capteha/** folder 
 
