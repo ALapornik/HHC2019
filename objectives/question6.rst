@@ -7,6 +7,7 @@ Access `https://splunk.elfu.org/ <https://splunk.elfu.org/>`_ as elf with passwo
 
 Answer
 ------
+Kent you are so unfair. And we were going to make you the king of the Winter Carnival.
 
 Solution
 --------
@@ -22,8 +23,9 @@ What was the message for Kent that the adversary embedded in this attack?
 
 Kent you are so unfair. And we were going to make you the king of the Winter Carnival.
 
-Training Questions	Answers	
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Training Questions Answers
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 1.	What is the short host name of Professor Banas' computer?		
 

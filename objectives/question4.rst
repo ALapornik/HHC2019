@@ -6,6 +6,7 @@ Challenge
 
 Answer
 ------
+ntdsutil
 
 Solution
 --------
