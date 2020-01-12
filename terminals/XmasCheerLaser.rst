@@ -369,7 +369,7 @@ We obtained the following output:
 
 Hints
 -----
-Sparkle Redberry provides the following hint in her dialog after solving the terminal challenge:
+Sparkle Redberry provides the following hint in his dialog after solving the terminal challenge:
 
 .. parsed-literal::
     **Sparkle Redberry**
