@@ -18,7 +18,7 @@ Solution
 
 We used Google Chrome to solve this
 
-.. tip:: To open the Dev tools in Chrome either: Right click and choose ``inspect element``, click on ``options > More Tools > Developer Tools`` or press ``Ctrl+Shift+I``
+.. tip:: To open the Dev tools in Chrome either: Right click and choose ``inspect element``, click on ``options > More Tools > Developer Tools`` or press :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`I`
 
 .. warning:: The codes change everytime. DO NOT RELOAD while completing this challenge
 
