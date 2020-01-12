@@ -13,12 +13,12 @@ Notation
 
 Objectives:
 0 D
-1 P
-2 - [A]
-3 - [A]
-4 - [A]
-5 - [A]
-6 - [A]
+1 D
+2 D
+3 D
+4 P
+5 P
+6 P
 7 D
 8 D
 9 M(doc)
@@ -32,9 +32,9 @@ Escape -
 Frosty -
 Graylog D
 HHT - [P]
-Linux - D
-Mongo - D
-Nyanshell - [P]
-Braces D
+Linux D
+Mongo D
+Nyanshell D
+Braces M (hints)
 Laser D
 Zeek -

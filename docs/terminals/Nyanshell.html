@@ -254,7 +254,7 @@ sudo -l says I can run a command as root. What does it do?</pre>
 <p>The <strong>i</strong> flag means that /bin/nsh is immutable (the file cannot be modified).</p>
 <p>We then used the following command to remove the <strong>immutable</strong> attribute from <strong>/bin/nsh</strong>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chattr</span> <span class="pre">-i</span> <span class="pre">/bin/nsh</span></code></p>
-<p>We then tried to copy /bin/bash to /bin/nsh using the following command:</p>
+<p>We then tried to copy <strong>/bin/bash</strong> to <strong>/bin/nsh</strong> using the following command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/bin/bash</span> <span class="pre">/bin/nsh</span></code></p>
 <p>This worked!</p>
 <p>We then tried to switch the user to alabaster_snowball using the following command:</p>
