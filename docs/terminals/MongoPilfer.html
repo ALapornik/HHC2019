@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Mongo Pilfer &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Mongo Pilfer &mdash; HHC2019  documentation</title>
   
 
   
@@ -100,13 +100,18 @@
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Mongo Pilfer &lt;&gt;</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mongo Pilfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
 </ul>
@@ -158,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Mongo Pilfer &lt;&gt;</li>
+      <li>Mongo Pilfer</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +180,147 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mongo-pilfer">
-<h1><a class="reference internal" href="#mongo-pilfer">Mongo Pilfer &lt;&gt;</a><a class="headerlink" href="#mongo-pilfer" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=mongo&amp;id=f1a2f647-4e3a-467f-b7bc-62c294fe6780">Mongo Pilfer</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with Holly Evergreen:</p>
+<pre class="literal-block"><strong>Holly Evergreen</strong>
+Without access to the answer, none of our quizzes will get graded.
+Can we help get back in to find that solution?
+I tried lsof -i, but that tool doesn't seem to be installed.
+I think there's a tool like ps that'll help too. What are the flags I need?
+Either way, you'll need to know a teensy bit of Mongo once you're in.
+Pretty please find us the solution to the quiz!</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>MongoDB</strong>
+From: Holly Evergreen
+<a class="reference external" href="https://docs.mongodb.com/manual/reference/command/listDatabases/#dbcmd.listDatabases">MongoDB Documentation</a></pre>
+<p>The banner page from the terminal challenge:</p>
+<img alt="../_images/mongopilfer-banner.png" src="../_images/mongopilfer-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>We used the following command to determine the port on which mongo was running:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ps</span> <span class="pre">-AF</span></code></p>
+<p>We obtained the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>UID        PID  PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+elf          1     0  0  4627  3572   9 19:36 pts/0    00:00:00 /bin/bash
+<span class="hll">mongo        9     1  0 253905 62704  0 19:36 ?        00:00:01 /usr/bin/mongod --quiet --fork --port 12121 --bind_ip 127.0.0.1 --logpath=/tmp/mongo.log
+</span>elf         48     1  0  8600  2880   0 19:40 pts/0    00:00:00 ps -AF
+</pre></div>
+</div>
+<p>We connected to the MongoDB instance using the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">mongo</span> <span class="pre">--port</span> <span class="pre">12121</span></code></p>
+<p>We then ran the following command to list the databases:</p>
+<p><code class="docutils literal notranslate"><span class="pre">db.adminCommand(</span> <span class="pre">{</span> <span class="pre">listDatabases:</span> <span class="pre">1</span> <span class="pre">}</span> <span class="pre">)</span></code></p>
+<p>This produced the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;databases&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sizeOnDisk&quot;</span> <span class="p">:</span> <span class="mi">32768</span><span class="p">,</span>
+            <span class="s2">&quot;empty&quot;</span> <span class="p">:</span> <span class="n">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sizeOnDisk&quot;</span> <span class="p">:</span> <span class="mi">12288</span><span class="p">,</span>
+            <span class="s2">&quot;empty&quot;</span> <span class="p">:</span> <span class="n">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+<span class="hll">            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;elfu&quot;</span><span class="p">,</span>
+</span>            <span class="s2">&quot;sizeOnDisk&quot;</span> <span class="p">:</span> <span class="mi">294912</span><span class="p">,</span>
+            <span class="s2">&quot;empty&quot;</span> <span class="p">:</span> <span class="n">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;local&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sizeOnDisk&quot;</span> <span class="p">:</span> <span class="mi">65536</span><span class="p">,</span>
+            <span class="s2">&quot;empty&quot;</span> <span class="p">:</span> <span class="n">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;sizeOnDisk&quot;</span> <span class="p">:</span> <span class="mi">32768</span><span class="p">,</span>
+            <span class="s2">&quot;empty&quot;</span> <span class="p">:</span> <span class="n">false</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;totalSize&quot;</span> <span class="p">:</span> <span class="mi">438272</span><span class="p">,</span>
+    <span class="s2">&quot;ok&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <strong>elfu</strong> database is probably the one we are interested in. We then run the following commands to determine the <strong>collections</strong> in the <strong>elfu</strong> database.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Collections are analogous to tables in SQL databases.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">elfu</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">db.runCommand(</span> <span class="pre">{</span> <span class="pre">listCollections:</span> <span class="pre">1}</span></code></p>
+<p>We obtained the following output (truncated to show information of interest):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="hll">    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;solution&quot;</span><span class="p">,</span>
+</span>    <span class="s2">&quot;type&quot;</span> <span class="p">:</span> <span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;options&quot;</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="p">},</span>
+    <span class="s2">&quot;info&quot;</span> <span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;readOnly&quot;</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s2">&quot;uuid&quot;</span> <span class="p">:</span> <span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;67643830-b324-4995-8507-a7e21a65c7a5&quot;</span><span class="p">)</span>
+                <span class="p">},</span>
+    <span class="s2">&quot;idIndex&quot;</span> <span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;v&quot;</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s2">&quot;key&quot;</span> <span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="mi">1</span>
+                            <span class="p">},</span>
+                    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;_id_&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ns&quot;</span> <span class="p">:</span> <span class="s2">&quot;elfu.solution&quot;</span>
+                <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>We then run the following command to return all documents in the <strong>solution</strong> collection.</p>
+<p><code class="docutils literal notranslate"><span class="pre">db.solution.find({})</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above command corresponds to the following command in an SQL database:</p>
+<p>SELECT * FROM solution</p>
+</div>
+<p>We obtain the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;_id&quot;</span> <span class="p">:</span> <span class="s2">&quot;You did good! Just run the command between the stars: ** db.loadServerScripts();displaySolution(); **&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>We then run the following command to solve the challenge:</p>
+<p><code class="docutils literal notranslate"><span class="pre">db.loadServerScripts();displaySolution();</span></code></p>
+<p>We get the following message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        .
+     __/ __
+          /
+     /.&#39;*&#39;.
+      .o.&#39;.
+     .&#39;.&#39;*&#39;.
+    *&#39;.*.&#39;.o.
+   .&#39;.*.&#39;.&#39;.*.
+  .o.&#39;.*.&#39;.*.&#39;.
+     [_____]
+      ___/
+
+
+Congratulations!!
+</pre></div>
+</div>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Holly Evergreen provides the following hint in her dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Holly Evergreen</strong>
+Woohoo! Fantabulous! I'll be the coolest elf in class.
+On a completely unrelated note, digital rights management can bring a hacking elf down.
+That ElfScrow one can really be a hassle.
+It's a good thing Ron Bowes is giving a talk on reverse engineering!
+That guy knows how to rip a thing apart. It's like he breathes opcodes!</pre>
+<p>The following hint was unlocked in our badge:</p>
+<pre class="literal-block"><strong>Reverse Engineering</strong>
+From: Holly Evergreen
+<a class="reference external" href="https://youtu.be/obJdpKDpFBA">Reversing Crypto the Easy Way</a></pre>
+</div>
 </div>
 
 
