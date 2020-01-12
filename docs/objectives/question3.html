@@ -185,15 +185,98 @@
 <h1>3) Windows Log Analysis: Evaluate Attack Outcome<a class="headerlink" href="#windows-log-analysis-evaluate-attack-outcome" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="challenge">
 <h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>We’re seeing attacks against the Elf U domain! Using <a class="reference external" href="https://downloads.elfu.org/Security.evtx.zip">the event log data</a>, identify the user account that the attacker compromised using a password spray attack. Bushy Evergreen is hanging out in the train station and may be able to help you out.</p>
 </div>
 <div class="section" id="answer">
 <h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
+<p>supatree</p>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\Users\Administrator&gt;  cd .\Downloads\DeepBlueCLI-master\DeepBlueCLI-master\
+#get into the DeepBlueCLI directory
+
+PS C:\Users\Administrator\Downloads\DeepBlueCLI-master\DeepBlueCLI-master&gt; Get-ExecutionPolicy
+RemoteSigned
+#DeepBlueCLI gives an error message when you run it. The reason is that the Execution Policy is too strict. Hence, set it to Bypass
+PS C:\Users\Administrator\Downloads\DeepBlueCLI-master\DeepBlueCLI-master&gt; Set-ExecutionPolicy Bypass
+
+Execution Policy Change
+The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
+you to the security risks described in the about_Execution_Policies help topic at
+https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;N&quot;): Y
+
+#You can now run DeepBlueCLI
+PS C:\Users\Administrator\Downloads\DeepBlueCLI-master\DeepBlueCLI-master&gt; .\DeepBlue.ps1 .\Security.evtx\Security.evtx
+
+#We found multiple Password Spray Attacks
+Date    : 11/19/2019 2:22:46 PM
+Log     : Security
+EventID : 4648
+Message : Distributed Account Explicit Credential Use (Password Spray Attack)
+Results : The use of multiple user account access attempts with explicit credentials is an indicator of a password
+         spray attack.
+          Target Usernames: ygoldentrifle esparklesleigh hevergreen Administrator sgreenbells cjinglebuns
+          tcandybaubles bbrandyleaves bevergreen lstripyleaves gchocolatewine wopenslae ltrufflefig supatree
+          mstripysleigh pbrandyberry civysparkles sscarletpie ftwinklestockings cstripyfluff gcandyfluff smullingfluff
+         hcandysnaps mbrandybells twinterfig civypears ygreenpie ftinseltoes smary ttinselbubbles dsparkleleaves
+          Accessing Username: -
+          Accessing Host Name: -
+
+Command :
+Decoded :
+
+
+#At the end, we found the total numbers of accounts and logon failures
+Date    : 8/24/2019 3:00:20 AM
+Log     : Security
+EventID : 4672
+Message : High number of total logon failures for multiple accounts
+Results : Total accounts: 31
+          Total logon failures: 2386
+
+Command :
+Decoded :
+
+#Password Spray attack repeat until a succesful logon is achieved.
+#Hence (Total failures + 1 (=success))/Total accounts = Total password spray attacks
+#(2386+1)/31=77 failed attempts
+#Hence, we need to look for an account with one less failure (a success)
+
+PS C:\Users\Administrator\Downloads\DeepBlueCLI-master\DeepBlueCLI-master&gt; .\DeepBlue.ps1 .\Security.evtx\Security.evtx | Select-String -Pattern &#39;Total logon failures: 76&#39;
+
+@{Date=08/24/2019 03:00:20; Log=Security; EventID=4672; Message=High number of logon failures for one account;
+Results=Username: supatree
+Total logon failures: 76; Command=; Decoded=}
+</pre></div>
+</div>
+<p>Hence, the affected username is <strong>supatree</strong>.</p>
 </div>
 <div class="section" id="hint">
 <h2>Hint<a class="headerlink" href="#hint" title="Permalink to this headline">¶</a></h2>
+<p><strong>Bushy Evergreen:</strong></p>
+<blockquote>
+<div><p>Wow, that was much easier than I’d thought.
+Maybe I don’t need a clunky GUI after all!
+Have you taken a look at the password spray attack artifacts?
+I’ll bet that DeepBlueCLI tool is helpful.
+You can check it out on GitHub.
+It was written by that Eric Conrad.
+He lives in Maine - not too far from here!</p>
+</div></blockquote>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Deep Blue CLI on Github
+From: Bushy Evergreen
+<a class="reference external" href="https://github.com/sans-blue-team/DeepBlueCLI">Github page for DeepBlueCLI</a></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Deep Blue CLI Posting
+From: Bushy Evergreen
+<a class="reference external" href="https://www.ericconrad.com/2016/09/deepbluecli-powershell-module-for-hunt.html">Eric Conrad on DeepBlueCLI</a></p>
+</div>
 </div>
 </div>
 
