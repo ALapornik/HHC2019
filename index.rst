@@ -57,7 +57,7 @@ Holiday Hack Challenge 2019 Report
                
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Objectives:
 
    objectives/summary
@@ -77,7 +77,7 @@ Holiday Hack Challenge 2019 Report
    
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Terminals:
 
   terminals/EscapeEd
@@ -93,7 +93,7 @@ Holiday Hack Challenge 2019 Report
 
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Appendices:
 
   appendices/narrative
