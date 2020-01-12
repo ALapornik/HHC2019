@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Xmas Cheer Laser &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Xmas Cheer Laser &mdash; HHC2019  documentation</title>
   
 
   
@@ -101,11 +101,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Xmas Cheer Laser &lt;&gt;</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Xmas Cheer Laser</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-angle">Step 1: Angle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-refraction">Step 2: Refraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-temperature">Step 3: Temperature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-gas-mixture">Step 4: Gas Mixture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-constructing-the-api-commands">Step 5: Constructing the API commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
@@ -158,7 +169,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Xmas Cheer Laser &lt;&gt;</li>
+      <li>Xmas Cheer Laser</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +186,275 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="xmas-cheer-laser">
-<h1><a class="reference internal" href="#xmas-cheer-laser">Xmas Cheer Laser &lt;&gt;</a><a class="headerlink" href="#xmas-cheer-laser" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=powershell&amp;id=59883253-918a-4d7b-8063-218e184c2541">Xmas Cheer Laser</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sparkle Redberry
+    I&#39;m Sparkle Redberry and Imma chargin&#39; my laser!
+    Problem is: the settings are off.
+    Do you know any PowerShell?
+    It&#39;d be GREAT if you could hop in and recalibrate this thing.
+    It spreads holiday cheer across the Earth ...
+    ... when it&#39;s working!
+</pre></div>
+</div>
+<img alt="../_images/xmascheerlaser-banner.png" src="../_images/xmascheerlaser-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-angle">
+<h3>Step 1: Angle<a class="headerlink" href="#step-1-angle" title="Permalink to this headline">¶</a></h3>
+<p>We start by looking at the contents of <strong>/home/callingcard.txt</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-Content</span> <span class="pre">/home/callingcard.txt</span></code></p>
+<p>The following output is returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>What&#39;s become of your dear laser?
+Fa la la la la, la la la la
+Seems you can&#39;t now seem to raise her!
+Fa la la la la, la la la la
+<span class="hll">Could commands hold riddles in hist&#39;ry?
+</span>Fa la la la la, la la la la
+Nay! You&#39;ll ever suffer myst&#39;ry!
+Fa la la la la, la la la la
+</pre></div>
+</div>
+<p>Using this hint we look at the PowerShell history with the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">history</span></code></p>
+<p>The following output is returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Id CommandLine
+-- -----------
+1 Get-Help -Name Get-Process
+2 Get-Help -Name Get-*
+3 Set-ExecutionPolicy Unrestricted
+4 Get-Service | ConvertTo-HTML -Property Name, Status &gt; C:\services.htm
+5 Get-Service | Export-CSV c:\service.csv
+6 Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv
+<span class="hll">7 (Invoke-WebRequest http://127.0.0.1:1225/api/angle?val=65.5).RawContent
+</span>8 Get-EventLog -Log &quot;Application&quot;
+<span class="hll">9 I have many name=value variables that I share to applications system wide. At a command I will reveal my secrets once you Get my Child Items.
+</span></pre></div>
+</div>
+<p>We now have the first part of the solution with a hint to the next step.</p>
+</div>
+<div class="section" id="step-2-refraction">
+<h3>Step 2: Refraction<a class="headerlink" href="#step-2-refraction" title="Permalink to this headline">¶</a></h3>
+<p>Following on from the previous step, we use the following command to look at the environment variables:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-ChildItem</span> <span class="pre">ENV:</span></code></p>
+<p>We follow this with the following command once we identify the <strong>riddle</strong> variable:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-ChildItem</span> <span class="pre">ENV:riddle</span> <span class="pre">|</span> <span class="pre">fl</span></code></p>
+<p>The following output is returned:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>  <span class="p">:</span> <span class="n">riddle</span>
+<span class="n">Value</span> <span class="p">:</span> <span class="n">Squeezed</span> <span class="ow">and</span> <span class="n">compressed</span> <span class="n">I</span> <span class="n">am</span> <span class="n">hidden</span> <span class="n">away</span><span class="o">.</span> <span class="n">Expand</span> <span class="n">me</span> <span class="kn">from</span> <span class="nn">my</span> <span class="n">prison</span> <span class="ow">and</span> <span class="n">I</span> <span class="n">will</span> <span class="n">show</span> <span class="n">you</span> <span class="n">the</span> <span class="n">way</span><span class="o">.</span> <span class="n">Recurse</span> <span class="n">through</span> <span class="nb">all</span> <span class="o">/</span><span class="n">etc</span> <span class="ow">and</span> <span class="n">Sort</span> <span class="n">on</span> <span class="n">my</span> <span class="n">LastWriteTime</span> <span class="n">to</span> <span class="n">reveal</span> <span class="n">im</span> <span class="n">the</span> <span class="n">newest</span> <span class="n">of</span> <span class="nb">all</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>We then use the following command to recusively search the <strong>/etc</strong> folder, sorting on the <strong>Last Write Time</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get-ChildItem /etc -File -Recurse | select @{Name=&quot;LastWriteTime&quot;;Expression={$_.LastWriteTime}},FullName | sort LastWriteTime
+</pre></div>
+</div>
+<p>The tail of this output is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">19</span> <span class="mi">5</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">12</span> <span class="n">PM</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">group</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">20</span> <span class="mi">3</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">56</span> <span class="n">PM</span>   <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">mtab</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">20</span> <span class="mi">3</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">56</span> <span class="n">PM</span>   <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">20</span> <span class="mi">3</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">56</span> <span class="n">PM</span>   <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="o">.</span><span class="n">conf</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">20</span> <span class="mi">3</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">56</span> <span class="n">PM</span>   <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hostname</span>
+<span class="hll"><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">20</span> <span class="mi">3</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">56</span> <span class="n">PM</span>   <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">archive</span>
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>archive</strong> is some type of binary file. Guess it could be an archive.</p>
+</div>
+<p>We expanded the archive using the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Expand-Archive</span> <span class="pre">/etc/apt/archive</span> <span class="pre">/home/elf/archive</span></code></p>
+<p>We then navigated to the <strong>/home/elf/archive/refraction</strong> folder and used the <code class="docutils literal notranslate"><span class="pre">Get-ChildItem</span></code> command to display the contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mode</span>                <span class="n">LastWriteTime</span>         <span class="n">Length</span> <span class="n">Name</span>
+<span class="o">----</span>                <span class="o">-------------</span>         <span class="o">------</span> <span class="o">----</span>
+<span class="o">------</span>           <span class="mi">11</span><span class="o">/</span><span class="mi">7</span><span class="o">/</span><span class="mi">19</span> <span class="mi">11</span><span class="p">:</span><span class="mi">57</span> <span class="n">AM</span>            <span class="mi">134</span> <span class="n">riddle</span>
+<span class="o">------</span>           <span class="mi">11</span><span class="o">/</span><span class="mi">5</span><span class="o">/</span><span class="mi">19</span>  <span class="mi">2</span><span class="p">:</span><span class="mi">26</span> <span class="n">PM</span>        <span class="mi">5724384</span> <span class="n">runme</span><span class="o">.</span><span class="n">elf</span>
+</pre></div>
+</div>
+<p>To execute the <strong>runme.elf file</strong> we need to use <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">./runme.elf</span></code> followed by <code class="docutils literal notranslate"><span class="pre">./runme.elf</span></code>. The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>refraction?val=1.867
+</pre></div>
+</div>
+<p>This output is the second part of the solution. We also have a clue to the next step.</p>
+</div>
+<div class="section" id="step-3-temperature">
+<h3>Step 3: Temperature<a class="headerlink" href="#step-3-temperature" title="Permalink to this headline">¶</a></h3>
+<p>We used the following command to view the contents of <strong>riddle</strong> from the previous step:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-Content</span> <span class="pre">./riddle</span></code></p>
+<p>The contents of this file were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Very</span> <span class="n">shallow</span> <span class="n">am</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">depths</span> <span class="n">of</span> <span class="n">your</span> <span class="n">elf</span> <span class="n">home</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">find</span> <span class="n">my</span> <span class="n">entity</span> <span class="n">by</span> <span class="n">using</span> <span class="n">my</span> <span class="n">md5</span> <span class="n">identity</span><span class="p">:</span>
+<span class="mi">25520151</span><span class="n">A320B5B0D21561F92C8F6224</span>
+</pre></div>
+</div>
+<p>We then recursively looked for a file with the correct MD5 value using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span><span class="o">-</span><span class="n">ChildItem</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">elf</span> <span class="o">-</span><span class="n">file</span> <span class="o">-</span><span class="n">recurse</span> <span class="o">|</span> <span class="n">Get</span><span class="o">-</span><span class="n">FileHash</span> <span class="o">-</span><span class="n">Algorithm</span> <span class="n">MD5</span> <span class="o">|</span> <span class="n">Where</span><span class="o">-</span><span class="n">Object</span> <span class="nb">hash</span> <span class="o">-</span><span class="n">eq</span> <span class="mi">25520151</span><span class="n">A320B5B0D21561F92C8F6224</span>
+</pre></div>
+</div>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Algorithm</span>  <span class="n">Hash</span>                              <span class="n">Path</span>
+<span class="o">---------</span>  <span class="o">----</span>                              <span class="o">----</span>
+<span class="n">MD5</span>        <span class="mi">25520151</span><span class="n">A320B5B0D21561F92C8F6224</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">elf</span><span class="o">/</span><span class="n">depths</span><span class="o">/</span><span class="n">produce</span><span class="o">/</span><span class="n">thhy5hll</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>We then view the contents of this file using the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-Content</span> <span class="pre">/home/elf/depths/produce/thhy5hll.txt</span></code></p>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>temperature?val=-33.5
+I am one of many thousand similar txt&#39;s contained within the deepest of /home/elf/depths. Finding me will give you the most strength but doing so will require Piping all the FullName&#39;s to Sort Length.
+</pre></div>
+</div>
+<p>This output is the third part of the solution. We also have a clue to the next step.</p>
+</div>
+<div class="section" id="step-4-gas-mixture">
+<h3>Step 4: Gas Mixture<a class="headerlink" href="#step-4-gas-mixture" title="Permalink to this headline">¶</a></h3>
+<p>Using the clue from the previous step,  we used the following command to list directories, also displaying their path length:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get-ChildItem /home/elf -Directory -Recurse | select @{Name=&quot;NameLength&quot;;Expression={$_.FullName.length}},FullName | sort NameLength | Select-Object -last 1 | Write-Host``
+</pre></div>
+</div>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">@</span><span class="p">{</span><span class="n">NameLength</span><span class="o">=</span><span class="mi">375</span><span class="p">;</span> <span class="n">FullName</span><span class="o">=/</span><span class="n">home</span><span class="o">/</span><span class="n">elf</span><span class="o">/</span><span class="n">depths</span><span class="o">/</span><span class="n">larger</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">behavior</span><span class="o">/</span><span class="n">beauty</span><span class="o">/</span><span class="n">enemy</span><span class="o">/</span><span class="n">produce</span><span class="o">/</span><span class="n">age</span><span class="o">/</span><span class="n">chair</span><span class="o">/</span><span class="n">unknown</span><span class="o">/</span><span class="n">escape</span><span class="o">/</span><span class="n">vote</span><span class="o">/</span><span class="n">long</span><span class="o">/</span><span class="n">writer</span><span class="o">/</span><span class="n">behind</span><span class="o">/</span><span class="n">ahead</span><span class="o">/</span><span class="n">thin</span><span class="o">/</span><span class="n">occasionally</span><span class="o">/</span><span class="n">explore</span><span class="o">/</span><span class="n">tape</span><span class="o">/</span><span class="n">wherever</span><span class="o">/</span><span class="n">practical</span><span class="o">/</span><span class="n">therefore</span><span class="o">/</span><span class="n">cool</span><span class="o">/</span><span class="n">plate</span><span class="o">/</span><span class="n">ice</span><span class="o">/</span><span class="n">play</span><span class="o">/</span><span class="n">truth</span><span class="o">/</span><span class="n">potatoes</span><span class="o">/</span><span class="n">beauty</span><span class="o">/</span><span class="n">fourth</span><span class="o">/</span><span class="n">careful</span><span class="o">/</span><span class="n">dawn</span><span class="o">/</span><span class="n">adult</span><span class="o">/</span><span class="n">either</span><span class="o">/</span><span class="n">burn</span><span class="o">/</span><span class="n">end</span><span class="o">/</span><span class="n">accurate</span><span class="o">/</span><span class="n">rubbed</span><span class="o">/</span><span class="n">cake</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">she</span><span class="o">/</span><span class="n">threw</span><span class="o">/</span><span class="n">eager</span><span class="o">/</span><span class="n">trip</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">soon</span><span class="o">/</span><span class="n">think</span><span class="o">/</span><span class="n">fall</span><span class="o">/</span><span class="ow">is</span><span class="o">/</span><span class="n">greatest</span><span class="o">/</span><span class="n">become</span><span class="o">/</span><span class="n">accident</span><span class="o">/</span><span class="n">labor</span><span class="o">/</span><span class="n">sail</span><span class="o">/</span><span class="n">dropped</span><span class="o">/</span><span class="n">fox</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>We then display the contents of this directory using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span><span class="o">-</span><span class="n">ChildItem</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">elf</span><span class="o">/</span><span class="n">depths</span><span class="o">/</span><span class="n">larger</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">behavior</span><span class="o">/</span><span class="n">beauty</span><span class="o">/</span><span class="n">enemy</span><span class="o">/</span><span class="n">produce</span><span class="o">/</span><span class="n">age</span><span class="o">/</span><span class="n">chair</span><span class="o">/</span><span class="n">unknown</span><span class="o">/</span><span class="n">escape</span><span class="o">/</span><span class="n">vote</span><span class="o">/</span><span class="n">long</span><span class="o">/</span><span class="n">writer</span><span class="o">/</span><span class="n">behind</span><span class="o">/</span><span class="n">ahead</span><span class="o">/</span><span class="n">thin</span><span class="o">/</span><span class="n">occasionally</span><span class="o">/</span><span class="n">explore</span><span class="o">/</span><span class="n">tape</span><span class="o">/</span><span class="n">wherever</span><span class="o">/</span><span class="n">practical</span><span class="o">/</span><span class="n">therefore</span><span class="o">/</span><span class="n">cool</span><span class="o">/</span><span class="n">plate</span><span class="o">/</span><span class="n">ice</span><span class="o">/</span><span class="n">play</span><span class="o">/</span><span class="n">truth</span><span class="o">/</span><span class="n">potatoes</span><span class="o">/</span><span class="n">beauty</span><span class="o">/</span><span class="n">fourth</span><span class="o">/</span><span class="n">careful</span><span class="o">/</span><span class="n">dawn</span><span class="o">/</span><span class="n">adult</span><span class="o">/</span><span class="n">either</span><span class="o">/</span><span class="n">burn</span><span class="o">/</span><span class="n">end</span><span class="o">/</span><span class="n">accurate</span><span class="o">/</span><span class="n">rubbed</span><span class="o">/</span><span class="n">cake</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">she</span><span class="o">/</span><span class="n">threw</span><span class="o">/</span><span class="n">eager</span><span class="o">/</span><span class="n">trip</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">soon</span><span class="o">/</span><span class="n">think</span><span class="o">/</span><span class="n">fall</span><span class="o">/</span><span class="ow">is</span><span class="o">/</span><span class="n">greatest</span><span class="o">/</span><span class="n">become</span><span class="o">/</span><span class="n">accident</span><span class="o">/</span><span class="n">labor</span><span class="o">/</span><span class="n">sail</span><span class="o">/</span><span class="n">dropped</span><span class="o">/</span><span class="n">fox</span>
+</pre></div>
+</div>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mode</span>    <span class="n">LastWriteTime</span>      <span class="n">Length</span>   <span class="n">Name</span>
+<span class="o">----</span>    <span class="o">-------------</span>      <span class="o">------</span>   <span class="o">----</span>
+<span class="hll"><span class="o">--</span><span class="n">r</span><span class="o">---</span>  <span class="mi">11</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="mi">19</span>  <span class="mi">7</span><span class="p">:</span><span class="mi">53</span> <span class="n">PM</span>  <span class="mi">209</span>      <span class="mi">0</span><span class="n">jhj5xz6</span><span class="o">.</span><span class="n">txt</span>
+</span></pre></div>
+</div>
+<p>We viewed the contents of this file using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span><span class="o">-</span><span class="n">Content</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">elf</span><span class="o">/</span><span class="n">depths</span><span class="o">/</span><span class="n">larger</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">behavior</span><span class="o">/</span><span class="n">beauty</span><span class="o">/</span><span class="n">enemy</span><span class="o">/</span><span class="n">produce</span><span class="o">/</span><span class="n">age</span><span class="o">/</span><span class="n">chair</span><span class="o">/</span><span class="n">unknown</span><span class="o">/</span><span class="n">escape</span><span class="o">/</span><span class="n">vote</span><span class="o">/</span><span class="n">long</span><span class="o">/</span><span class="n">writer</span><span class="o">/</span><span class="n">behind</span><span class="o">/</span><span class="n">ahead</span><span class="o">/</span><span class="n">thin</span><span class="o">/</span><span class="n">occasionally</span><span class="o">/</span><span class="n">explore</span><span class="o">/</span><span class="n">tape</span><span class="o">/</span><span class="n">wherever</span><span class="o">/</span><span class="n">practical</span><span class="o">/</span><span class="n">therefore</span><span class="o">/</span><span class="n">cool</span><span class="o">/</span><span class="n">plate</span><span class="o">/</span><span class="n">ice</span><span class="o">/</span><span class="n">play</span><span class="o">/</span><span class="n">truth</span><span class="o">/</span><span class="n">potatoes</span><span class="o">/</span><span class="n">beauty</span><span class="o">/</span><span class="n">fourth</span><span class="o">/</span><span class="n">careful</span><span class="o">/</span><span class="n">dawn</span><span class="o">/</span><span class="n">adult</span><span class="o">/</span><span class="n">either</span><span class="o">/</span><span class="n">burn</span><span class="o">/</span><span class="n">end</span><span class="o">/</span><span class="n">accurate</span><span class="o">/</span><span class="n">rubbed</span><span class="o">/</span><span class="n">cake</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">she</span><span class="o">/</span><span class="n">threw</span><span class="o">/</span><span class="n">eager</span><span class="o">/</span><span class="n">trip</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">soon</span><span class="o">/</span><span class="n">think</span><span class="o">/</span><span class="n">fall</span><span class="o">/</span><span class="ow">is</span><span class="o">/</span><span class="n">greatest</span><span class="o">/</span><span class="n">become</span><span class="o">/</span><span class="n">accident</span><span class="o">/</span><span class="n">labor</span><span class="o">/</span><span class="n">sail</span><span class="o">/</span><span class="n">dropped</span><span class="o">/</span><span class="n">fox</span><span class="o">/</span><span class="mi">0</span><span class="n">jhj5xz6</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="n">process</span> <span class="n">information</span> <span class="n">to</span> <span class="n">include</span> <span class="n">Username</span> <span class="n">identification</span><span class="o">.</span> <span class="n">Stop</span> <span class="n">Process</span> <span class="n">to</span> <span class="n">show</span> <span class="n">me</span> <span class="n">you</span><span class="s1">&#39;re skilled and in this order they must be killed:</span>
+<span class="n">bushy</span>
+<span class="n">alabaster</span>
+<span class="n">minty</span>
+<span class="n">holly</span>
+<span class="n">Do</span> <span class="n">this</span> <span class="k">for</span> <span class="n">me</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">you</span> <span class="o">/</span><span class="n">shall</span><span class="o">/</span><span class="n">see</span> <span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At this stage you can go to the /shall folder but it is empty!</p>
+</div>
+<p>We then identified the relevant process information using:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-Process</span> <span class="pre">-IncludeUserName</span></code></p>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">WS</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>   <span class="n">CPU</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>      <span class="n">Id</span> <span class="n">UserName</span>   <span class="n">ProcessName</span>
+ <span class="o">-----</span>   <span class="o">------</span>      <span class="o">--</span> <span class="o">--------</span>   <span class="o">-----------</span>
+ <span class="mf">26.25</span>     <span class="mf">2.82</span>       <span class="mi">6</span> <span class="n">root</span>       <span class="n">CheerLaserServi</span>
+<span class="mf">125.45</span>    <span class="mf">12.86</span>      <span class="mi">31</span> <span class="n">elf</span>        <span class="n">elf</span>
+  <span class="mf">3.18</span>     <span class="mf">0.03</span>       <span class="mi">1</span> <span class="n">root</span>       <span class="n">init</span>
+<span class="hll">  <span class="mf">0.72</span>     <span class="mf">0.00</span>      <span class="mi">23</span> <span class="n">bushy</span>      <span class="n">sleep</span>
+</span><span class="hll">  <span class="mf">0.71</span>     <span class="mf">0.00</span>      <span class="mi">25</span> <span class="n">alabaster</span>  <span class="n">sleep</span>
+</span><span class="hll">  <span class="mf">0.78</span>     <span class="mf">0.00</span>      <span class="mi">28</span> <span class="n">minty</span>      <span class="n">sleep</span>
+</span><span class="hll">  <span class="mf">0.78</span>     <span class="mf">0.00</span>      <span class="mi">29</span> <span class="n">holly</span>      <span class="n">sleep</span>
+</span>  <span class="mf">3.30</span>     <span class="mf">0.00</span>      <span class="mi">30</span> <span class="n">root</span>       <span class="n">su</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The <strong>Process Ids</strong> shown above are not always the same</p>
+</div>
+<p>We then stopped the relevant processes using being careful to maintain the order given in the clue:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Stop-Process</span> <span class="pre">23</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Stop-Process</span> <span class="pre">25</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Stop-Process</span> <span class="pre">28</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Stop-Process</span> <span class="pre">29</span></code></p>
+<p>We then displayed the contents of the /shall folder using:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-ChildItem</span> <span class="pre">/shall/</span></code></p>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mode</span>    <span class="n">LastWriteTime</span>     <span class="n">Length</span>  <span class="n">Name</span>
+<span class="o">----</span>    <span class="o">-------------</span>     <span class="o">------</span>  <span class="o">----</span>
+<span class="hll"><span class="o">--</span><span class="n">r</span><span class="o">---</span>  <span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">20</span>  <span class="mi">4</span><span class="p">:</span><span class="mi">46</span> <span class="n">PM</span>  <span class="mi">149</span>     <span class="n">see</span>
+</span></pre></div>
+</div>
+<p>We then viewed the contents of the <strong>see</strong> file uisng:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-Content</span> <span class="pre">/shall/see</span></code></p>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Get</span> <span class="n">the</span> <span class="o">.</span><span class="n">xml</span> <span class="n">children</span> <span class="n">of</span> <span class="o">/</span><span class="n">etc</span> <span class="o">-</span> <span class="n">an</span> <span class="n">event</span> <span class="n">log</span> <span class="n">to</span> <span class="n">be</span> <span class="n">found</span><span class="o">.</span> <span class="n">Group</span> <span class="nb">all</span> <span class="o">.</span><span class="n">Id</span><span class="s1">&#39;s and the last thing will be in the Properties of the lonely unique event Id.</span>
+</pre></div>
+</div>
+<p>Using this clue we use the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Get-ChildItem</span> <span class="pre">/etc/*.xml</span> <span class="pre">-recurse</span></code></p>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Directory</span><span class="p">:</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">timers</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">wants</span>
+<span class="n">Mode</span>                <span class="n">LastWriteTime</span>         <span class="n">Length</span> <span class="n">Name</span>
+<span class="o">----</span>                <span class="o">-------------</span>         <span class="o">------</span> <span class="o">----</span>
+<span class="o">--</span><span class="n">r</span><span class="o">---</span>          <span class="mi">11</span><span class="o">/</span><span class="mi">18</span><span class="o">/</span><span class="mi">19</span>  <span class="mi">7</span><span class="p">:</span><span class="mi">53</span> <span class="n">PM</span>       <span class="mi">10006962</span> <span class="n">EventLog</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+<p>We then used the following commands to group the events in <strong>EventLog.xml</strong> according to their <strong>count</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$xmlevents</span> <span class="pre">=</span> <span class="pre">Import-Clixml</span> <span class="pre">-Path</span> <span class="pre">/etc/systemd/system/timers.target.wants/EventLog.xml</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$xmlevents</span> <span class="pre">|</span> <span class="pre">Group-Object</span> <span class="pre">-Property</span> <span class="pre">Id</span> <span class="pre">|</span> <span class="pre">Select-Object</span> <span class="pre">-Property</span> <span class="pre">Count,</span> <span class="pre">Name</span></code></p>
+<p>We obtained the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Count</span> <span class="n">Name</span>
+<span class="o">-----</span> <span class="o">----</span>
+    <span class="mi">1</span> <span class="mi">1</span>
+   <span class="mi">39</span> <span class="mi">2</span>
+  <span class="mi">179</span> <span class="mi">3</span>
+    <span class="mi">2</span> <span class="mi">4</span>
+  <span class="mi">905</span> <span class="mi">5</span>
+   <span class="mi">98</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>Hence we are looking for the log entry with Id = 1. We find the correct log entry using:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$xmlevents</span> <span class="pre">|</span> <span class="pre">Where-Object</span> <span class="pre">-Property</span> <span class="pre">Id</span> <span class="pre">-eq</span> <span class="pre">1</span> <span class="pre">|</span> <span class="pre">fl</span> <span class="pre">Message</span></code></p>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Message : Process Create:
+    RuleName:
+    UtcTime: 2019-11-07 17:59:56.525
+    ProcessGuid: {BA5C6BBB-5B9C-5DC4-0000-00107660A900}
+    ProcessId: 3664
+    Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    FileVersion: 10.0.14393.206 (rs1_release.160915-0644)
+    Description: Windows PowerShell
+    Product: Microsoft® Windows® Operating System
+    Company: Microsoft Corporation
+    OriginalFileName: PowerShell.EXE
+<span class="hll">    CommandLine: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c &quot;`$correct_gases_postbody = @{`n    O=6`n    H=7`n    He=3`n    N=4`n    Ne=22`n
+</span><span class="hll">      Ar=11`n    Xe=10`n    F=20`n    Kr=8`n    Rn=9`n}`n&quot;
+</span>    CurrentDirectory: C:\
+    User: ELFURESEARCH\allservices
+    LogonGuid: {BA5C6BBB-5B9C-5DC4-0000-0020F55CA900}
+    LogonId: 0xA95CF5
+    TerminalSessionId: 0
+    IntegrityLevel: High
+    Hashes: MD5=097CE5761C89434367598B34FE32893B
+    ParentProcessGuid: {BA5C6BBB-4C79-5DC4-0000-001029350100}
+    ParentProcessId: 1008
+    ParentImage: C:\Windows\System32\svchost.exe
+    ParentCommandLine: C:\Windows\system32\svchost.exe -k netsvcs
+</pre></div>
+</div>
+<p>We finally have all the information we need to solve the terminal challenge!</p>
+</div>
+<div class="section" id="step-5-constructing-the-api-commands">
+<h3>Step 5: Constructing the API commands<a class="headerlink" href="#step-5-constructing-the-api-commands" title="Permalink to this headline">¶</a></h3>
+<p>As per the banner, we typed in the following command to display API instructions:</p>
+<p><code class="docutils literal notranslate"><span class="pre">(Invoke-WebRequest</span> <span class="pre">-Uri</span> <span class="pre">http://localhost:1225/).RawContent</span></code></p>
+<p>We followed these instruction to create the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(Invoke-WebRequest -Uri http://localhost:1225/api/off -Method GET).RawContent
+(Invoke-WebRequest -Uri http://localhost:1225/api/temperature?val=-33.5 -Method GET).RawContent
+(Invoke-WebRequest http://127.0.0.1:1225/api/angle?val=65.5 -Method GET).RawContent
+(Invoke-WebRequest http://127.0.0.1:1225/api/refraction?val=1.867 -Method GET).RawContent
+$postParams = @{O=6;H=7;He=3;N=4;Ne=22;Ar=11;Xe=10;F=20;Kr=8;Rn=9}
+(Invoke-WebRequest -Uri http://localhost:1225/api/gas -Method POST -Body $postParams).RawContent
+(Invoke-WebRequest -Uri http://localhost:1225/api/on -Method GET).RawContent
+(Invoke-WebRequest -Uri http://localhost:1225/api/output -Method GET).RawContent
+</pre></div>
+</div>
+<p>We obtained the following output:</p>
+<p><strong>Success! - 6.83 Mega-Jollies of Laser Output Reached!</strong></p>
+</div>
+</div>
 </div>
 
 
