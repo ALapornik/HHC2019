@@ -12,7 +12,7 @@ supatree
 Solution
 --------
 
-.. code-block:: powershell
+.. code-block:: none
 
 
     PS C:\Users\Administrator>  cd .\Downloads\DeepBlueCLI-master\DeepBlueCLI-master\
