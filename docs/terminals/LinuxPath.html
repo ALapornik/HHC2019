@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linux Path &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Linux Path &mdash; HHC2019  documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Xmas Cheer Laser &lt;&gt;" href="XmasCheerLaser.html" />
+    <link rel="next" title="Xmas Cheer Laser" href="XmasCheerLaser.html" />
     <link rel="prev" title="Escape Ed &lt;&gt;" href="EscapeEd.html" /> 
 </head>
 
@@ -100,8 +100,13 @@
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linux Path</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
@@ -158,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Linux Path &lt;&gt;</li>
+      <li>Linux Path</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +180,95 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="linux-path">
-<h1><a class="reference internal" href="#linux-path">Linux Path &lt;&gt;</a><a class="headerlink" href="#linux-path" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=path&amp;id=e98970c7-2810-43d4-86ac-65b7905aca9a">Linux Path</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with SugarPlum Mary:</p>
+<pre class="literal-block"><strong>SugarPlum Mary</strong>
+    Oh me oh my - I need some help!
+    I need to review some files in my Linux terminal, but I can't get a file listing.
+    I know the command is <strong>ls</strong>, but it's really acting up.
+    Do you think you could help me out? As you work on this, think about these questions:
+        1. Do the words in green have special significance?
+        2. How can I find a file with a specific name?
+        3. What happens if there are multiple executables with the same name in my $PATH?</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>Linux Path</strong>
+From: SugarPlum Mary
+Green words matter, files must be found, and the terminal's $PATH matters.</pre>
+<p>The banner page from the terminal challenge:</p>
+<img alt="../_images/linuxpath-banner.png" src="../_images/linuxpath-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>Before we solve the challenge it is useful to answer the third question above.</p>
+<p>To understand why an unqualified <strong>ls</strong> command was using the wrong version, we need to look at the PATH. We can do this with the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$PATH</span></code></p>
+<p>We obtained the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">games</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">games</span>
+</pre></div>
+</div>
+<p>The PATH determines the folders in which the system searches for commands when they are unqualified (when typed in without a full path). Whatever is in <strong>/usr/local/bin</strong> is executed first, followed by <strong>/usr/bin</strong>, followed by <strong>/bin</strong>, and so on.</p>
+<p>The simplest way to solve this challenge is to use the <strong>find</strong> command to look for instances of <strong>ls</strong>. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">find</span> <span class="pre">/</span> <span class="pre">-name</span> <span class="pre">&quot;ls&quot;</span> <span class="pre">-type</span> <span class="pre">f</span></code></p>
+<p>We get the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ls</span>
+</span><span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/root&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/var/cache/apt/archives/partial&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/var/cache/ldconfig&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/var/lib/apt/lists/partial&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="hll"><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ls</span>
+</span><span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/tty/driver&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/1/task/1/fd&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/1/task/1/fdinfo&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/1/task/1/ns&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/1/fd&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/1/map_files&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/1/fdinfo&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/1/ns&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/6/task/6/fd&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/6/task/6/fdinfo&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/6/task/6/ns&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/6/fd&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/6/map_files&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/6/fdinfo&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/proc/6/ns&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="n">find</span><span class="p">:</span> <span class="s1">&#39;/etc/ssl/private&#39;</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+</pre></div>
+</div>
+<p>This shows that there are two instances of <strong>ls</strong> on our system. We then execute <em>ls</em> by using it’s full path. For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/usr/local/bin/ls</span></code></p>
+<p>This produces the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">isn</span><span class="s1">&#39;t the ls you&#39;</span><span class="n">re</span> <span class="n">looking</span> <span class="k">for</span>
+</pre></div>
+</div>
+<p>We then try:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/bin/ls</span></code></p>
+<p>Success!. The following output was displayed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&#39; &#39;   rejected-elfu-logos.txt
+Loading, please wait......
+You did it! Congratulations!
+</pre></div>
+</div>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>SugarPlum Mary provides the following hint in her dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>SugarPlum Mary</strong>
+Oh there they are! Now I can delete them. Thanks!
+Have you tried the Sysmon and EQL challenge?
+If you aren't familiar with Sysmon, Carlos Perez has some great info about it.
+Haven't heard of the Event Query Language?
+Check out some of <a class="reference external" href="https://www.endgame.com/our-experts/ross-wolf">Ross Wolf's</a> work on EQL or that blog post by Josh Wright in your badge.</pre>
+<p>The following hints were unlocked in our badge:</p>
+<pre class="literal-block"><strong>Event Query Language</strong>
+From: SugarPlum Mary
+<a class="reference external" href="https://pen-testing.sans.org/blog/2019/12/10/eql-threat-hunting/">EQL Threat Hunting</a></pre>
+<pre class="literal-block"><strong>Sysmon</strong>
+From: SugarPlum Mary
+<a class="reference external" href="https://www.darkoperator.com/blog/2014/8/8/sysinternals-sysmon">Sysmon By Carlos Perez</a></pre>
+</div>
 </div>
 
 
@@ -187,7 +279,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="XmasCheerLaser.html" class="btn btn-neutral float-right" title="Xmas Cheer Laser &lt;&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="XmasCheerLaser.html" class="btn btn-neutral float-right" title="Xmas Cheer Laser" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="EscapeEd.html" class="btn btn-neutral float-left" title="Escape Ed &lt;&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

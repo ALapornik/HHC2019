@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Frosty Keypad &lt;&gt;" href="FrostyKeypad.html" />
-    <link rel="prev" title="Linux Path &lt;&gt;" href="LinuxPath.html" /> 
+    <link rel="prev" title="Linux Path" href="LinuxPath.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,7 +100,7 @@
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Xmas Cheer Laser</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
@@ -111,6 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#step-5-constructing-the-api-commands">Step 5: Constructing the API commands</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
@@ -190,15 +191,19 @@
 <h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=powershell&amp;id=59883253-918a-4d7b-8063-218e184c2541">Xmas Cheer Laser</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="challenge">
 <h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Sparkle Redberry
-    I&#39;m Sparkle Redberry and Imma chargin&#39; my laser!
+<p>The initial dialog with Sparkle Redberry:</p>
+<pre class="literal-block"><strong>Sparkle Redberry</strong>
+    I'm Sparkle Redberry and Imma chargin' my laser!
     Problem is: the settings are off.
     Do you know any PowerShell?
-    It&#39;d be GREAT if you could hop in and recalibrate this thing.
+    It'd be GREAT if you could hop in and recalibrate this thing.
     It spreads holiday cheer across the Earth ...
-    ... when it&#39;s working!
-</pre></div>
-</div>
+    ... when it's working!</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>PowerShell</strong>
+From: Sparkle Redberry
+<a class="reference external" href="https://blogs.sans.org/pen-testing/files/2016/05/PowerShellCheatSheet_v41.pdf">SANS' PowerShell Cheat Sheet</a></pre>
+<p>The banner page from the terminal challenge:</p>
 <img alt="../_images/xmascheerlaser-banner.png" src="../_images/xmascheerlaser-banner.png" />
 </div>
 <div class="section" id="solution">
@@ -455,6 +460,19 @@ $postParams = @{O=6;H=7;He=3;N=4;Ne=22;Ar=11;Xe=10;F=20;Kr=8;Rn=9}
 <p><strong>Success! - 6.83 Mega-Jollies of Laser Output Reached!</strong></p>
 </div>
 </div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Sparkle Redberry provides the following hint in her dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Sparkle Redberry</strong>
+You got it - three cheers for cheer!
+For objective 5, have you taken a look at our Zeek logs?
+Something's gone wrong. But I hear someone named Rita can help us.
+Can you and she figure out what happened?</pre>
+<p>The following hint was unlocked in our badge:</p>
+<pre class="literal-block"><strong>RITA</strong>
+From: Sparkle Redberry
+<a class="reference external" href="https://www.activecountermeasures.com/free-tools/rita/">RITA's homepage</a></pre>
+</div>
 </div>
 
 
@@ -468,7 +486,7 @@ $postParams = @{O=6;H=7;He=3;N=4;Ne=22;Ar=11;Xe=10;F=20;Kr=8;Rn=9}
         <a href="FrostyKeypad.html" class="btn btn-neutral float-right" title="Frosty Keypad &lt;&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="LinuxPath.html" class="btn btn-neutral float-left" title="Linux Path &lt;&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="LinuxPath.html" class="btn btn-neutral float-left" title="Linux Path" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
