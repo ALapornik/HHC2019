@@ -32,9 +32,9 @@ Escape -
 Frosty -
 Graylog D
 HHT - [P]
-Linux - [P]
-Mongo - [P]
+Linux - D
+Mongo - D
 Nyanshell - [P]
 Braces D
-Laser P
+Laser D
 Zeek -

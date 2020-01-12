@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Nyanshell &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Nyanshell &mdash; HHC2019  documentation</title>
   
 
   
@@ -104,7 +104,19 @@
 <li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
+<<<<<<< HEAD
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Nyanshell &lt;&gt;</a></li>
+=======
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nyanshell</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#an-unusual-alternative-to-copying-bin-bash-to-bin-nsh">An unusual alternative to copying /bin/bash to /bin/nsh</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
+>>>>>>> 49484ef89084677563ad9783d6c3f8f93cb244f8
 <li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
@@ -158,7 +170,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Nyanshell &lt;&gt;</li>
+      <li>Nyanshell</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +187,121 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="nyanshell">
-<h1><a class="reference internal" href="#nyanshell">Nyanshell &lt;&gt;</a><a class="headerlink" href="#nyanshell" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=nyanshell&amp;id=0d8e8c80-739b-4d6e-aa94-9c8d57a955ba">Nyanshell</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with Alabaster Snowball:</p>
+<pre class="literal-block"><strong>Alabaster Snowball</strong>
+Welcome to the Speaker UNpreparedness Room!
+My name's Alabaster Snowball and I could use a hand.
+I'm trying to log into this terminal, but something's gone horribly wrong.
+Every time I try to log in, I get accosted with ... a hatted cat and a toaster pastry?
+I thought my shell was Bash, not flying feline.
+When I try to overwrite it with something else, I get permission errors.
+Have you heard any chatter about immutable files? And what is sudo -l telling me?</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>User's Shells</strong>
+From: Alabaster Snowball
+On Linux, a user's shell is determined by the contents of /etc/passwd</pre>
+<pre class="literal-block"><strong>Chatter?</strong>
+From: Alabaster Snowball
+sudo -l says I can run a command as root. What does it do?</pre>
+<p>The banner page from the terminal challenge:</p>
+<img alt="../_images/nyanshell-banner.png" src="../_images/nyanshell-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>Log in as the user alabaster_snowball with a password of Password2, and land in a Bash prompt.</p>
+<p>We used the <code class="docutils literal notranslate"><span class="pre">whoami</span></code> command to confirm that our username was <strong>elf</strong></p>
+<p>We then used the following command to determine what our shell was:
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/passwd</span></code></p>
+<p>The output was as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="o">/</span><span class="n">root</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">daemon</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">daemon</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="nb">bin</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">sys</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="n">sys</span><span class="p">:</span><span class="o">/</span><span class="n">dev</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">sync</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">65534</span><span class="p">:</span><span class="n">sync</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sync</span>
+<span class="n">games</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">60</span><span class="p">:</span><span class="n">games</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">games</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">man</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="n">man</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">man</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">lp</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span><span class="n">lp</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">lpd</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">mail</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">mail</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">mail</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">news</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="n">news</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">news</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">uucp</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="n">uucp</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">uucp</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">proxy</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="n">proxy</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">backup</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="n">backup</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">backups</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="nb">list</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="n">Mailing</span> <span class="n">List</span> <span class="n">Manager</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="nb">list</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">irc</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="n">ircd</span><span class="p">:</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">ircd</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">gnats</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="n">Gnats</span> <span class="n">Bug</span><span class="o">-</span><span class="n">Reporting</span> <span class="n">System</span> <span class="p">(</span><span class="n">admin</span><span class="p">):</span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">gnats</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">nobody</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">65534</span><span class="p">:</span><span class="mi">65534</span><span class="p">:</span><span class="n">nobody</span><span class="p">:</span><span class="o">/</span><span class="n">nonexistent</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="n">_apt</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">100</span><span class="p">:</span><span class="mi">65534</span><span class="p">::</span><span class="o">/</span><span class="n">nonexistent</span><span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span>
+<span class="hll"><span class="n">elf</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1000</span><span class="p">:</span><span class="mi">1000</span><span class="p">::</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">elf</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+</span><span class="n">alabaster_snowball</span><span class="p">:</span><span class="n">x</span><span class="p">:</span><span class="mi">1001</span><span class="p">:</span><span class="mi">1001</span><span class="p">::</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">alabaster_snowball</span><span class="p">:</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nsh</span>
+</pre></div>
+</div>
+<p>This shows that our shell is <strong>/bin/bash</strong>.</p>
+<p>However, the shell for alabaster_snowball is <strong>/bin/nsh</strong>.</p>
+<p>If we had root access, we could easily modify the <strong>passwd</strong> file. However, the <strong>elf</strong> user does not have this level of access.</p>
+<p>If we enter <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-l</span></code> we get the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Matching</span> <span class="n">Defaults</span> <span class="n">entries</span> <span class="k">for</span> <span class="n">elf</span> <span class="n">on</span> <span class="mi">882</span><span class="n">fd6fb9ad0</span><span class="p">:</span>
+    <span class="n">env_reset</span><span class="p">,</span> <span class="n">mail_badpass</span><span class="p">,</span> <span class="n">secure_path</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">sbin</span>\<span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span>\<span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span>\<span class="p">:</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span>\<span class="p">:</span><span class="o">/</span><span class="n">sbin</span>\<span class="p">:</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">User</span> <span class="n">elf</span> <span class="n">may</span> <span class="n">run</span> <span class="n">the</span> <span class="n">following</span> <span class="n">commands</span> <span class="n">on</span> <span class="mi">882</span><span class="n">fd6fb9ad0</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">root</span><span class="p">)</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">chattr</span>
+</pre></div>
+</div>
+<p>The only command that <strong>elf</strong> can run as root is <strong>chattr</strong> (change attributes).</p>
+<p>We then started looking at <strong>/bin/nsh</strong>. Getting inspiration from the <strong>chattr</strong> command, we tried it’s counterpart <strong>lsattr</strong> (list attributes) using <code class="docutils literal notranslate"><span class="pre">lsattr</span> <span class="pre">/bin/nsh</span></code>. We obtained the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">----</span><span class="n">i</span><span class="o">---------</span><span class="n">e</span><span class="o">----</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nsh</span>
+</pre></div>
+</div>
+<p>The <strong>i</strong> flag means that /bin/nsh is immutable (the file cannot be modified).</p>
+<p>We then used the following command to remove the <strong>immutable</strong> attribute from <strong>/bin/nsh</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">chattr</span> <span class="pre">-i</span> <span class="pre">/bin/nsh</span></code></p>
+<p>We then tried to copy /bin/bash to /bin/nsh using the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/bin/bash</span> <span class="pre">/bin/nsh</span></code></p>
+<p>This worked!</p>
+<p>We then tried to switch the user to alabaster_snowball using the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">su</span> <span class="pre">-</span> <span class="pre">alabaster_snowball</span></code></p>
+<p>We enter the correct password an received the following message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Loading, please wait......
+You did it! Congratulations!
+</pre></div>
+</div>
+<div class="section" id="an-unusual-alternative-to-copying-bin-bash-to-bin-nsh">
+<h3>An unusual alternative to copying /bin/bash to /bin/nsh<a class="headerlink" href="#an-unusual-alternative-to-copying-bin-bash-to-bin-nsh" title="Permalink to this headline">¶</a></h3>
+<p>For a bit of fun we did the following:</p>
+<ol class="arabic">
+<li><p>Edit <strong>/bin/nsh</strong> using <strong>vi</strong></p></li>
+<li><p>Delete everything using <strong>dG</strong></p></li>
+<li><p>Add the following:</p>
+<blockquote>
+<div><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/bin/sh
+/bin/bash
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Save and quit <strong>vi</strong></p></li>
+<li><p>Switch the user to alabaster_snowball</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Alabaster Snowball provides the following hint in his dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Alabaster Snowball</strong>
+Who would do such a thing?? Well, it IS a good looking cat.
+Have you heard about the Frido Sleigh contest?
+There are some serious prizes up for grabs.
+The content is strictly for elves. Only elves can pass the CAPTEHA challenge required to enter.
+I heard there was a talk at KCII about using machine learning to defeat challenges like this.
+I don't think anything could ever beat an elf though!</pre>
+<p>The following hint was unlocked in our badge:</p>
+<pre class="literal-block"><strong>Machine Learning</strong>
+From: Alabaster Snowball
+<a class="reference external" href="https://youtu.be/jmVPLwjm_zs">Machine Learning Use Cases for Cyber Security</a></pre>
+</div>
 </div>
 
 
