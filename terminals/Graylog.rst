@@ -239,6 +239,9 @@ The first search term we used was:
 We found a command making use of **pastebin.com**. We pivoted off this imformation with the following search:
 ``DestinationHostname:pastebin.com``
 
+.. note:: Dad complained that graylog seems too "gray". Added this to change that.
+
+
 Hints
 -----
 Pepper Minstix provides the following hint in her dialog after solving the terminal challenge:
