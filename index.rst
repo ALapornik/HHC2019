@@ -1,11 +1,23 @@
-.. HHC2019 documentation master file, created by
-   sphinx-quickstart on Mon Dec 30 00:35:55 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-
 Holiday Hack Challenge 2019 Report
 ==================================
+
+This is our report for the **SANS Holiday Hack Challenge 2019**.
+
+The report can be found at: `our report <https://alapornik.github.io/HHC2019/index.html>`_
+
+We also have a GitHub repository at: `our repository <https://github.com/ALapornik/HHC2019>`_ . 
+
+The tools that we wrote for this challenge can be found at: `our tools <https://github.com/ALapornik/HHC2019/tree/master/source>`_
+
+Our team
+--------
+Here is a photo of our team members with Santa and the doves:
+
+.. image:: /images/ourteam.png
+
+Custom map
+----------
+Here is our map of Kringlecon 2019:
 
 .. code-block:: none
 
