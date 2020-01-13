@@ -4,7 +4,7 @@ Challenge
 ---------
 Difficulty: 4/5 
 
-Gain access to the data on the Student Portal server and retrieve the paper scraps hosted there. What is the name of Santa's cutting-edge sleigh guidance system? For hints on achieving this objective, please visit the dorm and talk with Pepper Minstix.
+Gain access to the data on the `Student Portal <https://studentportal.elfu.org/>`_ server and retrieve the paper scraps hosted there. What is the name of Santa's cutting-edge sleigh guidance system? For hints on achieving this objective, please visit the dorm and talk with Pepper Minstix.
 
 Answer
 ------

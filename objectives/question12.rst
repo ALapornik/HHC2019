@@ -4,7 +4,7 @@ Challenge
 ---------
 Difficulty: 4/5
 
-Use the data supplied in the Zeek JSON logs to identify the IP addresses of attackers poisoning Santa's flight mapping software. Block the 100 offending sources of information to guide Santa's sleigh through the attack. Submit the Route ID ("RID") success value that you're given. For hints on achieving this objective, please visit the Sleigh Shop and talk with Wunorse Openslae.
+Use the data supplied in the `Zeek JSON logs <https://downloads.elfu.org/http.log.gz>`_ to identify the IP addresses of attackers poisoning Santa's flight mapping software. `Block the 100 offending sources of information to guide Santa's sleigh <https://srf.elfu.org/>`_ through the attack. Submit the Route ID ("RID") success value that you're given. For hints on achieving this objective, please visit the Sleigh Shop and talk with Wunorse Openslae.
 
 Answer
 ------

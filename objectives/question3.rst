@@ -3,11 +3,13 @@
 
 Challenge
 ---------
+Difficulty: 1/5
+
 We're seeing attacks against the Elf U domain! Using `the event log data <https://downloads.elfu.org/Security.evtx.zip>`_, identify the user account that the attacker compromised using a password spray attack. Bushy Evergreen is hanging out in the train station and may be able to help you out.
 
 Answer
 ------
-supatree
+**supatree**
 
 Solution
 --------

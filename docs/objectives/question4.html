@@ -105,16 +105,16 @@
 </ul>
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../terminals/EscapeEd.html">Escape Ed &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/EscapeEd.html">Escape Ed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/LinuxPath.html">Linux Path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/XmasCheerLaser.html">Xmas Cheer Laser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../terminals/FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/FrostyKeypad.html">Frosty Keypad</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/HolidayHackTrail.html">Holiday Hack Trail</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/Nyanshell.html">Nyanshell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/Graylog.html">Graylog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/MongoPilfer.html">Mongo Pilfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/SmartBraces.html">Smart Braces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../terminals/ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/ZeekJSONAnalysis.html">Zeek JSON Analysis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
@@ -185,16 +185,67 @@
 <h1>4) Windows Log Analysis: Determine Attacker Technique<a class="headerlink" href="#windows-log-analysis-determine-attacker-technique" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="challenge">
 <h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>Difficulty: 2/5</p>
+<p>Using these <a class="reference external" href="https://downloads.elfu.org/sysmon-data.json.zip">normalized Sysmon logs</a>, identify the tool the attacker used to retrieve domain password hashes from the lsass.exe process. For hints on achieving this objective, please visit Hermey Hall and talk with SugarPlum Mary.</p>
 </div>
 <div class="section" id="answer">
 <h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
-<p>ntdsutil</p>
+<p><strong>ntdsutil</strong></p>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>After unzipping the file and installing eql, we ran the following queries:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The attacker got the hashes &#39;from&#39; lsass.exe, thus we looked for a parent_process_name=lsass.exe</span>
+eql query -f sysmon-data.json <span class="s2">&quot;process where parent_process_name = &#39;lsass.exe&#39;&quot;</span> <span class="p">|</span> ./jq.exe
+<span class="o">{</span>
+  <span class="s2">&quot;command_line&quot;</span>: <span class="s2">&quot;C:\\Windows\\system32\\cmd.exe&quot;</span>,
+  <span class="s2">&quot;event_type&quot;</span>: <span class="s2">&quot;process&quot;</span>,
+  <span class="s2">&quot;logon_id&quot;</span>: <span class="m">999</span>,
+  <span class="s2">&quot;parent_process_name&quot;</span>: <span class="s2">&quot;lsass.exe&quot;</span>,
+  <span class="s2">&quot;parent_process_path&quot;</span>: <span class="s2">&quot;C:\\Windows\\System32\\lsass.exe&quot;</span>,
+  <span class="s2">&quot;pid&quot;</span>: <span class="m">3440</span>,
+  <span class="s2">&quot;ppid&quot;</span>: <span class="m">632</span>,
+  <span class="s2">&quot;process_name&quot;</span>: <span class="s2">&quot;cmd.exe&quot;</span>,
+  <span class="s2">&quot;process_path&quot;</span>: <span class="s2">&quot;C:\\Windows\\System32\\cmd.exe&quot;</span>,
+  <span class="s2">&quot;subtype&quot;</span>: <span class="s2">&quot;create&quot;</span>,
+  <span class="s2">&quot;timestamp&quot;</span>: <span class="m">132186398356220000</span>,
+  <span class="s2">&quot;unique_pid&quot;</span>: <span class="s2">&quot;{7431d376-dedb-5dd3-0000-001027be4f00}&quot;</span>,
+  <span class="s2">&quot;unique_ppid&quot;</span>: <span class="s2">&quot;{7431d376-cd7f-5dd3-0000-001013920000}&quot;</span>,
+  <span class="s2">&quot;user&quot;</span>: <span class="s2">&quot;NT AUTHORITY\\SYSTEM&quot;</span>,
+  <span class="s2">&quot;user_domain&quot;</span>: <span class="s2">&quot;NT AUTHORITY&quot;</span>,
+  <span class="s2">&quot;user_name&quot;</span>: <span class="s2">&quot;SYSTEM&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># The process_name above is cmd.exe, to see what this refers to we look for it in parent process name. To avoid a large output, we used &#39;.process_name&#39;, to only get that field</span>
+eql query -f sysmon-data.json <span class="s2">&quot;process where parent_process_name = &#39;cmd.exe&#39;&quot;</span> <span class="p">|</span> ./jq.exe <span class="s1">&#39;.process_name&#39;</span>
+<span class="c1"># There was a lot of data in the output, see the summary below.</span>
+<span class="c1"># We get 2388 instances of net.exe, 3 instances of powershell.exe and 1 instance of ntdsutil.exe back</span>
+<span class="c1"># The hint clearly states that ntdsutil is an attack tool</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="hint">
 <h2>Hint<a class="headerlink" href="#hint" title="Permalink to this headline">¶</a></h2>
+<p><strong>SugarPlum Mary:</strong></p>
+<blockquote>
+<div><p>Oh there they are! Now I can delete them. Thanks!
+Have you tried the Sysmon and EQL challenge?
+If you aren’t familiar with Sysmon, Carlos Perez has some great info about it.
+Haven’t heard of the Event Query Language?
+Check out some of <a class="reference external" href="https://www.endgame.com/our-experts/ross-wolf">Ross Wolf</a>’s work on EQL or that blog post by Josh Wright in your badge.</p>
+</div></blockquote>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Sysmon</p>
+<p>From: SugarPlum Mary</p>
+<p><a class="reference external" href="https://www.darkoperator.com/blog/2014/8/8/sysinternals-sysmon">Sysmon By Carlos Perez</a></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Event Query Language</p>
+<p>From: SugarPlum Mary</p>
+<p><a class="reference external" href="https://pen-testing.sans.org/blog/2019/12/10/eql-threat-hunting/">EQL Threat Hunting</a></p>
+</div>
 </div>
 </div>
 

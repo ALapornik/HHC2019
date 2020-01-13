@@ -3,12 +3,13 @@
 
 Challenge
 ---------
-Using `these normalized Sysmon logs <https://downloads.elfu.org/sysmon-data.json.zip>`_,
- identify the tool the attacker used to retrieve domain password hashes from the lsass.exe process. For hints on achieving this objective, please visit Hermey Hall and talk with SugarPlum Mary.
+Difficulty: 2/5
+
+Using these `normalized Sysmon logs <https://downloads.elfu.org/sysmon-data.json.zip>`_, identify the tool the attacker used to retrieve domain password hashes from the lsass.exe process. For hints on achieving this objective, please visit Hermey Hall and talk with SugarPlum Mary.
 
 Answer
 ------
-ntdsutil
+**ntdsutil**
 
 Solution
 --------

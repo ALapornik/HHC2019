@@ -4,8 +4,8 @@ Challenge
 ---------
 Difficulty: 5/5
 
-The Elfscrow Crypto tool is a vital asset used at Elf University for encrypting SUPER SECRET documents. We can't send you the source, but we do have debug symbols that you can use.
-Recover the plaintext content for this encrypted document. We know that it was encrypted on December 6, 2019, between 7pm and 9pm UTC.
+The `Elfscrow Crypto <https://downloads.elfu.org/elfscrow.exe>`_ tool is a vital asset used at Elf University for encrypting SUPER SECRET documents. We can't send you the source, but we do have `debug symbols <https://downloads.elfu.org/elfscrow.pdb>`_ that you can use.
+Recover the plaintext content for this `encrypted document <https://downloads.elfu.org/ElfUResearchLabsSuperSledOMaticQuickStartGuideV1.2.pdf.enc>`_. We know that it was encrypted on December 6, 2019, between 7pm and 9pm UTC.
 What is the middle line on the cover page? (Hint: it's five words)
 For hints on achieving this objective, please visit the NetWars room and talk with Holly Evergreen.
 
