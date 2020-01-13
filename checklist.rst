@@ -38,3 +38,10 @@ Nyanshell D
 Braces M (hints)
 Laser D
 Zeek -
+
+Wunorse Openslae here, just looking at some Zeek logs.
+I'm pretty sure one of these connections is a malicious C2 channel...
+Do you think you could take a look?
+I hear a lot of C2 channels have very long connection times.
+Please use jq to find the longest connection in this data set.
+We have to kick out any and all grinchy activity!
