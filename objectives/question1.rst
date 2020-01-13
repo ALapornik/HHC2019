@@ -15,4 +15,4 @@ After exploring for a while, we found the doves by the fireplace.
 
 .. image:: /images/twoturtledoves.PNG
 
-.. tip:: Michael and Jane seem to be a reference to 'Jane the Virgin' (according to google that is
+.. tip:: Michael and Jane seem to be a reference to 'Jane the Virgin' (according to google that is)

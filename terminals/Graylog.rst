@@ -264,3 +264,4 @@ The following hints were unlocked in our badge:
     **SQL Injection**
     From: Pepper Minstix
     `SQL Injection from OWASP <https://www.owasp.org/index.php/SQL_Injection>`_
+
