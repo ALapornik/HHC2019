@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Zeek JSON Analysis &lt;&gt;" href="ZeekJSONAnalysis.html" />
-    <link rel="prev" title="Mongo Pilfer &lt;&gt;" href="MongoPilfer.html" /> 
+    <link rel="next" title="Zeek JSON Analysis" href="ZeekJSONAnalysis.html" />
+    <link rel="prev" title="Mongo Pilfer" href="MongoPilfer.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,16 +99,21 @@
 </ul>
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Smart Braces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Smart Braces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ZeekJSONAnalysis.html">Zeek JSON Analysis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
@@ -177,37 +182,47 @@
             
   <div class="section" id="id1">
 <h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=iptables">Smart Braces</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Inner Voice: Kent. Kent. Wake up, Kent.
-Inner Voice: I&#39;m talking to you, Kent.
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with Kent Tinseltooth:</p>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>Iptables</strong>
+From: Kent Tinseltooth
+<a class="reference external" href="https://upcloud.com/community/tutorials/configure-iptables-centos/">Iptables</a></pre>
+<p>The dialog when entering the terminal challenge:</p>
+<pre class="literal-block"><strong>Kent Tinseltooth</strong>
+Inner Voice: Kent. Kent. Wake up, Kent.
+Inner Voice: I'm talking to you, Kent.
 Kent TinselTooth: Who said that? I must be going insane.
 Kent TinselTooth: Am I?
 Inner Voice: That remains to be seen, Kent. But we are having a conversation.
-Inner Voice: This is Santa, Kent, and you&#39;ve been a very naughty boy.
+Inner Voice: This is Santa, Kent, and you've been a very naughty boy.
 Kent TinselTooth: Alright! Who is this?! Holly? Minty? Alabaster?
 Inner Voice: I am known by many names. I am the boss of the North Pole. Turn to me and be hired after graduation.
 Kent TinselTooth: Oh, sure.
-Inner Voice: Cut the candy, Kent, you&#39;ve built an automated, machine-learning, sleigh device.
+Inner Voice: Cut the candy, Kent, you've built an automated, machine-learning, sleigh device.
 Kent TinselTooth: How did you know that?
-Inner Voice: I&#39;m Santa - I know everything.
-Kent TinselTooth: Oh. Kringle. *sigh*
-Inner Voice: That&#39;s right, Kent. Where is the sleigh device now?
-Kent TinselTooth: I can&#39;t tell you.
+Inner Voice: I'm Santa - I know everything.
+Kent TinselTooth: Oh. Kringle. <em>sigh</em>
+Inner Voice: That's right, Kent. Where is the sleigh device now?
+Kent TinselTooth: I can't tell you.
 Inner Voice: How would you like to intern for the rest of time?
-Kent TinselTooth: Please no, they&#39;re testing it at srf.elfu.org using default creds, but I don&#39;t know more. It&#39;s classified.
-Inner Voice: Very good Kent, that&#39;s all I needed to know.
+Kent TinselTooth: Please no, they're testing it at srf.elfu.org using default creds, but I don't know more. It's classified.
+Inner Voice: Very good Kent, that's all I needed to know.
 Kent TinselTooth: I thought you knew everything?
-Inner Voice: Nevermind that. I want you to think about what you&#39;ve researched and studied. From now on, stop playing with your teeth, and floss more.
-*Inner Voice Goes Silent*
+Inner Voice: Nevermind that. I want you to think about what you've researched and studied. From now on, stop playing with your teeth, and floss more.
+<em>Inner Voice Goes Silent</em>
 
-Kent TinselTooth: Oh no, I sure hope that voice was Santa&#39;s.
+Kent TinselTooth: Oh no, I sure hope that voice was Santa's.
 Kent TinselTooth: I suspect someone may have hacked into my IOT teeth braces.
 Kent TinselTooth: I must have forgotten to configure the firewall...
 Kent TinselTooth: Please review /home/elfuuser/IOTteethBraces.md and help me configure the firewall.
-Kent TinselTooth: Please hurry; having this ribbon cable on my teeth is uncomfortable.
-elfuuser@4a5f0c68d90a:~$
-</pre></div>
+Kent TinselTooth: Please hurry; having this ribbon cable on my teeth is uncomfortable.</pre>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">/home/elfuuser/IOTteethBraces.md</span></code></p>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>We displayed the contents of <strong>IOTteethBraces.md</strong> using the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/home/elfuuser/IOTteethBraces.md</span></code></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># ElfU Research Labs - Smart Braces
 ### A Lightweight Linux Device for Teeth Braces
 ### Imagined and Created by ElfU Student Kent TinselTooth
@@ -230,6 +245,7 @@ A proper configuration for the Smart Braces should be exactly:
 6. Create a rule applied to the INPUT chain to ACCEPT all traffic from the lo interface.
 </pre></div>
 </div>
+<p>Following these instructions, we typed the below commands into the terminal:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 4%" />
@@ -263,6 +279,49 @@ A proper configuration for the Smart Braces should be exactly:
 </tr>
 </tbody>
 </table>
+<p>Success! We got the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Kent TinselTooth: Great, you hardened my IOT Smart Braces firewall!
+/usr/bin/inits: line 10:   642 Killed                  su elfuuser
+</pre></div>
+</div>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Kent Tinseltooth provides the following hint in his dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Kent Tinseltooth</strong>
+By the way, have you tried to get into the crate in the Student Union? It has an interesting set of locks.
+There are funny rhymes, references to perspective, and odd mentions of eggs!
+And if you think the stuff in your browser looks strange, you should see the page source...
+Special tools? No, I don't think you'll need any extra tooling for those locks.
+BUT - I'm pretty sure you'll need to use Chrome's developer tools for that one.
+Or sorry, you're a Firefox fan?
+Yeah, Safari's fine too - I just have an ineffible hunger for a physical Esc key.
+Edge? That's cool. Hm? No no, I was thinking of an unrelated thing.
+Curl fan? Right on! Just remember: the Windows one doesn't like double quotes.
+Old school, huh? Oh sure - I've got what you need right here...
+...
+...
+And I hear the Holiday Hack Trail game will give hints on the last screen if you complete it on Hard.</pre>
+<p>The following hints were unlocked in our badge:</p>
+<pre class="literal-block"><strong>Chrome Dev Tools</strong>
+From: Kent Tinseltooth
+<a class="reference external" href="https://developers.google.com/web/tools/chrome-devtools">Chrome Dev Tools</a></pre>
+<pre class="literal-block"><strong>Firefox Dev Tools</strong>
+From: Kent Tinseltooth
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Tools">Firefox Dev Tools</a></pre>
+<pre class="literal-block"><strong>Safari Dev Tools</strong>
+From: Kent Tinseltooth
+<a class="reference external" href="https://developer.apple.com/safari/tools/">Safari Dev Tools</a></pre>
+<pre class="literal-block"><strong>Edge Dev Tools</strong>
+From: Kent Tinseltooth
+<a class="reference external" href="https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide/console">Edge Dev Tools</a></pre>
+<pre class="literal-block"><strong>Curl Dev Tools</strong>
+From: Kent Tinseltooth
+<a class="reference external" href="https://curl.haxx.se/docs/manpage.html">Curl Dev Tools</a></pre>
+<pre class="literal-block"><strong>Lynx Dev Tools</strong>
+From: Kent Tinseltooth
+<a class="reference external" href="https://xkcd.com/325/">Lynx Dev Tools</a></pre>
+</div>
 </div>
 
 
@@ -273,10 +332,10 @@ A proper configuration for the Smart Braces should be exactly:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ZeekJSONAnalysis.html" class="btn btn-neutral float-right" title="Zeek JSON Analysis &lt;&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ZeekJSONAnalysis.html" class="btn btn-neutral float-right" title="Zeek JSON Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="MongoPilfer.html" class="btn btn-neutral float-left" title="Mongo Pilfer &lt;&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="MongoPilfer.html" class="btn btn-neutral float-left" title="Mongo Pilfer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

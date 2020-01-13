@@ -110,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Zeek JSON Analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
 </ul>
 </li>
@@ -184,7 +185,13 @@
 <div class="section" id="challenge">
 <h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
 <p>The initial dialog with Wunorse Openslae:</p>
-<pre class="literal-block"><strong>Wunorse Openslae</strong></pre>
+<pre class="literal-block"><strong>Wunorse Openslae</strong>
+Wunorse Openslae here, just looking at some Zeek logs.
+I'm pretty sure one of these connections is a malicious C2 channel...
+Do you think you could take a look?
+I hear a lot of C2 channels have very long connection times.
+Please use jq to find the longest connection in this data set.
+We have to kick out any and all grinchy activity!</pre>
 <p>The hint from our badge:</p>
 <pre class="literal-block"><strong>Jq</strong>
 From: Wunorse Openslae
@@ -192,8 +199,33 @@ From: Wunorse Openslae
 <p>The banner page from the terminal challenge:</p>
 <img alt="../_images/zeekjsonanalysis-banner.png" src="../_images/zeekjsonanalysis-banner.png" />
 </div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p><strong>jq</strong> is a lightweight and flexible command-line JSON processor which we used to solve his challenge.</p>
+<p>We listed the contents of our folder to reveal a single file <code class="docutils literal notranslate"><span class="pre">conn.log</span></code> which we assumed to be the log file we needed to analyse.</p>
+<p>We determined the keys by piping the first entry in <strong>conn.log</strong> into jq. The command we used was:</p>
+<p><code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-1</span> <span class="pre">conn.log</span> <span class="pre">|</span> <span class="pre">jq</span></code></p>
+<p>This produced the following output:</p>
+<img alt="../_images/zeekjsonanalysis-determining-keys.png" src="../_images/zeekjsonanalysis-determining-keys.png" />
+<p>We then ran the following command which sorts the entries by <strong>duration</strong> and returns the last entry (the longest).</p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">conn.log</span> <span class="pre">|</span> <span class="pre">jq</span> <span class="pre">-s</span> <span class="pre">'sort_by(.duration)</span> <span class="pre">|</span> <span class="pre">reverse</span> <span class="pre">|</span> <span class="pre">.[0]'</span></code></p>
+<p>This produced the following output:</p>
+<img alt="../_images/zeekjsonanalysis-longest-duration.png" src="../_images/zeekjsonanalysis-longest-duration.png" />
+<p>Running <code class="docutils literal notranslate"><span class="pre">runtoanswer</span></code> and submiting the IP address corresponding to <strong>id.resp_h</strong> (13.107.21.200) produced the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Loading, please wait......
+What is the destination IP address with the longes connection duration? 13.107.21.200
+Thank you for your analysis, you are spot-on.
+I would have been working on that until the early dawn.
+Now that you know the features of jq,
+You&#39;ll be able to answer other challenges too.
+-Wunorse Openslae
+Congratulations!
+</pre></div>
+</div>
+</div>
 <div class="section" id="hints">
 <h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Wunorse Openslae provides the following hint in his dialog after solving the terminal challenge:</p>
 <pre class="literal-block"><strong>Wunorse Openslae</strong>
 That's got to be the one - thanks!
 Hey, you know what? We've got a crisis here.
@@ -208,6 +240,7 @@ If you find a log entry that definitely looks bad, try pivoting off other unusua
 The sleigh's machine learning device (SRF) needs most of the malicious IPs blocked in order to calculate a good route.
 Try not to block many legitimate weather station IPs as that could also cause route calculation failure.
 Remember, when looking at JSON data, jq is the tool for you!</pre>
+<p>The following hint was unlocked in our badge:</p>
 <pre class="literal-block"><strong>Finding Bad in Web Logs</strong>
 From: Wunorse Openslae
 Do you see any <a class="reference external" href="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion">LFI</a>, <a class="reference external" href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>, or <a class="reference external" href="https://www.owasp.org/index.php/SQL_Injection">SQLi</a>?</pre>

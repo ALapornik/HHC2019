@@ -7,6 +7,12 @@ The initial dialog with Wunorse Openslae:
 
 .. parsed-literal::
     **Wunorse Openslae**
+    Wunorse Openslae here, just looking at some Zeek logs.
+    I'm pretty sure one of these connections is a malicious C2 channel...
+    Do you think you could take a look?
+    I hear a lot of C2 channels have very long connection times.
+    Please use jq to find the longest connection in this data set.
+    We have to kick out any and all grinchy activity!
 
 The hint from our badge:
 
@@ -19,9 +25,46 @@ The banner page from the terminal challenge:
 
 .. image:: /images/zeekjsonanalysis-banner.png
 
+Solution
+--------
+**jq** is a lightweight and flexible command-line JSON processor which we used to solve his challenge.
+
+We listed the contents of our folder to reveal a single file ``conn.log`` which we assumed to be the log file we needed to analyse.
+
+We determined the keys by piping the first entry in **conn.log** into jq. The command we used was:
+
+``head -1 conn.log | jq``
+
+This produced the following output:
+
+.. image:: /images/zeekjsonanalysis-determining-keys.png
+
+We then ran the following command which sorts the entries by **duration** and returns the last entry (the longest).
+
+``cat conn.log | jq -s 'sort_by(.duration) | reverse | .[0]'``
+
+This produced the following output:
+
+.. image:: /images/zeekjsonanalysis-longest-duration.png
+
+Running ``runtoanswer`` and submiting the IP address corresponding to **id.resp_h** (13.107.21.200) produced the following output:
+
+.. code-block::
+
+    Loading, please wait......
+    What is the destination IP address with the longes connection duration? 13.107.21.200
+    Thank you for your analysis, you are spot-on.
+    I would have been working on that until the early dawn.
+    Now that you know the features of jq,
+    You'll be able to answer other challenges too.
+    -Wunorse Openslae
+    Congratulations!
+
 
 Hints
 -----
+
+Wunorse Openslae provides the following hint in his dialog after solving the terminal challenge:
 
 .. parsed-literal::
     **Wunorse Openslae**
@@ -38,6 +81,8 @@ Hints
     The sleigh's machine learning device (SRF) needs most of the malicious IPs blocked in order to calculate a good route.
     Try not to block many legitimate weather station IPs as that could also cause route calculation failure.
     Remember, when looking at JSON data, jq is the tool for you!
+
+The following hint was unlocked in our badge:
 
 .. parsed-literal::
     **Finding Bad in Web Logs**
