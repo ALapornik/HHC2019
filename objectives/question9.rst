@@ -8,7 +8,7 @@ Gain access to the data on the Student Portal server and retrieve the paper scra
 
 Answer
 ------
-
+**Super Sled-o-matic**
 
 Solution
 --------
@@ -216,3 +216,6 @@ We found information about 6 paper scraps in the previous section. To retrieve t
 
 After downloading the images, we pasted them into an image editor and aligned the scraps to form the following document (one piece seems to be missing).
 
+.. image:: /images/o9-scraps.png
+
+The name of Santa's cutting-edge sleigh guidance system is **Super Sled-o-matic**

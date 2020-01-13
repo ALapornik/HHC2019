@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Zeek JSON Analysis &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Zeek JSON Analysis &mdash; HHC2019  documentation</title>
   
 
   
@@ -99,16 +99,21 @@
 </ul>
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Zeek JSON Analysis &lt;&gt;</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zeek JSON Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
@@ -158,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Zeek JSON Analysis &lt;&gt;</li>
+      <li>Zeek JSON Analysis</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +180,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="zeek-json-analysis">
-<h1><a class="reference internal" href="#zeek-json-analysis">Zeek JSON Analysis &lt;&gt;</a><a class="headerlink" href="#zeek-json-analysis" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=jq&amp;id=64e23b2a-9a30-4e76-b15e-5f97a639b57f">Zeek JSON Analysis</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with Wunorse Openslae:</p>
+<pre class="literal-block"><strong>Wunorse Openslae</strong>
+Wunorse Openslae here, just looking at some Zeek logs.
+I'm pretty sure one of these connections is a malicious C2 channel...
+Do you think you could take a look?
+I hear a lot of C2 channels have very long connection times.
+Please use jq to find the longest connection in this data set.
+We have to kick out any and all grinchy activity!</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>Jq</strong>
+From: Wunorse Openslae
+<a class="reference external" href="https://pen-testing.sans.org/blog/2019/12/03/parsing-zeek-json-logs-with-jq-2">Parsing Zeek JSON Logs with JQ</a></pre>
+<p>The banner page from the terminal challenge:</p>
+<img alt="../_images/zeekjsonanalysis-banner.png" src="../_images/zeekjsonanalysis-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p><strong>jq</strong> is a lightweight and flexible command-line JSON processor which we used to solve his challenge.</p>
+<p>We listed the contents of our folder to reveal a single file <code class="docutils literal notranslate"><span class="pre">conn.log</span></code> which we assumed to be the log file we needed to analyse.</p>
+<p>We determined the keys by piping the first entry in <strong>conn.log</strong> into jq. The command we used was:</p>
+<p><code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-1</span> <span class="pre">conn.log</span> <span class="pre">|</span> <span class="pre">jq</span></code></p>
+<p>This produced the following output:</p>
+<img alt="../_images/zeekjsonanalysis-determining-keys.png" src="../_images/zeekjsonanalysis-determining-keys.png" />
+<p>We then ran the following command which sorts the entries by <strong>duration</strong> and returns the last entry (the longest).</p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">conn.log</span> <span class="pre">|</span> <span class="pre">jq</span> <span class="pre">-s</span> <span class="pre">'sort_by(.duration)</span> <span class="pre">|</span> <span class="pre">reverse</span> <span class="pre">|</span> <span class="pre">.[0]'</span></code></p>
+<p>This produced the following output:</p>
+<img alt="../_images/zeekjsonanalysis-longest-duration.png" src="../_images/zeekjsonanalysis-longest-duration.png" />
+<p>Running <code class="docutils literal notranslate"><span class="pre">runtoanswer</span></code> and submiting the IP address corresponding to <strong>id.resp_h</strong> (13.107.21.200) produced the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Loading, please wait......
+What is the destination IP address with the longes connection duration? 13.107.21.200
+Thank you for your analysis, you are spot-on.
+I would have been working on that until the early dawn.
+Now that you know the features of jq,
+You&#39;ll be able to answer other challenges too.
+-Wunorse Openslae
+Congratulations!
+</pre></div>
+</div>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Wunorse Openslae provides the following hint in his dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Wunorse Openslae</strong>
+That's got to be the one - thanks!
+Hey, you know what? We've got a crisis here.
+You see, Santa's flight route is planned by a complex set of machine learning algorithms which use available weather data.
+All the weather stations are reporting severe weather to Santa's Sleigh. I think someone might be forging intentionally false weather data!
+I'm so flummoxed I can't even remember how to login!
+Hmm... Maybe the Zeek http.log could help us.
+I worry about LFI, XSS, and SQLi in the Zeek log - oh my!
+And I'd be shocked if there weren't some shell stuff in there too.
+I'll bet if you pick through, you can find some naughty data from naughty hosts and block it in the firewall.
+If you find a log entry that definitely looks bad, try pivoting off other unusual attributes in that entry to find more bad IPs.
+The sleigh's machine learning device (SRF) needs most of the malicious IPs blocked in order to calculate a good route.
+Try not to block many legitimate weather station IPs as that could also cause route calculation failure.
+Remember, when looking at JSON data, jq is the tool for you!</pre>
+<p>The following hint was unlocked in our badge:</p>
+<pre class="literal-block"><strong>Finding Bad in Web Logs</strong>
+From: Wunorse Openslae
+Do you see any <a class="reference external" href="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion">LFI</a>, <a class="reference external" href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Shellshock_(software_bug)">Shellshock</a>, or <a class="reference external" href="https://www.owasp.org/index.php/SQL_Injection">SQLi</a>?</pre>
+</div>
 </div>
 
 

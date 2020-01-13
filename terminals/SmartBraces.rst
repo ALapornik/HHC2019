@@ -1,9 +1,21 @@
 `Smart Braces <https://docker2019.kringlecon.com/?challenge=iptables>`_
 =======================================================================
 
-.. code-block:: none
+Challenge
+---------
+The initial dialog with Kent Tinseltooth:
 
-    
+The hint from our badge:
+
+.. parsed-literal::
+    **Iptables**
+    From: Kent Tinseltooth
+    `Iptables <https://upcloud.com/community/tutorials/configure-iptables-centos/>`_
+
+The dialog when entering the terminal challenge:
+
+.. parsed-literal::
+    **Kent Tinseltooth**   
     Inner Voice: Kent. Kent. Wake up, Kent.
     Inner Voice: I'm talking to you, Kent.
     Kent TinselTooth: Who said that? I must be going insane.
@@ -31,9 +43,12 @@
     Kent TinselTooth: I must have forgotten to configure the firewall...
     Kent TinselTooth: Please review /home/elfuuser/IOTteethBraces.md and help me configure the firewall.
     Kent TinselTooth: Please hurry; having this ribbon cable on my teeth is uncomfortable.
-    elfuuser@4a5f0c68d90a:~$ 
     
-``nano /home/elfuuser/IOTteethBraces.md``
+Solution
+--------
+We displayed the contents of **IOTteethBraces.md** using the following command:
+
+``cat /home/elfuuser/IOTteethBraces.md``
 
 .. code-block::  none
 
@@ -58,6 +73,7 @@
     5. Create a rule to ACCEPT all OUTPUT traffic with a destination TCP port of 80.
     6. Create a rule applied to the INPUT chain to ACCEPT all traffic from the lo interface.
 
+Following these instructions, we typed the below commands into the terminal:
 
 +---+------------------------------------------------------------------------------+
 |   | ``sudo iptables -P INPUT DROP``                                              |
@@ -80,3 +96,62 @@
 +---+------------------------------------------------------------------------------+
 | 6 | sudo iptables -A INPUT -i lo -j ACCEPT                                       |
 +---+------------------------------------------------------------------------------+
+
+Success! We got the following output:
+
+.. code-block::
+
+    Kent TinselTooth: Great, you hardened my IOT Smart Braces firewall!
+    /usr/bin/inits: line 10:   642 Killed                  su elfuuser
+
+Hints
+-----
+Kent Tinseltooth provides the following hint in his dialog after solving the terminal challenge:
+
+.. parsed-literal::
+    **Kent Tinseltooth**
+    By the way, have you tried to get into the crate in the Student Union? It has an interesting set of locks.
+    There are funny rhymes, references to perspective, and odd mentions of eggs!
+    And if you think the stuff in your browser looks strange, you should see the page source...
+    Special tools? No, I don't think you'll need any extra tooling for those locks.
+    BUT - I'm pretty sure you'll need to use Chrome's developer tools for that one.
+    Or sorry, you're a Firefox fan?
+    Yeah, Safari's fine too - I just have an ineffible hunger for a physical Esc key.
+    Edge? That's cool. Hm? No no, I was thinking of an unrelated thing.
+    Curl fan? Right on! Just remember: the Windows one doesn't like double quotes.
+    Old school, huh? Oh sure - I've got what you need right here...
+    ...
+    ...
+    And I hear the Holiday Hack Trail game will give hints on the last screen if you complete it on Hard.
+
+The following hints were unlocked in our badge:
+
+.. parsed-literal::
+    **Chrome Dev Tools**
+    From: Kent Tinseltooth
+    `Chrome Dev Tools <https://developers.google.com/web/tools/chrome-devtools>`_
+
+.. parsed-literal::
+    **Firefox Dev Tools**
+    From: Kent Tinseltooth
+    `Firefox Dev Tools <https://developer.mozilla.org/en-US/docs/Tools>`_
+
+.. parsed-literal::
+    **Safari Dev Tools**
+    From: Kent Tinseltooth
+    `Safari Dev Tools <https://developer.apple.com/safari/tools/>`_
+
+.. parsed-literal::
+    **Edge Dev Tools**
+    From: Kent Tinseltooth
+    `Edge Dev Tools <https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide/console>`_
+
+.. parsed-literal::
+    **Curl Dev Tools**
+    From: Kent Tinseltooth
+    `Curl Dev Tools <https://curl.haxx.se/docs/manpage.html>`_
+
+.. parsed-literal::
+    **Lynx Dev Tools**
+    From: Kent Tinseltooth
+    `Lynx Dev Tools <https://xkcd.com/325/>`_
