@@ -28,7 +28,7 @@ Objectives:
 
 Terminals:
 
-Escape -
+Escape D
 Frosty -
 Graylog D
 HHT D
