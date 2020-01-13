@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Holiday Hack Trail &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Holiday Hack Trail &mdash; HHC2019  documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Nyanshell &lt;&gt;" href="Nyanshell.html" />
+    <link rel="next" title="Nyanshell" href="Nyanshell.html" />
     <link rel="prev" title="Frosty Keypad &lt;&gt;" href="FrostyKeypad.html" /> 
 </head>
 
@@ -100,13 +100,23 @@
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Holiday Hack Trail &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Holiday Hack Trail</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#easy-mode">Easy Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#medium-mode">Medium Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hard-mode">Hard Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
 </ul>
@@ -158,7 +168,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Holiday Hack Trail &lt;&gt;</li>
+      <li>Holiday Hack Trail</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +185,134 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="holiday-hack-trail">
-<h1><a class="reference internal" href="#holiday-hack-trail">Holiday Hack Trail &lt;&gt;</a><a class="headerlink" href="#holiday-hack-trail" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://trail.elfu.org/?challenge=trail&amp;id=05792432-6b95-44d9-9880-1a4f7d1f5665">Holiday Hack Trail</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with Minty Candycane:</p>
+<pre class="literal-block"><strong>Minty Candycane</strong>
+Hi! I'm Minty Candycane!
+I just LOVE this old game!
+I found it on a 5 1/4&quot; floppy in the attic.
+You should give it a go!
+If you get stuck at all, check out this year's talks.
+One is about web application penetration testing.
+Good luck, and don't get dysentery!</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>Web App Pen Testing</strong>
+From: Minty Candycane
+<a class="reference external" href="https://youtu.be/0T6-DQtzCgM">Web Apps: A Trailhead</a></pre>
+<p>The banner page from the terminal challenge:</p>
+<img alt="../_images/holidayhacktrail-banner.png" src="../_images/holidayhacktrail-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>The objective of the challenge is easy - win the game (even by cheating)!</p>
+<p>Comments within the source of the initial web page indicate that the game is using different protections for each difficulty mode:</p>
+<ul class="simple">
+<li><p><strong>Easy</strong> - possibly vulnerable to URL param manipulation</p></li>
+<li><p><strong>Medium</strong> - params moved to body of POST request</p></li>
+<li><p><strong>Hard</strong> - add hash integrity to ensure there’s NO cheating!</p></li>
+</ul>
+<p>We anticipated that most people would have chosen the <strong>Burp Suite</strong> to solve this challenge. However, it’s always good to try something different so our solution is based on the <strong>Fiddler</strong> tool by Telerik.</p>
+<div class="section" id="easy-mode">
+<h3>Easy Mode<a class="headerlink" href="#easy-mode" title="Permalink to this headline">¶</a></h3>
+<p>To win in Easy mode you simply need to modify the <strong>distance</strong> value within the in-game URL after the game has started. Change the distance to 7999 as shown in the following image then press <kbd class="kbd docutils literal notranslate">ENTER</kbd>.</p>
+<img alt="../_images/holidayhacktrail-easy-modify-url.png" src="../_images/holidayhacktrail-easy-modify-url.png" />
+<p>Click on the <strong>Go</strong> button to win. You should see something like the following winners screen:</p>
+<img alt="../_images/holidayhacktrail-easy-winner.png" src="../_images/holidayhacktrail-easy-winner.png" />
+</div>
+<div class="section" id="medium-mode">
+<h3>Medium Mode<a class="headerlink" href="#medium-mode" title="Permalink to this headline">¶</a></h3>
+<p>For medium mode we decided to utilise the Fiddler tool.</p>
+<p>Ensure you have Fiddler set up to capture and inspect HTTPS sessions.</p>
+<p>Start the game in <strong>medium</strong> mode in the browser, click the <strong>Buy</strong> button on the store and then click on the <strong>Go</strong> button once.</p>
+<p>Drag the request into the <strong>Fiddler composer tab</strong> and modify the <strong>distance</strong> value in the <strong>Request Body</strong>. Give <strong>distance</strong> a value of <strong>7999</strong> as shown in the following image.</p>
+<img alt="../_images/holidayhacktrail-medium-modify-request.png" src="../_images/holidayhacktrail-medium-modify-request.png" />
+<p>Following this, hit the <strong>Execute</strong> button in the <strong>Fiddler Composer tab</strong> to win.</p>
+<img alt="../_images/holidayhacktrail-medium-winner.png" src="../_images/holidayhacktrail-medium-winner.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get an error in Fiddler about a web-cache issue, then simply click on the <strong>Go</strong> button again within the game, then click on <strong>Execute</strong> within Fiddler.</p>
+</div>
+</div>
+<div class="section" id="hard-mode">
+<h3>Hard Mode<a class="headerlink" href="#hard-mode" title="Permalink to this headline">¶</a></h3>
+<p>To win in hard mode we need to work out how the hash is generated.</p>
+<p>As per the challenge hint, we payed special attention to Chris Elgee’s video. At approx 7:39 into the video, he talks about a backend hashing function and displays the following code snippet.</p>
+<img alt="../_images/holidayhacktrail-videohint.png" src="../_images/holidayhacktrail-videohint.png" />
+<p>Based on this, and a bit of luck, we recreated our own hashing function (<strong>hht-hash.py</strong>). The code is reproduced below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+
+<span class="n">money</span><span class="o">=</span><span class="mi">1500</span>
+<span class="n">distance</span><span class="o">=</span><span class="mi">66</span>
+<span class="n">day</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">month</span><span class="o">=</span><span class="mi">9</span>
+
+<span class="n">reindeer</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">runners</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">ammo</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">meds</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">food</span><span class="o">=</span><span class="mi">84</span>
+
+<span class="nb">hash</span><span class="o">=</span><span class="s2">&quot;2cb6b10338a7fc4117a80da24b582060&quot;</span>
+
+<span class="n">hashvalue</span> <span class="o">=</span> <span class="n">money</span> <span class="o">+</span> <span class="n">distance</span> <span class="o">+</span> <span class="n">day</span> <span class="o">+</span> <span class="n">month</span>
+<span class="n">hashvalue</span> <span class="o">+=</span> <span class="n">reindeer</span> <span class="o">+</span> <span class="n">runners</span> <span class="o">+</span> <span class="n">ammo</span> <span class="o">+</span> <span class="n">meds</span> <span class="o">+</span> <span class="n">food</span>
+
+<span class="k">def</span> <span class="nf">md5it</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+    <span class="k">return</span>  <span class="n">m</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">md5it</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">hashvalue</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; : Our HASH&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">hash</span> <span class="o">+</span> <span class="s2">&quot; : Original HASH&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We used this tool together with the <strong>Fiddler Composer tab</strong> funtionality to win the game.</p>
+<p>Start the game in <strong>hard</strong> mode in the browser, click the <strong>Buy</strong> button on the store and then click on the <strong>Go</strong> button once.</p>
+<p>Drag the request into the Fiddler composer tab. From there, look at the request body and fill in the relevant details within the appropriate variables in <strong>hht-hash.py</strong>. The variables you need to copy include (money, distance, day, month, reindeer, runners, ammo,meds, food).</p>
+<p>Run <strong>hht-hash.py</strong> once to ensure that hash values match. You should get something like the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="n">cb6b10338a7fc4117a80da24b582060</span> <span class="p">:</span> <span class="n">Our</span> <span class="n">HASH</span>
+<span class="mi">2</span><span class="n">cb6b10338a7fc4117a80da24b582060</span> <span class="p">:</span> <span class="n">Original</span> <span class="n">HASH</span>
+</pre></div>
+</div>
+<p>Modify the distance variable within <strong>hht-hash.py</strong> to read <strong>distance=7999</strong>, then run the script again. A new hash should be displayed as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">b02d46e8a3d8d9fd6028f3f2c2495864</span> <span class="p">:</span> <span class="n">Our</span> <span class="n">HASH</span>
+<span class="mi">2</span><span class="n">cb6b10338a7fc4117a80da24b582060</span> <span class="p">:</span> <span class="n">Original</span> <span class="n">HASH</span>
+</pre></div>
+</div>
+<p>Modify the request body within Fiddler composer tab with the new values for <strong>distance</strong> and <strong>hash</strong>.</p>
+<img alt="../_images/holidayhacktrail-hard-modify-request.png" src="../_images/holidayhacktrail-hard-modify-request.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the above image we have added newline characters in the request body to make it readable. The actual request body should be one continuous line.</p>
+</div>
+<p>Following this, hit the <strong>Execute</strong> button in the Composer tab to win.</p>
+<img alt="../_images/holidayhacktrail-hard-winner.png" src="../_images/holidayhacktrail-hard-winner.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get an error in Fiddler about a web-cache issue, then simply click on the <strong>Go</strong> button again within the game, then click on <strong>Execute</strong> within Fiddler.</p>
+</div>
+</div>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Minty Candycane provides the following hint in her dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Minty Candycane</strong>
+You made it - congrats!
+Have you played with the key grinder in my room? Check it out!
+It turns out: if you have a good image of a key, you can physically copy it.
+Maybe you'll see someone hopping around with a key here on campus.
+Sometimes you can find it in the Network tab of the browser console.</pre>
+<p>The following hints were unlocked in our badge:</p>
+<pre class="literal-block"><strong>Bitting Templates</strong>
+From: Minty Candycane
+<a class="reference external" href="https://github.com/deviantollam/decoding">Deviant's Key Decoding Templates</a></pre>
+<pre class="literal-block"><strong>Key Bitting</strong>
+From: Minty Candycane
+<a class="reference external" href="https://youtu.be/KU6FJnbkeLA">Optical Decoding of Keys</a></pre>
+</div>
 </div>
 
 
@@ -187,7 +323,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Nyanshell.html" class="btn btn-neutral float-right" title="Nyanshell &lt;&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Nyanshell.html" class="btn btn-neutral float-right" title="Nyanshell" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="FrostyKeypad.html" class="btn btn-neutral float-left" title="Frosty Keypad &lt;&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
