@@ -7,7 +7,44 @@ Access `https://splunk.elfu.org/ <https://splunk.elfu.org/>`_ as elf with passwo
 
 Answer
 ------
-Kent you are so unfair. And we were going to make you the king of the Winter Carnival.
+
+Challenge Question Answer
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+What was the message for Kent that the adversary embedded in this attack?	
+
+    Kent you are so unfair. And we were going to make you the king of the Winter Carnival.
+
+Training Questions Answers
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.	What is the short host name of Professor Banas' computer?		
+
+    sweetums
+
+2.	What is the name of the sensitive file that was likely accessed and copied by the attacker? Please provide the fully qualified location of the file. (Example: C:\temp\report.pdf)		
+
+    C:\Users\cbanas\Documents\Naughty_and_Nice_2019_draft.txt
+
+3.	What is the fully-qualified domain name(FQDN) of the command and control(C2) server? (Example: badguy.baddies.com)		
+
+    144.202.46.214.vultr.com
+
+4.	What document is involved with launching the malicious PowerShell code? Please provide just the filename. (Example: results.txt)		
+
+    19th Century Holiday Cheer Assignment.docm
+
+5.	How many unique email addresses were used to send Holiday Cheer essays to Professor Banas? Please provide the numeric value. (Example: 1)		
+
+    21
+
+6.	What was the password for the zip archive that contained the suspicious file?		
+
+    123456789
+
+7.	What email address did the suspicious file come from?		
+
+    bradly.buttercups@eifu.org
 
 Solution
 --------
@@ -16,44 +53,7 @@ Logon to splunk using the following credentials:
 
 Username: ``elf``   Password: ``********`` [1]_
 
-Challenge Question Answer
-^^^^^^^^^^^^^^^^^^^^^^^^^
 
-What was the message for Kent that the adversary embedded in this attack?	
-
-Kent you are so unfair. And we were going to make you the king of the Winter Carnival.
-
-Training Questions Answers
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-1.	What is the short host name of Professor Banas' computer?		
-
-sweetums
-
-2.	What is the name of the sensitive file that was likely accessed and copied by the attacker? Please provide the fully qualified location of the file. (Example: C:\temp\report.pdf)		
-
-C:\Users\cbanas\Documents\Naughty_and_Nice_2019_draft.txt
-
-3.	What is the fully-qualified domain name(FQDN) of the command and control(C2) server? (Example: badguy.baddies.com)		
-
-144.202.46.214.vultr.com
-
-4.	What document is involved with launching the malicious PowerShell code? Please provide just the filename. (Example: results.txt)		
-
-19th Century Holiday Cheer Assignment.docm
-
-5.	How many unique email addresses were used to send Holiday Cheer essays to Professor Banas? Please provide the numeric value. (Example: 1)		
-
-21
-
-6.	What was the password for the zip archive that contained the suspicious file?		
-
-123456789
-
-7.	What email address did the suspicious file come from?		
-
-bradly.buttercups@eifu.org
 
 
 Hint
