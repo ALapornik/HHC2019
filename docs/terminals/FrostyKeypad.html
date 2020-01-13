@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Frosty Keypad &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Frosty Keypad &mdash; HHC2019  documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Holiday Hack Trail &lt;&gt;" href="HolidayHackTrail.html" />
-    <link rel="prev" title="Xmas Cheer Laser &lt;&gt;" href="XmasCheerLaser.html" /> 
+    <link rel="next" title="Holiday Hack Trail" href="HolidayHackTrail.html" />
+    <link rel="prev" title="Xmas Cheer Laser" href="XmasCheerLaser.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,14 +99,19 @@
 </ul>
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Frosty Keypad &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EscapeEd.html">Escape Ed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frosty Keypad</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
 </ul>
@@ -158,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Frosty Keypad &lt;&gt;</li>
+      <li>Frosty Keypad</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +180,85 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="frosty-keypad">
-<h1><a class="reference internal" href="#frosty-keypad">Frosty Keypad &lt;&gt;</a><a class="headerlink" href="#frosty-keypad" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://keypad.elfu.org/?challenge=keypad&amp;id=94e7c4bd-cd89-4296-851d-02531338ffbb">Frosty Keypad</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with Tangle Coalbox:</p>
+<pre class="literal-block"><strong>Tangle Coalbox</strong>
+Hey kid, it's me, Tangle Coalbox.
+I'm sleuthing again, and I could use your help.
+Ya see, this here number lock's been popped by someone.
+I think I know who, but it'd sure be great if you could open this up for me.
+I've got a few clues for you.
+    1. One digit is repeated once.
+    2. The code is a prime number.
+    3. You can probably tell by looking at the keypad which buttons are used.</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>Frosty Keypad</strong>
+From: Tangle Coalbox
+One digit is repeated once, it's prime, and you can see which keys were used</pre>
+<p>The challenge:</p>
+<img alt="../_images/frostykeypad-banner.png" src="../_images/frostykeypad-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>Looking at the keypad, we noticed that the <strong>1</strong>, <strong>3</strong> and <strong>7</strong> keys had a large smear indicating that these are the keys we need.</p>
+<p>Knowing that one of the digits is repeated twice (we needed a 4-digit number), we created a Python script (<strong>frostykeypad.py</strong>) that finds the list of prime numbers between <strong>1137</strong> and <strong>7731</strong> containing only the digits <strong>1</strong>, <strong>3</strong> and <strong>7</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lower</span> <span class="o">=</span> <span class="mi">1137</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="mi">7731</span>
+
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span><span class="n">upper</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;2&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">:</span> <span class="k">continue</span>       <span class="c1"># discard the number if it contains a 2</span>
+    <span class="k">elif</span> <span class="s2">&quot;4&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">:</span> <span class="k">continue</span>     <span class="c1"># discard the number if it contains a 4</span>
+    <span class="k">elif</span> <span class="s2">&quot;5&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">:</span> <span class="k">continue</span>     <span class="c1"># discard the number if it contains a 5</span>
+    <span class="k">elif</span> <span class="s2">&quot;6&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">:</span> <span class="k">continue</span>     <span class="c1"># discard the number if it contains a 6</span>
+    <span class="k">elif</span> <span class="s2">&quot;8&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">:</span> <span class="k">continue</span>     <span class="c1"># discard the number if it contains a 8</span>
+    <span class="k">elif</span> <span class="s2">&quot;9&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">:</span> <span class="k">continue</span>     <span class="c1"># discard the number if it contains a 9</span>
+    <span class="k">elif</span> <span class="s2">&quot;0&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">:</span> <span class="k">continue</span>     <span class="c1"># discard the number if it contains a 0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>  <span class="c1"># check if prime</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Running this script produced the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1171</span>
+<span class="mi">1373</span>
+<span class="mi">1733</span>
+<span class="mi">1777</span>
+<span class="mi">3137</span>
+<span class="mi">3313</span>
+<span class="mi">3331</span>
+<span class="mi">3371</span>
+<span class="mi">3373</span>
+<span class="mi">3733</span>
+<span class="mi">7177</span>
+<span class="mi">7331</span>
+<span class="mi">7333</span>
+<span class="mi">7717</span>
+</pre></div>
+</div>
+<p>We then manually eliminated the numbers where the same digit appears 3 times, producing the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1373</span>
+<span class="mi">1733</span>
+<span class="mi">3137</span>
+<span class="mi">3371</span>
+<span class="mi">7331</span>
+</pre></div>
+</div>
+<p>We then entered these numbers into the lock in order shown until the door opened.</p>
+<p>The correct combination was <strong>7331</strong></p>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Tangle Coalbox provides the following hint in his dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Tangle Coalbox</strong>
+Yep, that's it. Thanks for the assist, gumshoe.
+Hey, if you think you can help with another problem, Prof. Banas could use a hand too.
+Head west to the other side of the quad into Hermey Hall and find him in the Laboratory.</pre>
+</div>
 </div>
 
 
@@ -187,10 +269,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="HolidayHackTrail.html" class="btn btn-neutral float-right" title="Holiday Hack Trail &lt;&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="HolidayHackTrail.html" class="btn btn-neutral float-right" title="Holiday Hack Trail" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="XmasCheerLaser.html" class="btn btn-neutral float-left" title="Xmas Cheer Laser &lt;&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="XmasCheerLaser.html" class="btn btn-neutral float-left" title="Xmas Cheer Laser" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

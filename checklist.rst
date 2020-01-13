@@ -29,7 +29,7 @@ Objectives:
 Terminals:
 
 Escape D
-Frosty -
+Frosty D
 Graylog D
 HHT D
 Linux D
