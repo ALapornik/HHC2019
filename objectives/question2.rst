@@ -3,15 +3,13 @@
 
 Challenge
 ---------
+Difficulty: 1/5
+
 Someone sent a threatening letter to Elf University. What is the first word in ALL CAPS in the subject line of the letter? Please find the letter in the Quad.
-
-Difficulty
-----------
-
 
 Answer
 ------
-DEMAND
+**DEMAND**
 
 Solution
 --------

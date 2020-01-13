@@ -10,13 +10,12 @@ For hints on achieving this objective, please visit the *Student Union* and talk
 
 Answer
 ------
-The Tooth Fairy
+**The Tooth Fairy**
 
 Solution
 --------
 
-
-We used Google Chrome to solve this
+We used Google Chrome to solve this.
 
 .. tip:: To open the Dev tools in Chrome either: Right click and choose ``inspect element``, click on ``options > More Tools > Developer Tools`` or press :kbd:`Ctrl` + :kbd:`Shift` + :kbd:`I`
 

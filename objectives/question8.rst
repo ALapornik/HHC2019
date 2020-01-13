@@ -4,7 +4,7 @@ Challenge
 ---------
 Difficulty: 4/5 
 
-Help Krampus beat the Frido Sleigh contest. For hints on achieving this objective, please talk with Alabaster Snowball in the Speaker Unpreparedness Room.
+Help Krampus beat the `Frido Sleigh contest <https://fridosleigh.com/>`_. For hints on achieving this objective, please talk with Alabaster Snowball in the Speaker Unpreparedness Room.
 
 Answer
 ------

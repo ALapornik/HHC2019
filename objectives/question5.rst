@@ -3,11 +3,13 @@
 
 Challenge
 ---------
+Difficulty: 2/5
+
 The attacks don't stop! Can you help identify the IP address of the malware-infected system using these `Zeek logs <https://downloads.elfu.org/elfu-zeeklogs.zip>`_? For hints on achieving this objective, please visit the Laboratory and talk with Sparkle Redberry.
 
 Answer
 ------
-192.168.134.130	
+**192.168.134.130**
 
 Solution
 --------

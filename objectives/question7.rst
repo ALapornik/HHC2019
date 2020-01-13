@@ -1,5 +1,6 @@
 7) Get Access To The Steam Tunnels
 ==================================
+
 Challenge
 ---------
 Difficulty: 3/5 
@@ -8,16 +9,13 @@ Gain access to the steam tunnels. Who took the turtle doves? Please tell us thei
 
 Answer
 ------
-
-Krampus Hollyfeld
-
+**Krampus Hollyfeld**
 
 Solution
 --------
-
 Go to Minty's dorm. You'll see Krampus moving into the closet. If you go into tha closet, there is a `lock <https://thisisit.elfu.org/>`_ on the door.
 
-.. note:: Minty has a very messy closet. May smell bad.
+.. warning:: Minty has a very messy closet. May smell bad.
 
 On Minty's desk you'll find the `Key Bitter <https://key.elfu.org/>`_.
 

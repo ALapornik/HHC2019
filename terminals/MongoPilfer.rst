@@ -176,4 +176,3 @@ The following hint was unlocked in our badge:
     **Reverse Engineering**
     From: Holly Evergreen
     `Reversing Crypto the Easy Way <https://youtu.be/obJdpKDpFBA>`_
-

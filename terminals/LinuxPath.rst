@@ -119,4 +119,3 @@ The following hints were unlocked in our badge:
     **Sysmon**
     From: SugarPlum Mary
     `Sysmon By Carlos Perez <https://www.darkoperator.com/blog/2014/8/8/sysinternals-sysmon>`_
-

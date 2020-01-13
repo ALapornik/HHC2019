@@ -1,9 +1,6 @@
 Narrative
 =========
 
-
-
-
 Whose grounds these are, I think I know
 
 His home is in the North Pole though

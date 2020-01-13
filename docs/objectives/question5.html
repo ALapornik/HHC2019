@@ -105,16 +105,16 @@
 </ul>
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../terminals/EscapeEd.html">Escape Ed &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/EscapeEd.html">Escape Ed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/LinuxPath.html">Linux Path</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/XmasCheerLaser.html">Xmas Cheer Laser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../terminals/FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/FrostyKeypad.html">Frosty Keypad</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/HolidayHackTrail.html">Holiday Hack Trail</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/Nyanshell.html">Nyanshell</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/Graylog.html">Graylog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/MongoPilfer.html">Mongo Pilfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../terminals/SmartBraces.html">Smart Braces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../terminals/ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../terminals/ZeekJSONAnalysis.html">Zeek JSON Analysis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Appendices:</span></p>
 <ul>
@@ -185,16 +185,46 @@
 <h1>5) Network Log Analysis: Determine Compromised System<a class="headerlink" href="#network-log-analysis-determine-compromised-system" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="challenge">
 <h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>Difficulty: 2/5</p>
+<p>The attacks don’t stop! Can you help identify the IP address of the malware-infected system using these <a class="reference external" href="https://downloads.elfu.org/elfu-zeeklogs.zip">Zeek logs</a>? For hints on achieving this objective, please visit the Laboratory and talk with Sparkle Redberry.</p>
 </div>
 <div class="section" id="answer">
 <h2>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h2>
-<p>192.168.134.130</p>
+<p><strong>192.168.134.130</strong></p>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>After Downloading and Extracting the file, we noticed that it contained a folder <code class="docutils literal notranslate"><span class="pre">elfu-zeeklogs</span></code>.
+We opened this folder and noticed that it contained 890 log files and a folder <code class="docutils literal notranslate"><span class="pre">ELFU</span></code>
+We then opened  ELFU:</p>
+<img alt="../_images/ELFU.PNG" src="../_images/ELFU.PNG" />
+<p>There is a file named <code class="docutils literal notranslate"><span class="pre">index.html</span></code> as well as some other files and folders.</p>
+<p>The ELFU folder contains the tabs that can be accesed from the index</p>
+<img alt="../_images/ELFU2.PNG" src="../_images/ELFU2.PNG" />
+<p>Open the index.html file in a browser.</p>
+<img alt="../_images/INDEX.PNG" src="../_images/INDEX.PNG" />
+<p>Click on ELFU</p>
+<img alt="../_images/MENU.PNG" src="../_images/MENU.PNG" />
+<p>Click on Beacons</p>
+<img alt="../_images/Beacons.PNG" src="../_images/Beacons.PNG" />
+<p>The first row has the highest score, so it’s the most likely to be a beacon.
+The Source field of the first row contains the IP of the affected system.</p>
 </div>
 <div class="section" id="hint">
 <h2>Hint<a class="headerlink" href="#hint" title="Permalink to this headline">¶</a></h2>
+<p><strong>Sparkle Redberry:</strong></p>
+<blockquote>
+<div><p>You got it - three cheers for cheer!
+For objective 5, have you taken a look at our Zeek logs?
+Something’s gone wrong. But I hear someone named Rita can help us.
+Can you and she figure out what happened?</p>
+</div></blockquote>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>RITA</p>
+<p>From: Sparkle Redberry</p>
+<p><a class="reference external" href="https://www.activecountermeasures.com/free-tools/rita/">RITA’s homepage</a></p>
+</div>
 </div>
 </div>
 
