@@ -31,7 +31,7 @@ Terminals:
 Escape -
 Frosty -
 Graylog D
-HHT - [P]
+HHT D
 Linux D
 Mongo D
 Nyanshell D
