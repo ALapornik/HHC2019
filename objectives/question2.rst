@@ -15,7 +15,7 @@ Solution
 --------
 The `letter <https://downloads.elfu.org/LetterToElfUPersonnel.pdf>`_ is found at the top left corner of the Quad, or in the DOM tree in Dev tools.
 
-Hit :kbd: `Ctrl` + :kbd: `A` to select all the text, then copy it and paste into a text editor to view the contents.
+Hit :kbd:`Ctrl` + :kbd:`A` to select all the text, then copy it and paste into a text editor to view the contents.
 
 The full text appears below:
 
