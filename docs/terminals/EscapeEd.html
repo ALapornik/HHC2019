@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Escape Ed &lt;&gt; &mdash; HHC2019  documentation</title>
+  <title>Escape Ed &mdash; HHC2019  documentation</title>
   
 
   
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linux Path &lt;&gt;" href="LinuxPath.html" />
+    <link rel="next" title="Linux Path" href="LinuxPath.html" />
     <link rel="prev" title="12) Filter Out Poisoned Sources of Weather Data" href="../objectives/question12.html" /> 
 </head>
 
@@ -99,14 +99,19 @@
 </ul>
 <p class="caption"><span class="caption-text">Terminals:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Escape Ed &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser &lt;&gt;</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Escape Ed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solution">Solution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hints">Hints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="LinuxPath.html">Linux Path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="XmasCheerLaser.html">Xmas Cheer Laser</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FrostyKeypad.html">Frosty Keypad &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog &lt;&gt;</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer &lt;&gt;</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HolidayHackTrail.html">Holiday Hack Trail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Nyanshell.html">Nyanshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Graylog.html">Graylog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MongoPilfer.html">Mongo Pilfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SmartBraces.html">Smart Braces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ZeekJSONAnalysis.html">Zeek JSON Analysis &lt;&gt;</a></li>
 </ul>
@@ -158,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Escape Ed &lt;&gt;</li>
+      <li>Escape Ed</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,8 +180,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="escape-ed">
-<h1><a class="reference internal" href="#escape-ed">Escape Ed &lt;&gt;</a><a class="headerlink" href="#escape-ed" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><a class="reference external" href="https://docker2019.kringlecon.com/?challenge=edescape&amp;id=c65f17d9-33e5-47e8-a1bf-cb295f1af16b">Escape Ed</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="challenge">
+<h2>Challenge<a class="headerlink" href="#challenge" title="Permalink to this headline">¶</a></h2>
+<p>The initial dialog with Bushy Evergreen:</p>
+<pre class="literal-block"><strong>Bushy Evergreen</strong>
+Hi, I'm Bushy Evergreen. Welcome to Elf U!
+I'm glad you're here. I'm the target of a terrible trick.
+Pepper Minstix is at it again, sticking me in a text editor.
+Pepper is forcing me to learn ed.
+Even the hint is ugly. Why can't I just use Gedit?
+Please help me just quit the grinchy thing.</pre>
+<p>The hint from our badge:</p>
+<pre class="literal-block"><strong>ed Editor Basics</strong>
+From: Bushy Evergreen
+<a class="reference external" href="http://cs.wellesley.edu/~cs249/Resources/ed_is_the_standard_text_editor.html">Ed Is The Standard Text Editor</a></pre>
+<p>The banner page from the terminal challenge:</p>
+<img alt="../_images/escapeed-banner.png" src="../_images/escapeed-banner.png" />
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<p>To exit the Ed editor, press <kbd class="kbd docutils literal notranslate">q</kbd> then <kbd class="kbd docutils literal notranslate">ENTER</kbd></p>
+<p>Success!. The following output was displayed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Loading, please wait......
+You did it! Congratulations!
+</pre></div>
+</div>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>Bushy Evergreen provides the following hint in his dialog after solving the terminal challenge:</p>
+<pre class="literal-block"><strong>Bushy Evergreen</strong>
+Wow, that was much easier than I'd thought.
+Maybe I don't need a clunky GUI after all!
+Have you taken a look at the password spray attack artifacts?
+I'll bet that DeepBlueCLI tool is helpful.
+You can check it out on GitHub.
+It was written by that Eric Conrad.
+He lives in Maine - not too far from here!</pre>
+<p>The following hints were unlocked in our badge:</p>
+<pre class="literal-block"><strong>Deep Blue CLI Posting</strong>
+From: Bushy Evergreen
+<a class="reference external" href="https://www.ericconrad.com/2016/09/deepbluecli-powershell-module-for-hunt.html">Eric Conrad on DeepBlueCLI</a></pre>
+<pre class="literal-block"><strong>Deep Blue CLI on Github</strong>
+From: Bushy Evergreen
+<a class="reference external" href="https://github.com/sans-blue-team/DeepBlueCLI">Github page for DeepBlueCLI</a></pre>
+</div>
 </div>
 
 
@@ -187,7 +237,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="LinuxPath.html" class="btn btn-neutral float-right" title="Linux Path &lt;&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="LinuxPath.html" class="btn btn-neutral float-right" title="Linux Path" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../objectives/question12.html" class="btn btn-neutral float-left" title="12) Filter Out Poisoned Sources of Weather Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
