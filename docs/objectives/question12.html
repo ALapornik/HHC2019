@@ -271,9 +271,9 @@
 <h4>Pivoting<a class="headerlink" href="#pivoting" title="Permalink to this headline">¶</a></h4>
 <p>Finding out how to pivot on the returned entries was tricky and we went down several deadends. We finally noticed that the challenge was designed to be pivoted on the <strong>user_agent</strong> keys. In each case, the <strong>user_agent</strong> value contained either a misspelling or some unique text that corresponded to exactly 2 IP addresses (the original attack and the pivoted attack).</p>
 <p>The list of <strong>user_agent</strong> values was obtained using the following commands:
-<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;UNION&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 16 unique IP addresses</em>
-<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;&lt;&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 9 unique IP addresses</em>
-<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;/etc/passwd&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 11 unique IP addresses</em></p>
+<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;UNION&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 16 unique IP addresses</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;&lt;&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 9 unique IP addresses</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">http.txt</span> <span class="pre">|</span> <span class="pre">./jq.exe</span> <span class="pre">'select(.uri|test(&quot;/etc/passwd&quot;))</span> <span class="pre">|</span> <span class="pre">.user_agent'</span></code> <em>==&gt; produced 11 unique IP addresses</em></p>
 <p>An example of the <strong>user_agent</strong> values is shown in the following figure:</p>
 <img alt="../_images/o12-pivot.png" src="../_images/o12-pivot.png" />
 <p>The final step is to perform a search for additional IP addresses based on the <strong>user_agent</strong> value. An example of such a search could be something like the following. In this challenge, each successful query returns exactly 2 IP addresses (the original attack and the pivoted attack).</p>
@@ -285,8 +285,8 @@
 </div>
 <div class="section" id="formatting-the-data">
 <h4>Formatting the data<a class="headerlink" href="#formatting-the-data" title="Permalink to this headline">¶</a></h4>
-<p>The firewall UI needed a set of comma separated IP addresses. The following image shows what our list of IP addresses looked like:
-.. image:: /images/o12-submitted-ip-addresses.png</p>
+<p>The firewall UI needed a set of comma separated IP addresses. The following image shows what our list of IP addresses looked like:</p>
+<img alt="../_images/o12-submitted-ip-addresses.png" src="../_images/o12-submitted-ip-addresses.png" />
 </div>
 <div class="section" id="accessing-the-sleigh-route-finder-api">
 <h4>Accessing the Sleigh Route Finder API<a class="headerlink" href="#accessing-the-sleigh-route-finder-api" title="Permalink to this headline">¶</a></h4>

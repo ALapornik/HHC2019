@@ -77,7 +77,9 @@ Finding out how to pivot on the returned entries was tricky and we went down sev
 
 The list of **user_agent** values was obtained using the following commands:
 ``cat http.txt | ./jq.exe 'select(.uri|test("UNION")) | .user_agent'`` *==> produced 16 unique IP addresses*
+
 ``cat http.txt | ./jq.exe 'select(.uri|test("<")) | .user_agent'`` *==> produced 9 unique IP addresses*
+
 ``cat http.txt | ./jq.exe 'select(.uri|test("/etc/passwd")) | .user_agent'`` *==> produced 11 unique IP addresses*
 
 An example of the **user_agent** values is shown in the following figure:
@@ -94,6 +96,7 @@ The final step is to perform a search for additional IP addresses based on the *
 Formatting the data
 """""""""""""""""""
 The firewall UI needed a set of comma separated IP addresses. The following image shows what our list of IP addresses looked like:
+
 .. image:: /images/o12-submitted-ip-addresses.png
 
 Accessing the Sleigh Route Finder API
