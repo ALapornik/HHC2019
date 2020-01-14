@@ -88,3 +88,4 @@ The following hint was unlocked in our badge:
     **Finding Bad in Web Logs**
     From: Wunorse Openslae
     Do you see any `LFI <https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion>`_, `XSS <https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)>`_, `Shellshock <https://en.wikipedia.org/wiki/Shellshock_(software_bug)>`_, or `SQLi <https://www.owasp.org/index.php/SQL_Injection>`_?
+    

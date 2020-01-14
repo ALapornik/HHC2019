@@ -223,4 +223,3 @@ A progress bar will indicate the decryption progress. When the progress reaches 
 As shown below, if you open the decrypted document (**Decoded.pdf**) in a PDF reader the answer to the objective can be found on the cover page.
 
 .. image:: /images/o10-decrypted-document-header.png
-

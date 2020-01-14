@@ -162,4 +162,3 @@ The following hints were unlocked in our badge:
     **Key Bitting**
     From: Minty Candycane
     `Optical Decoding of Keys <https://youtu.be/KU6FJnbkeLA>`_
-

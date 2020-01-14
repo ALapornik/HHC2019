@@ -36,5 +36,3 @@ Find the quad(outside the station), and click on Santa.
  If you help my elves with some quicker problems, they'll probably remember clues for the objectives.
 
  
-
- 

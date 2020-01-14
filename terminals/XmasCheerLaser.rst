@@ -384,4 +384,3 @@ The following hint was unlocked in our badge:
     **RITA**
     From: Sparkle Redberry
     `RITA's homepage <https://www.activecountermeasures.com/free-tools/rita/>`_
-

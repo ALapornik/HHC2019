@@ -96,4 +96,3 @@ Tangle Coalbox provides the following hint in his dialog after solving the termi
     Head west to the other side of the quad into Hermey Hall and find him in the Laboratory.
 
 
-

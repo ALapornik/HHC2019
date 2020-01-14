@@ -120,4 +120,3 @@ We ran the model against the CAPTEHA challenge and entered the Frido Sleigh cont
 It took a few attempts before the script was successful. We eventually received the following email message from the Frido Sleigh server:
 
 .. image:: /images/o8-winning-entry.png
-

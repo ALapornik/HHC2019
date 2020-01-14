@@ -128,4 +128,3 @@ We copied/pasted the set of IP addresses into the firewall UI and pressed the :k
 The firewall page gave us the following feedback:
 
 .. image:: /images/o12-success.png
-

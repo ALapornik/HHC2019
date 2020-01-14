@@ -149,3 +149,4 @@ The following hint was unlocked in our badge:
     **Machine Learning**
     From: Alabaster Snowball
     `Machine Learning Use Cases for Cyber Security <https://youtu.be/jmVPLwjm_zs>`_
+

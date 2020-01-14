@@ -155,3 +155,4 @@ The following hints were unlocked in our badge:
     **Lynx Dev Tools**
     From: Kent Tinseltooth
     `Lynx Dev Tools <https://xkcd.com/325/>`_
+    

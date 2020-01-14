@@ -109,5 +109,6 @@ Here is our map of Kringlecon 2019:
   :caption: Appendices:
 
   appendices/narrative
+  appendices/trivia
 
 

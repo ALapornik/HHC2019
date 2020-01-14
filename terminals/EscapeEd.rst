@@ -61,3 +61,4 @@ The following hints were unlocked in our badge:
     **Deep Blue CLI on Github**
     From: Bushy Evergreen
     `Github page for DeepBlueCLI <https://github.com/sans-blue-team/DeepBlueCLI>`_
+    
